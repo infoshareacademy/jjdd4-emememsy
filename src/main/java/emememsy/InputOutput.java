@@ -9,7 +9,7 @@ public class InputOutput {
 
     static void checkReader() throws IOException {
 
-    CSVReader reader = new CSVReader(new FileReader("src/resources/input_words.csv"));
+    CSVReader reader = new CSVReader(new FileReader("src/main/resources/input_words.csv"));
     String [] nextLine;
     while ((nextLine = reader.readNext()) != null) {
     // nextLine[] is an array of values from the line
