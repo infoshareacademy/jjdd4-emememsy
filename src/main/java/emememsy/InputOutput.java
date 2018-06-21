@@ -2,9 +2,7 @@ package emememsy;
 
 import au.com.bytecode.opencsv.CSVReader;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 
 public class InputOutput {
@@ -39,6 +37,11 @@ public class InputOutput {
         //setOfWords.stream().forEach(System.out::println);
     }
 
+
+
+
+
+
     static List<SingleWord> createListOfWords() throws IOException {
         CSVReader reader = new CSVReader(new FileReader("src/main/resources/input_words.csv"));
         List<SingleWord> listOfWords = new ArrayList<>();
@@ -51,4 +54,12 @@ public class InputOutput {
         }
         return listOfWords;
     }
+
+    // List<MyBean> beans comes from somewhere earlier in your code.
+   /* void writeToCSV (List<SingleWord> listOfWords) throws IOException {
+        Writer writer = new FileWriter("src/main/resources/input_words.csv");
+        StatefulBeanToCsvBuilder beanToCsv = StatefulBeanToCsvBuilder(writer).build();
+        beanToCsv.write(listOfWords);
+        writer.close();
+    } */
 }

@@ -18,6 +18,9 @@ public class App
 
         List<SingleWord> myList = new ArrayList<>();
 
+        //test wczytania pliku i stworenia tablicy - uruchomić tylko raz!!!!!
+
+
         try {
           myList =  InputOutput.createListOfWords();
         } catch (IOException e) {
@@ -25,7 +28,14 @@ public class App
         }
 
 
-        String singleWord = new Actions().pickRandomLearnMode(myList);
+
+        //symulacja trybu nauki - uruchamiać ile razy się chce
+       // String singleWord = new Actions().pickRandomLearnMode(myList);
+
+
+
+        //weryfikacja stanu listy
+        myList.stream().forEach(System.out::println);
 
 
     }

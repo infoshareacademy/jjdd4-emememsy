@@ -50,7 +50,8 @@ public class SingleWord implements Comparable{
     @Override
     public String toString() {
         return "word='" + word + '\'' +
-                ", translation='" + translation + '\'' ;
+                ", translation='" + translation + '\''
+                + counter;
     }
 
     @Override
