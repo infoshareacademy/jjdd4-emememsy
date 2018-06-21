@@ -10,6 +10,8 @@ import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 import java.io.*;
 import java.util.*;
 
+import static au.com.bytecode.opencsv.CSVReader.*;
+
 public class InputOutput {
 
     static void checkReader() throws IOException {
@@ -49,10 +51,10 @@ public class InputOutput {
 
     static List<SingleWord> createListOfWords() throws IOException {
         List<SingleWord> listOfWords = new ArrayList<>();
+        //CSVReader reader = new CSVReader(new FileReader("input_words.csv", DEFAULT_SEPARATOR, DEFAULT_QUOTE_CHARACTER, 1));
         CSVReader reader = new CSVReader(new FileReader("src/main/resources/input_words.csv"));
-        //List<SingleWord> listOfWords = new CsvToBeanBuilder(new FileReader("C:\\Users\\lubam\\Documents\\Projekt\\jjdd4-emememsy\\src\\main\\resources\\input_words.csv"))
-        //        .withType(SingleWord.class).build().parse();
         String[] nextLine;
+        nextLine = reader.readNext();
         while ((nextLine = reader.readNext()) != null) {
             SingleWord singleWord = new SingleWord((nextLine[2]), (nextLine[1]), Integer.parseInt(nextLine[0]));
             listOfWords.add(singleWord);
