@@ -7,7 +7,7 @@ public class SingleWord implements Comparable{
     private String word;
     private String translation;
     private int counter;
-    private SetOfWords setOfWords;
+    //private SetOfWords setOfWords;
 
     public SingleWord(String word, String translation, int counter) {
         this.word = word;
@@ -39,19 +39,15 @@ public class SingleWord implements Comparable{
         this.counter = counter;
     }
 
-    public SetOfWords getSetOfWords() {
-        return setOfWords;
-    }
 
-    public void setSetOfWords(SetOfWords setOfWords) {
-        this.setOfWords = setOfWords;
-    }
 
     @Override
     public String toString() {
-        return "word='" + word + '\'' +
-                ", translation='" + translation + '\''
-                + counter;
+        return "SingleWord{" +
+                "word='" + word + '\'' +
+                ", translation='" + translation + '\'' +
+                ", counter=" + counter +
+                '}';
     }
 
     @Override

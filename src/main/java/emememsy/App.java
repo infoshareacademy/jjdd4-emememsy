@@ -1,5 +1,8 @@
 package emememsy;
 
+import com.opencsv.exceptions.CsvDataTypeMismatchException;
+import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,8 +33,17 @@ public class App
 
 
         //symulacja trybu nauki - uruchamiać ile razy się chce
-       // String singleWord = new Actions().pickRandomLearnMode(myList);
+       String singleWord = new Actions().pickRandomLearnMode(myList);
 
+        try {
+            InputOutput.writeToCSV(myList);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (CsvDataTypeMismatchException e) {
+            e.printStackTrace();
+        } catch (CsvRequiredFieldEmptyException e) {
+            e.printStackTrace();
+        }
 
 
         //weryfikacja stanu listy

@@ -1,6 +1,10 @@
 package emememsy;
 
 import au.com.bytecode.opencsv.CSVReader;
+import com.opencsv.bean.StatefulBeanToCsv;
+import com.opencsv.bean.StatefulBeanToCsvBuilder;
+import com.opencsv.exceptions.CsvDataTypeMismatchException;
+import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 
 import java.io.*;
 import java.util.*;
@@ -56,10 +60,10 @@ public class InputOutput {
     }
 
     // List<MyBean> beans comes from somewhere earlier in your code.
-   /* void writeToCSV (List<SingleWord> listOfWords) throws IOException {
-        Writer writer = new FileWriter("src/main/resources/input_words.csv");
-        StatefulBeanToCsvBuilder beanToCsv = StatefulBeanToCsvBuilder(writer).build();
+   static void writeToCSV (List<SingleWord> listOfWords) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
+        Writer writer = new FileWriter("src/main/resources/output_words.csv");
+        StatefulBeanToCsv beanToCsv = new StatefulBeanToCsvBuilder(writer).build();
         beanToCsv.write(listOfWords);
         writer.close();
-    } */
+    }
 }

@@ -4,7 +4,7 @@ import java.util.Set;
 
 public class SetOfWords {
 
-
+/*
     Set<SingleWord> words;
 
     public Set<SingleWord> getWords() {
@@ -19,6 +19,6 @@ public class SetOfWords {
         singleWord.setSetOfWords(this);
         words.add(singleWord);
     }
-
+*/
 
 }
