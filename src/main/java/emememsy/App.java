@@ -15,7 +15,7 @@ public class App
     private void run() {
 
         try {
-            InputOutput.checkReader();
+            InputOutput.createSetOfWords();
         } catch (IOException e) {
             e.printStackTrace();
         }

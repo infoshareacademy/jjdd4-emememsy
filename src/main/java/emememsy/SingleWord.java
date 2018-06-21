@@ -69,7 +69,7 @@ public class SingleWord {
     @Override
     public int hashCode() {
 
-        return Objects.hash(word, translation, counter);
+        return Objects.hash(word);  //hashCode only for words, in case of printing full list
     }
 
 
