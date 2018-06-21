@@ -2,7 +2,7 @@ package emememsy;
 
 import java.util.Objects;
 
-public class SingleWord {
+public class SingleWord implements Comparable{
 
     private String word;
     private String translation;
@@ -69,8 +69,13 @@ public class SingleWord {
     @Override
     public int hashCode() {
 
-        return Objects.hash(word);  //hashCode only for words, in case of printing full list
+        return Objects.hash(word, translation, counter);
     }
 
 
+    @Override
+    public int compareTo(Object o) {
+
+        return this.getWord().compareTo(((SingleWord) o).getWord());
+    }
 }
