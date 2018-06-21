@@ -1,13 +1,19 @@
 package emememsy;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
- * Hello world!
+ * Main class application
  *
  */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
+
+public class App {
+    public static void main( String[] args ) {
+        Map<String, String> modeList = new HashMap<String, String>();
+
+
+        // tu wykozystamy ModeLauncher do uruchomienia trybow
+
     }
 }
