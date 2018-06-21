@@ -1,6 +1,7 @@
 package emememsy;
 
 import au.com.bytecode.opencsv.CSVReader;
+import com.opencsv.bean.CsvToBeanBuilder;
 import com.opencsv.bean.StatefulBeanToCsv;
 import com.opencsv.bean.StatefulBeanToCsvBuilder;
 import com.opencsv.exceptions.CsvDataTypeMismatchException;
@@ -47,14 +48,15 @@ public class InputOutput {
 
 
     static List<SingleWord> createListOfWords() throws IOException {
-        CSVReader reader = new CSVReader(new FileReader("src/main/resources/input_words.csv"));
         List<SingleWord> listOfWords = new ArrayList<>();
+        CSVReader reader = new CSVReader(new FileReader("src/main/resources/input_words.csv"));
+        //List<SingleWord> listOfWords = new CsvToBeanBuilder(new FileReader("C:\\Users\\lubam\\Documents\\Projekt\\jjdd4-emememsy\\src\\main\\resources\\input_words.csv"))
+        //        .withType(SingleWord.class).build().parse();
         String[] nextLine;
         while ((nextLine = reader.readNext()) != null) {
-            SingleWord singleWord = new SingleWord((nextLine[0]), (nextLine[1]), Integer.parseInt(nextLine[2]));
+            SingleWord singleWord = new SingleWord((nextLine[2]), (nextLine[1]), Integer.parseInt(nextLine[0]));
             listOfWords.add(singleWord);
             //System.out.println(singleWord);
-
         }
         return listOfWords;
     }
@@ -66,4 +68,6 @@ public class InputOutput {
         beanToCsv.write(listOfWords);
         writer.close();
     }
+
+
 }

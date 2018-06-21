@@ -1,11 +1,16 @@
 package emememsy;
 
+import com.opencsv.bean.CsvBindByName;
+
 import java.util.Objects;
 
 public class SingleWord implements Comparable{
 
+    @CsvBindByName
     private String word;
+    @CsvBindByName
     private String translation;
+    @CsvBindByName
     private int counter;
     //private SetOfWords setOfWords;
 
