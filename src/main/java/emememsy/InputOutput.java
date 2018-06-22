@@ -25,29 +25,6 @@ public class InputOutput {
         }
     }
 
-    static Set<SingleWord> createSetOfWords() throws IOException {
-       /* Set<SingleWord> set = new TreeSet<>(new Comparator<SingleWord>() {
-            @Override
-            public int compare(SingleWord o1, SingleWord o2) {
-                return o1.getWord().compareTo(o2.getWord());
-            }
-        }); */
-        CSVReader reader = new CSVReader(new FileReader("src/main/resources/input_words.csv"));
-        Set<SingleWord> setOfWords = new TreeSet<>();
-        String[] nextLine;
-        while ((nextLine = reader.readNext()) != null) {
-            SingleWord singleWord = new SingleWord((nextLine[0]), (nextLine[1]), Integer.parseInt(nextLine[2]));
-            setOfWords.add(singleWord);
-            //System.out.println(singleWord);
-        }
-        return setOfWords;
-        //setOfWords.stream().forEach(System.out::println);
-    }
-
-
-
-
-
 
     static List<SingleWord> createListOfWords() throws IOException {
         List<SingleWord> listOfWords = new ArrayList<>();
@@ -63,9 +40,9 @@ public class InputOutput {
         return listOfWords;
     }
 
-    // List<MyBean> beans comes from somewhere earlier in your code.
+
    static void writeToCSV (List<SingleWord> listOfWords) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
-        Writer writer = new FileWriter("src/main/resources/output_words.csv");
+        Writer writer = new FileWriter("src/main/resources/input_words.csv");
         StatefulBeanToCsv beanToCsv = new StatefulBeanToCsvBuilder(writer).build();
         beanToCsv.write(listOfWords);
         writer.close();

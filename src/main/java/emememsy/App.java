@@ -49,7 +49,7 @@ public class App
 
 
         //weryfikacja stanu listy
-        myList.stream().forEach(System.out::println);
+        //myList.stream().forEach(System.out::println);
 
 
     }
