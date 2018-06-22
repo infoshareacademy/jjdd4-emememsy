@@ -22,6 +22,10 @@ public class ModeLauncher {
     modeMap.put("l", new LearnMode());
     modeMap.put("r", new RepeatMode());
 
+    for (Map.Entry<String, Mode> entry : modeMap.entrySet()) {
+        //akcja dla iteracji ww mapy
+    }
+
 
 
 
