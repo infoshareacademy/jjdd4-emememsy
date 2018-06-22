@@ -4,7 +4,7 @@ import com.opencsv.bean.CsvBindByName;
 
 import java.util.Objects;
 
-public class SingleWord implements Comparable{
+public class SingleWord implements Comparable {
 
     @CsvBindByName
     private String word;
@@ -12,7 +12,7 @@ public class SingleWord implements Comparable{
     private String translation;
     @CsvBindByName
     private int counter;
-    //private SetOfWords setOfWords;
+
 
     public SingleWord(String word, String translation, int counter) {
         this.word = word;
@@ -45,7 +45,6 @@ public class SingleWord implements Comparable{
     }
 
 
-
     @Override
     public String toString() {
         return "SingleWord{" +
@@ -67,14 +66,12 @@ public class SingleWord implements Comparable{
 
     @Override
     public int hashCode() {
-
         return Objects.hash(word, translation, counter);
     }
 
 
     @Override
     public int compareTo(Object o) {
-
         return this.getWord().compareTo(((SingleWord) o).getWord());
     }
 }
