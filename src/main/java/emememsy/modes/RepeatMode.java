@@ -1,22 +1,23 @@
-package emememsy;
+package emememsy.modes;
 
-public class BrowserMode implements Modes {
+
+public class RepeatMode implements Mode {
 
     @Override
     public String getModeName() {
-        return "Przegladanie";
+        return "Utrwalanie";
     }
 
     @Override
     public String getModeDescription() {
-        return "1-szy etap nauki";
+        return "3-ci etap nauki";
     }
 
     @Override
     public void launchMode() {
-        System.out.println("Uruchamianie modułu - Przegladanie");
-        BrowserMode browserMode = new BrowserMode();
-        // cd kodu trybu przegladania
+        System.out.println("Uruchamianie trybu - Utrwalanie");
+        RepeatMode repeatMode = new RepeatMode();
+        // cd uruch trybu
     }
 
     @Override
@@ -25,6 +26,5 @@ public class BrowserMode implements Modes {
         // tu ew zapis progresu nauki
         // wyjscie z prog
         System.exit(0);
-
     }
 }

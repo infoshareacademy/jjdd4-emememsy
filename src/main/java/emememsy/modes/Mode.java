@@ -1,6 +1,6 @@
-package emememsy;
+package emememsy.modes;
 
-public interface Modes {
+public interface Mode {
     public String getModeName();
     public String getModeDescription();
     public void launchMode();

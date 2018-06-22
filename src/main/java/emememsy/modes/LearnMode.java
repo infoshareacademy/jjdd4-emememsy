@@ -1,23 +1,22 @@
-package emememsy;
+package emememsy.modes;
 
-
-public class RepeatMode implements Modes {
+public class LearnMode implements Mode {
 
     @Override
     public String getModeName() {
-        return "Utrwalanie";
+        return "Nauka";
     }
 
     @Override
     public String getModeDescription() {
-        return "3-ci etap nauki";
+        return "2-gi etap nauki";
     }
 
     @Override
     public void launchMode() {
-        System.out.println("Uruchamianie trubu - Utrwalanie");
-        RepeatMode repeatMode = new RepeatMode();
-        // cd uruch trybu
+        System.out.println("Uruchamianie trybu - Nauka");
+        LearnMode learnMode = new LearnMode();
+        //cd uruch trybu
     }
 
     @Override
