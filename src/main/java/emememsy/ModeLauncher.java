@@ -17,14 +17,19 @@ public class ModeLauncher {
 
     public ModeLauncher() {
 
-    private static Map<String, Mode> modeMap = new HashMap<String, Mode>();
-    modeMap.put("b", new BrowserMode());
-    modeMap.put("l", new LearnMode());
-    modeMap.put("r", new RepeatMode());
+        BrowserMode browserMode = new BrowserMode();
+        LearnMode learnMode = new LearnMode();
+        RepeatMode repeatMode = new RepeatMode();
 
-    for (Map.Entry<String, Mode> entry : modeMap.entrySet()) {
-        //akcja dla iteracji ww mapy
-    }
+
+        Map<String, Mode> modeMap = new HashMap<String, Mode>();
+        modeMap.put("b", browserMode);
+        modeMap.put("l", learnMode);
+        modeMap.put("r", repeatMode);
+
+        for (Map.Entry<String, Mode> entry : modeMap.entrySet()) {
+            //akcja dla iteracji ww mapy
+        }
 
 
 
