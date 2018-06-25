@@ -48,5 +48,9 @@ public class Actions {
                 "Nie ma dostępnych słów w tym trybie. Przejdź do trybu nauki aby poznać nowe słowa");
     }
 
+    public String showCorrectTranslation (SingleWord pickedWord) {
+        return "Correct translation: " + pickedWord.getTranslation();
+    }
+
 
 }

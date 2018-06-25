@@ -35,8 +35,9 @@ public class App {
 
         SingleWord lastPickedWord = new Actions().pickRandomTestMode(myList);
         System.out.println(lastPickedWord.toString());
-        lastPickedWord.wiedzial();
+        lastPickedWord.good();
         System.out.println(lastPickedWord.toString());
+        System.out.println(lastPickedWord.getTranslation());
 
 
 /*        while(czymydzialamyu){

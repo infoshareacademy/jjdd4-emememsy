@@ -46,6 +46,8 @@ public class SingleWord implements Comparable {
         return translation;
     }
 
+    public String getCorrectTranslation() { return "Correct translation: " + translation;}
+
     public void setTranslation(String translation) {
         this.translation = translation;
     }
