@@ -1,4 +1,4 @@
-package emememsy;
+package com.infoshareacademy.emememsy;
 
 import static org.junit.Assert.assertTrue;
 
