@@ -16,15 +16,6 @@ public class RepeatMode implements Mode {
     @Override
     public void launchMode() {
         System.out.println("Uruchamianie trybu - Utrwalanie");
-        RepeatMode repeatMode = new RepeatMode();
-        // cd uruch trybu
-    }
-
-    @Override
-    public void exitMode() {
-        System.out.println("Do widzenia");
-        // tu ew zapis progresu nauki
-        // wyjscie z prog
-        System.exit(0);
+        // nakarmic tekstem
     }
 }

@@ -32,17 +32,19 @@ public class ModeLauncher {
 
         switch (modeInt) {
             case 1:
-                System.out.println("Witamy w trybie: " + browserMode.getModeName());
-                System.out.println("Opis trybu: " + browserMode.getModeDescription());
+//                System.out.println("Witamy w trybie: " + browserMode.getModeName());
+//                System.out.println("Opis trybu: " + browserMode.getModeDescription());
                 browserMode.launchMode();
                 break;
             case 2:
-                System.out.println("Witamy w trybie: " + learnMode.getModeName());
-                System.out.println("Opisb trybu: " + learnMode.getModeDescription());
+//                System.out.println("Witamy w trybie: " + learnMode.getModeName());
+//                System.out.println("Opisb trybu: " + learnMode.getModeDescription());
+                learnMode.launchMode();
                 break;
             case 3:
-                System.out.println("Witamy w trybie: " + repeatMode.getModeName());
-                System.out.println("Opis trybu : " + repeatMode.getModeDescription());
+//                System.out.println("Witamy w trybie: " + repeatMode.getModeName());
+//                System.out.println("Opis trybu : " + repeatMode.getModeDescription());
+                repeatMode.launchMode();
                 break;
             case 4:
                 System.exit(0);
@@ -51,7 +53,6 @@ public class ModeLauncher {
         }
 
     }
-
 
     public int getModeInt() {
         return modeInt;

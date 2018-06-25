@@ -15,16 +15,6 @@ public class BrowserMode implements Mode {
     @Override
     public void launchMode() {
         System.out.println("Uruchamianie modułu - Przegladanie");
-        BrowserMode browserMode = new BrowserMode();
-        // cd kodu trybu przegladania
-    }
-
-    @Override
-    public void exitMode() {
-        System.out.println("Do widzenia");
-        // tu ew zapis progresu nauki
-        // wyjscie z prog
-        System.exit(0);
-
+        // nakarmic tekstem
     }
 }

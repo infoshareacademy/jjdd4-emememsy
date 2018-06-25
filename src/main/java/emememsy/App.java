@@ -23,7 +23,6 @@ public class App {
             System.out.print("Wybierz tryb: ");
             mL.selectMode(scanner.nextInt());
         }
-
-
     }
 }
+
