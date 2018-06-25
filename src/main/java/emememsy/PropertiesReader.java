@@ -9,20 +9,18 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 
-public class CSVfileReader {
+public class PropertiesReader {
 
-    static List<Word> read(String fileName) {
+    static Map<String, String> read(String fileName) {
 
-        Map<String, String> properies = new HashMap<>();
+        Map<String, String> properties = new HashMap<>();
 
         try (Stream<String> stream = Files.lines(Paths.get(fileName))) {
 
             stream.forEach(
                     x -> {
                         String[] splittedLine = x.split(":");
-
-
-                        result.put(splittedLine[0], splittedLine[1]);
+                        properties.put(splittedLine[0], splittedLine[1]);
                     }
             );
 
@@ -30,7 +28,7 @@ public class CSVfileReader {
             System.out.println("Błąd pobrania pliku");
         }
 
-        return result;
+        return properties;
     }
 
 
