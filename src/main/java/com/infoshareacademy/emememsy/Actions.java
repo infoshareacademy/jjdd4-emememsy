@@ -1,10 +1,7 @@
-package emememsy;
+package com.infoshareacademy.emememsy;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Random;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 public class Actions {
 

@@ -1,4 +1,4 @@
-package emememsy;
+package com.infoshareacademy.emememsy;
 
 import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
