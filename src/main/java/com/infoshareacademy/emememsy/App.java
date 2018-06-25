@@ -30,5 +30,36 @@ public class App {
         }
         //weryfikacja stanu listy
         //myList.stream().forEach(System.out::println);
+
+        //tryb testu
+
+        SingleWord lastPickedWord = new Actions().pickRandomTestMode(myList);
+        System.out.println(lastPickedWord.toString());
+        lastPickedWord.wiedzial();
+        System.out.println(lastPickedWord.toString());
+
+
+/*        while(czymydzialamyu){
+
+            //weryfikacja trybu testu
+            SingleWord lastPickedWord = new Actions().pickRandomTestMode(myList);
+            Scanner.in
+            switch(inputy)
+
+            case 4:
+            lastPickedWord.nieWieział();
+            wybierzNast
+            break
+
+
+            case 2:
+                lastPickedWord.wieział();
+                wybierzNast
+                        break
+        }*/
+
     }
+
+
+
 }

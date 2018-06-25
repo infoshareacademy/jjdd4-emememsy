@@ -20,6 +20,20 @@ public class SingleWord implements Comparable {
         this.counter = counter;
     }
 
+    public void good () {
+        setCounter(this.counter +3);
+    }
+
+    public void soso () {
+        setCounter(this.counter);
+    }
+
+    public void bad () {
+        setCounter(this.counter +1);
+    }
+
+    public void exclude() {setCounter(this.counter + 100);}
+
     public String getWord() {
         return word;
     }
