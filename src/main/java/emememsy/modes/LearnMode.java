@@ -1,20 +1,15 @@
 package emememsy.modes;
 
-public class LearnMode implements Mode {
+public class LearnMode extends Mode {
 
-    @Override
-    public String getModeName() {
-        return "Nauka";
-    }
 
-    @Override
-    public String getModeDescription() {
-        return "2-gi etap nauki";
+    public LearnMode(String modeName, String modeDescriptopn) {
+        super(modeName, modeDescriptopn);
     }
 
     @Override
     public void launchMode() {
-        System.out.println("Uruchamianie trybu - Nauka");
-        // nakarmic tekstem
+        super.launchMode();
+        //dodatkowe txt spec dla kazdego z trybow
     }
 }

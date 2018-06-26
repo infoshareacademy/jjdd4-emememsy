@@ -1,21 +1,16 @@
 package emememsy.modes;
 
 
-public class RepeatMode implements Mode {
+public class RepeatMode extends Mode {
 
-    @Override
-    public String getModeName() {
-        return "Utrwalanie";
-    }
-
-    @Override
-    public String getModeDescription() {
-        return "3-ci etap nauki";
+    public RepeatMode(String modeName, String modeDescriptopn) {
+        super(modeName, modeDescriptopn);
     }
 
     @Override
     public void launchMode() {
-        System.out.println("Uruchamianie trybu - Utrwalanie");
-        // nakarmic tekstem
+        super.launchMode();
+        //dodatkowe txt spec dla kazdego z trybow
     }
+
 }
