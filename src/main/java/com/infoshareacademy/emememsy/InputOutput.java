@@ -17,7 +17,7 @@ import java.util.List;
 public class InputOutput {
 
     public static void checkReader() throws IOException {
-        CSVReader reader = new CSVReader(new FileReader("src/main/resources/input_words.csv"));
+        CSVReader reader = new CSVReader(new FileReader(PropertiesReader.read("config.properties").get(PropertiesReader.PATH_KEY)));
         String[] nextLine;
         while ((nextLine = reader.readNext()) != null) {
             System.out.println(nextLine[0] + " " + nextLine[1] + " " + nextLine[2]);
@@ -27,7 +27,7 @@ public class InputOutput {
 
     public static List<SingleWord> createListOfWords() throws IOException {
         List<SingleWord> listOfWords = new ArrayList<>();
-        CSVReader reader = new CSVReader(new FileReader("input_words.csv"));
+        CSVReader reader = new CSVReader(new FileReader(PropertiesReader.read("config.properties").get(PropertiesReader.PATH_KEY)));
         String[] nextLine;
         nextLine = reader.readNext();
         while ((nextLine = reader.readNext()) != null) {
@@ -39,7 +39,7 @@ public class InputOutput {
 
 
     public static void writeToCSV(List<SingleWord> listOfWords) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
-        Writer writer = new FileWriter("input_words.csv");
+        Writer writer = new FileWriter(PropertiesReader.read("config.properties").get(PropertiesReader.PATH_KEY));
         StatefulBeanToCsv beanToCsv = new StatefulBeanToCsvBuilder(writer).build();
         beanToCsv.write(listOfWords);
         writer.close();

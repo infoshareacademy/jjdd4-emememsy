@@ -1,4 +1,4 @@
-package emememsy;
+package com.infoshareacademy.emememsy;
 
 import java.io.FileReader;
 import java.io.IOException;

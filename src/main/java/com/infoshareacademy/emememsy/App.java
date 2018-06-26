@@ -14,6 +14,10 @@ public class App {
 
     private void run() {
 
+
+
+
+
         List<SingleWord> myList = new ArrayList<>();
         //test wczytania pliku i stworenia tablicy
         try {
@@ -30,5 +34,7 @@ public class App {
         }
         //weryfikacja stanu listy
         //myList.stream().forEach(System.out::println);
+
+
     }
 }
