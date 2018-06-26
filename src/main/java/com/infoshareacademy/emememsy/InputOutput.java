@@ -12,9 +12,12 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 
 public class InputOutput {
+
+    public static Map<String, String> properties = PropertiesReader.read("config.properties");
 
     public static void checkReader() throws IOException {
         CSVReader reader = new CSVReader(new FileReader(PropertiesReader.read("config.properties").get(PropertiesReader.PATH_KEY)));
@@ -24,15 +27,25 @@ public class InputOutput {
         }
     }
 
+    private static boolean isUppercase (Map<String, String> properties) {
+        return properties.get(PropertiesReader.FORMATTING_KEY).equals("toUpperCase");
+    }
 
     public static List<SingleWord> createListOfWords() throws IOException {
+
         List<SingleWord> listOfWords = new ArrayList<>();
-        CSVReader reader = new CSVReader(new FileReader(PropertiesReader.read("config.properties").get(PropertiesReader.PATH_KEY)));
+        boolean isUppercase = isUppercase(properties);
+        CSVReader reader = new CSVReader(new FileReader(properties.get(PropertiesReader.PATH_KEY)));
         String[] nextLine;
         nextLine = reader.readNext();
         while ((nextLine = reader.readNext()) != null) {
-            SingleWord singleWord = new SingleWord((nextLine[2]), (nextLine[1]), Integer.parseInt(nextLine[0]));
-            listOfWords.add(singleWord);
+            if (isUppercase == true) {
+                SingleWord singleWord = new SingleWord(nextLine[2].toUpperCase(), nextLine[1].toUpperCase(), Integer.parseInt(nextLine[0]));
+                listOfWords.add(singleWord);
+            } else {
+                SingleWord singleWord = new SingleWord(nextLine[2].toLowerCase(), nextLine[1].toLowerCase(), Integer.parseInt(nextLine[0]));
+                listOfWords.add(singleWord);
+            }
         }
         return listOfWords;
     }
