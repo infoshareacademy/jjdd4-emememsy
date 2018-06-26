@@ -24,7 +24,7 @@ public class Actions {
         return message;
     }
 
-    public void setAllCountersToZero (List<SingleWord> listOfWords) {
+    public void setAllCountersToZero(List<SingleWord> listOfWords) {
         listOfWords.forEach(o -> o.setCounter(0));
     }
 
@@ -52,7 +52,7 @@ public class Actions {
                 "Nie ma dostępnych słów w tym trybie. Przejdź do trybu nauki aby poznać nowe słowa");
     }
 
-    public String showCorrectTranslation (SingleWord pickedWord) {
+    public String showCorrectTranslation(SingleWord pickedWord) {
         return "Correct translation: " + pickedWord.getTranslation();
     }
 }

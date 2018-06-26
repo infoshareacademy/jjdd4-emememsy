@@ -1,7 +1,5 @@
 package com.infoshareacademy.emememsy;
-
 import com.opencsv.bean.CsvBindByName;
-
 import java.util.Objects;
 
 public class SingleWord implements Comparable {
@@ -20,19 +18,21 @@ public class SingleWord implements Comparable {
         this.counter = counter;
     }
 
-    public void good () {
-        setCounter(this.counter +3);
+    public void good() {
+        setCounter(this.counter + 3);
     }
 
-    public void soso () {
+    public void soso() {
         setCounter(this.counter);
     }
 
-    public void bad () {
-        setCounter(this.counter +1);
+    public void bad() {
+        setCounter(this.counter + 1);
     }
 
-    public void exclude() {setCounter(this.counter + 100);}
+    public void exclude() {
+        setCounter(this.counter + 100);
+    }
 
     public String getWord() {
         return word;
@@ -46,7 +46,9 @@ public class SingleWord implements Comparable {
         return translation;
     }
 
-    public String getCorrectTranslation() { return "Correct translation: " + translation;}
+    public String getCorrectTranslation() {
+        return "Correct translation: " + translation;
+    }
 
     public void setTranslation(String translation) {
         this.translation = translation;

@@ -24,7 +24,6 @@ public class InputOutput {
         }
     }
 
-
     public static List<SingleWord> createListOfWords() throws IOException {
         List<SingleWord> listOfWords = new ArrayList<>();
         CSVReader reader = new CSVReader(new FileReader("input_words.csv"));
@@ -36,7 +35,6 @@ public class InputOutput {
         }
         return listOfWords;
     }
-
 
     public static void writeToCSV(List<SingleWord> listOfWords) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
         Writer writer = new FileWriter("input_words.csv");
