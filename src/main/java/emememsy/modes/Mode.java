@@ -2,8 +2,8 @@ package emememsy.modes;
 
 public abstract class Mode {
 
-    private final String modeName = "";
-    private final String modeDescriptopn = "";
+    private String modeName = "";
+    private String modeDescriptopn = "";
 
     public Mode(String modeName, String modeDescriptopn) {
         this.modeName = modeName;
@@ -14,8 +14,8 @@ public abstract class Mode {
     }
 
     public void launchMode() {
-        System.out.println("Witamy w trybie " + this.modeName);
-        System.out.println("Opis trybu " + this.modeDescriptopn);
+        System.out.println("\nJestes w trybie: " + this.modeName);
+        System.out.println("Opis: " + this.modeDescriptopn);
 
     }
 }

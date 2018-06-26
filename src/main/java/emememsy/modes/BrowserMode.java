@@ -2,37 +2,44 @@ package emememsy.modes;
 
 import emememsy.App;
 
+import java.util.Scanner;
+
 public class BrowserMode extends Mode {
 
-    private int menuInt;
+    private static Scanner scanner = new Scanner(System.in); //skaner do wprowadzenia poz menu
 
+    //konstruktor objektu trybu "ustawiający" jego nazwe i opis ktore z automatu sa wypisywane przez .lounchMode (rodzica)
     public BrowserMode(String modeName, String modeDescriptopn) {
         super(modeName, modeDescriptopn);
     }
 
-    public void selectMenu(int menuInt) {
+    //realizacja menu dla objektu tego trybu (tej klasy)
+    public void selectMenu(Integer menuInt) {
+
         switch (menuInt) {
             case 1:
-                System.out.println("Tu wywolanie funkcji wwywolania pary slowo-tlumaczenie");
+                //TODO replace sout by Monika's function
+                System.out.println("\n\n\nTu wywolanie funkcji wwywolania pary slowo-tlumaczenie \n\n\n");
+                launchMode();
+                break;
             case 2:
-                App.start();
+                App.mainMenu();
+                break;
             default:
                 System.out.println("Sprobuj jeszcze raz: ");
-
-
-
-
-
-
         }
     }
 
+    // "uruchomienie" trybu - ekran powitalny plus pobranie nr menu od usera
     @Override
     public void launchMode() {
-        super.launchMode();
-        System.out.println("Masz do wyboru: " +
-                "\n1: Wyswietl slowo-tłumaczenie " +
-                "\n2: Wyjście do Menu Głównego");
-        System.out.println("Wybierz: ");
+        super.launchMode(); //wywolanie ciala metody klasy-rodzica - wspolnej dla wszystkich obiektow od typu Mode
+
+        // ponizej specyficzne display dla kazdego z trybow tutaj takie:
+        System.out.println("\nMasz do wyboru:\n1: Wyswietl slowo-tłumaczenie\n2: Wyjście do Menu Głównego\nWybierz: ");
+        selectMenu(scanner.nextInt()); //wprowadzenie usera jako arg bezp do metody selectMenu()
     }
 }
+
+
+

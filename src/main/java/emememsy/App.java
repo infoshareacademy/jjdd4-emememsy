@@ -7,6 +7,8 @@ import java.util.Scanner;
  */
 
 public class App {
+    private static ModeLauncher modeLauncher = new ModeLauncher();
+    private static Scanner scanner = new Scanner(System.in);
 
     // funkcja czyszczaca ekran
     public static void clearScreen() {
@@ -15,27 +17,15 @@ public class App {
     }
 
     // start - główne menu prg
-    public static void start() {
-        System.out.println("Witamy w aplikacji do nauki słówek - myWords.");
-
-        ModeLauncher mL = new ModeLauncher();
-
-
-        Scanner scanner = new Scanner(System.in);
-
-//        while (true) {
-        System.out.println("Masz do wyboru: " +
-                "\n1: Przegladanie " +
-                "\n2: Nauka " + "" +
-                "\n3: Utrwalanie " +
-                "\n4: Zakończ ");
-        System.out.print("Wybierz tryb: ");
-        mL.selectMode(scanner.nextInt());
-//        }
+    public static void mainMenu() {
+        clearScreen();
+        System.out.println("Masz do wyboru:\n1: Przegladanie\n2: Nauka\n3: Utrwalanie\n4: Zakończ\nWybierz tryb:");
+        modeLauncher.selectMode(scanner.nextInt());
     }
 
     public static void main(String[] args) {
-        start();
+        System.out.println("Witamy w aplikacji do nauki słówek - myWords.");
+        mainMenu();
     }
 }
 

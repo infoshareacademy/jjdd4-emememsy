@@ -9,7 +9,6 @@ import java.util.*;
 //klasa tworzaca obiekt wybranego trybu - "uruchomienie" (...?)
 public class ModeLauncher {
 
-    private int modeInt;
     private final Mode browserMode = new BrowserMode("Przeglądanie", "1szy etap nauki");
     private final Mode learnMode = new LearnMode("Nauka", "2gi etap nauki");
     private final Mode repeatMode = new RepeatMode("Utrwalanie", "3ci etap nauki");
@@ -17,7 +16,7 @@ public class ModeLauncher {
     public ModeLauncher() {
     }
 
-    public void selectMode(int modeInt) {
+    public void selectMode(Integer modeInt) {
 
         switch (modeInt) {
             case 1:
