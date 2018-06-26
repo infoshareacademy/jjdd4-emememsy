@@ -36,8 +36,7 @@ public class InputOutput {
         List<SingleWord> listOfWords = new ArrayList<>();
         boolean isUppercase = isUppercase(properties);
         CSVReader reader = new CSVReader(new FileReader(properties.get(PropertiesReader.PATH_KEY)));
-        String[] nextLine;
-        nextLine = reader.readNext();
+        String[] nextLine = reader.readNext();
         while ((nextLine = reader.readNext()) != null) {
             if (isUppercase == true) {
                 listOfWords.add(new SingleWord(nextLine[2].toUpperCase(), nextLine[1].toUpperCase(), Integer.parseInt(nextLine[0])));
