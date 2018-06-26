@@ -38,26 +38,9 @@ public class App {
         lastPickedWord.good();
         System.out.println(lastPickedWord.toString());
         System.out.println(lastPickedWord.getTranslation());
+        Actions actions = new Actions();
+        actions.setAllCountersToZero(myList);
 
-
-/*        while(czymydzialamyu){
-
-            //weryfikacja trybu testu
-            SingleWord lastPickedWord = new Actions().pickRandomTestMode(myList);
-            Scanner.in
-            switch(inputy)
-
-            case 4:
-            lastPickedWord.nieWieział();
-            wybierzNast
-            break
-
-
-            case 2:
-                lastPickedWord.wieział();
-                wybierzNast
-                        break
-        }*/
 
     }
 

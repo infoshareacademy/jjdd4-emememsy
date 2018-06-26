@@ -24,6 +24,10 @@ public class Actions {
         return message;
     }
 
+    public void setAllCountersToZero (List<SingleWord> listOfWords) {
+        listOfWords.forEach(o -> o.setCounter(0));
+    }
+
     private SingleWord pickWord(List<SingleWord> listOfWords, int min, int max, String msg) {
         List<SingleWord> testWords = listOfWords.stream()
                 .filter(o -> o.getCounter() > min && o.getCounter() < max)
@@ -51,6 +55,4 @@ public class Actions {
     public String showCorrectTranslation (SingleWord pickedWord) {
         return "Correct translation: " + pickedWord.getTranslation();
     }
-
-
 }
