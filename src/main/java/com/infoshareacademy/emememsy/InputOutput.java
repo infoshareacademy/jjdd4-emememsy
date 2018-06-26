@@ -40,11 +40,9 @@ public class InputOutput {
         nextLine = reader.readNext();
         while ((nextLine = reader.readNext()) != null) {
             if (isUppercase == true) {
-                SingleWord singleWord = new SingleWord(nextLine[2].toUpperCase(), nextLine[1].toUpperCase(), Integer.parseInt(nextLine[0]));
-                listOfWords.add(singleWord);
+                listOfWords.add(new SingleWord(nextLine[2].toUpperCase(), nextLine[1].toUpperCase(), Integer.parseInt(nextLine[0])));
             } else {
-                SingleWord singleWord = new SingleWord(nextLine[2].toLowerCase(), nextLine[1].toLowerCase(), Integer.parseInt(nextLine[0]));
-                listOfWords.add(singleWord);
+                listOfWords.add(new SingleWord(nextLine[2].toLowerCase(), nextLine[1].toLowerCase(), Integer.parseInt(nextLine[0])));
             }
         }
         return listOfWords;
