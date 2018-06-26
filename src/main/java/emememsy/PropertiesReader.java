@@ -1,31 +1,24 @@
 package emememsy;
 
+import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Stream;
+import java.util.*;
 
 public class PropertiesReader {
 
-    static Map<String, String> read(String fileName) {
+    public static final String PATH_KEY = "path";
+    public static final String FORMATTING_KEY = "formatting";
+
+    public static Map<String, String> read(String fileName) {
 
         Map<String, String> properties = new HashMap<>();
+        Properties p = new Properties();
 
-        try (Stream<String> stream = Files.lines(Paths.get(fileName))) {
-
-            stream.forEach(
-                    x -> {
-                        String[] splittedLine = x.split(":");
-                        properties.put(splittedLine[0], splittedLine[1]);
-                    }
-            );
-
+        try {
+            p.load(new FileReader(fileName));
+            p.forEach((key, value) -> properties.put((String) key, (String) value));
         } catch (IOException e) {
-            System.out.println("Błąd pobrania pliku");
+            System.out.println("Błąd wczytania pliku: " + e.getMessage());
         }
 
         return properties;
