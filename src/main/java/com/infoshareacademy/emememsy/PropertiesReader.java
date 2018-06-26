@@ -10,20 +10,14 @@ public class PropertiesReader {
     public static final String FORMATTING_KEY = "formatting";
 
     public static Map<String, String> read(String fileName) {
-
         Map<String, String> properties = new HashMap<>();
         Properties p = new Properties();
-
         try {
             p.load(new FileReader(fileName));
             p.forEach((key, value) -> properties.put((String) key, (String) value));
         } catch (IOException e) {
             System.out.println("Błąd wczytania pliku: " + e.getMessage());
         }
-
         return properties;
     }
-
-
-
 }
