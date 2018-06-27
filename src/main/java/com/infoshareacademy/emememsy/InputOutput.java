@@ -47,7 +47,6 @@ public class InputOutput {
         return listOfWords;
     }
 
-
     public static void writeToCSV(List<SingleWord> listOfWords) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
         Writer writer = new FileWriter(PropertiesReader.read("config.properties").get(PropertiesReader.PATH_KEY));
         StatefulBeanToCsv beanToCsv = new StatefulBeanToCsvBuilder(writer).build();
