@@ -19,12 +19,12 @@ public class App {
     // start - główne menu prg
     public static void mainMenu() {
         clearScreen();
+        System.out.println("Witamy w aplikacji do nauki słówek - myWords.");
         System.out.println("Masz do wyboru:\n1: Przegladanie\n2: Nauka\n3: Utrwalanie\n4: Zakończ\nWybierz tryb:");
         modeLauncher.selectMode(scanner.nextInt());
     }
 
     public static void main(String[] args) {
-        System.out.println("Witamy w aplikacji do nauki słówek - myWords.");
         mainMenu();
     }
 }
