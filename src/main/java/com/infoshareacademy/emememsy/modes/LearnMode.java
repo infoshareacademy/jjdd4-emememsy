@@ -16,13 +16,17 @@ public class LearnMode extends Mode {
     public LearnMode(String modeName, String modeDescriptopn) {
         super(modeName, modeDescriptopn);
     }
+    List<SingleWord> myList = new ArrayList<>();
 
     //realizacja menu dla objektu tego trybu (tej klasy)
     public void selectMenu(Integer menuInt) {
 
         switch (menuInt) {
             case 0:
-                System.out.println("\n\n\nTu wywolanie funkcji do wyswietlenia slowa po ang \n\n\n");
+                myList = InputOutput.createListOfWords();
+                String singleWord = new Actions().pickRandomLearnMode(myList);
+                InputOutput.writeToCSV(myList);
+                //System.out.println("\n\n\nTu wywolanie funkcji do wyswietlenia slowa po ang \n\n\n");
                 launchMode();
                 break;
             case 1:

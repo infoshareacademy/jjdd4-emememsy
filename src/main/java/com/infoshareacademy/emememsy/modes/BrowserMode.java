@@ -1,13 +1,19 @@
 package com.infoshareacademy.emememsy.modes;
 
 
+import com.infoshareacademy.emememsy.Actions;
 import com.infoshareacademy.emememsy.App;
+import com.infoshareacademy.emememsy.InputOutput;
+import com.infoshareacademy.emememsy.SingleWord;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class BrowserMode extends Mode {
 
     private static Scanner scanner = new Scanner(System.in); //skaner do wprowadzenia poz menu
+    List<SingleWord> myList = new ArrayList<>();
 
     //konstruktor objektu trybu "ustawiający" jego nazwe i opis ktore z automatu sa wypisywane przez .lounchMode (rodzica)
     public BrowserMode(String modeName, String modeDescriptopn) {
@@ -20,7 +26,10 @@ public class BrowserMode extends Mode {
         switch (menuInt) {
             case 1:
                 //TODO replace sout by Monika's function
-                System.out.println("\n\n\nTu wywolanie funkcji wwywolania pary slowo-tlumaczenie \n\n\n");
+                myList = InputOutput.createListOfWords();
+                String singleWord = new Actions().pickRandomLearnMode(myList);
+                InputOutput.writeToCSV(myList);
+                //System.out.println("\n\n\nTu wywolanie funkcji wwywolania pary slowo-tlumaczenie \n\n\n");
                 launchMode();
                 break;
             case 2:

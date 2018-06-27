@@ -20,7 +20,7 @@ public class Test {
         List<SingleWord> myList = new ArrayList<>();
         //test wczytania pliku i stworenia tablicy
             myList = InputOutput.createListOfWords();
-            System.out.println("Wystąpił problem z wczytaniem Twojego pliku. Sprawdź czy podałeś poprawną ścieżkę w pliku properties");
+
 
         //symulacja trybu nauki
         String singleWord = new Actions().pickRandomLearnMode(myList);
