@@ -1,8 +1,11 @@
 package com.infoshareacademy.emememsy.modes;
 
 
-import com.infoshareacademy.emememsy.App;
+import com.infoshareacademy.emememsy.*;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class LearnMode extends Mode {
@@ -19,7 +22,6 @@ public class LearnMode extends Mode {
 
         switch (menuInt) {
             case 0:
-                //TODO replace sout to Monika's function
                 System.out.println("\n\n\nTu wywolanie funkcji do wyswietlenia slowa po ang \n\n\n");
                 launchMode();
                 break;

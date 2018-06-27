@@ -31,26 +31,34 @@ public class InputOutput {
         return properties.get(PropertiesReader.FORMATTING_KEY).equals("toUpperCase");
     }
 
-    public static List<SingleWord> createListOfWords() throws IOException {
+    public static List<SingleWord> createListOfWords()  {
 
         List<SingleWord> listOfWords = new ArrayList<>();
         boolean isUppercase = isUppercase(properties);
-        CSVReader reader = new CSVReader(new FileReader(properties.get(PropertiesReader.PATH_KEY)));
-        String[] nextLine = reader.readNext();
-        while ((nextLine = reader.readNext()) != null) {
-            if (isUppercase == true) {
-                listOfWords.add(new SingleWord(nextLine[2].toUpperCase(), nextLine[1].toUpperCase(), Integer.parseInt(nextLine[0])));
-            } else {
-                listOfWords.add(new SingleWord(nextLine[2].toLowerCase(), nextLine[1].toLowerCase(), Integer.parseInt(nextLine[0])));
+        try {
+            CSVReader reader = new CSVReader(new FileReader(properties.get(PropertiesReader.PATH_KEY)));
+            String[] nextLine = reader.readNext();
+            while ((nextLine = reader.readNext()) != null) {
+                if (isUppercase == true) {
+                    listOfWords.add(new SingleWord(nextLine[2].toUpperCase(), nextLine[1].toUpperCase(), Integer.parseInt(nextLine[0])));
+                } else {
+                    listOfWords.add(new SingleWord(nextLine[2].toLowerCase(), nextLine[1].toLowerCase(), Integer.parseInt(nextLine[0])));
+                }
             }
+        } catch (IOException | NumberFormatException e) {
+            System.out.println("Wystąpił problem z wczytaniem pliku CSV. Skontaktuj się z administratorem Emememsów. ");
         }
         return listOfWords;
     }
 
-    public static void writeToCSV(List<SingleWord> listOfWords) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
-        Writer writer = new FileWriter(PropertiesReader.read("config.properties").get(PropertiesReader.PATH_KEY));
-        StatefulBeanToCsv beanToCsv = new StatefulBeanToCsvBuilder(writer).build();
-        beanToCsv.write(listOfWords);
-        writer.close();
+    public static void writeToCSV(List<SingleWord> listOfWords) {
+        try {
+            Writer writer = new FileWriter(PropertiesReader.read("config.properties").get(PropertiesReader.PATH_KEY));
+            StatefulBeanToCsv beanToCsv = new StatefulBeanToCsvBuilder(writer).build();
+            beanToCsv.write(listOfWords);
+            writer.close();
+        } catch (IOException | CsvDataTypeMismatchException | CsvRequiredFieldEmptyException e) {
+            System.out.println("Wystąpił problem z zapisaniem zmian. Skontaktuj się z administratorem.");
+        }
     }
 }
