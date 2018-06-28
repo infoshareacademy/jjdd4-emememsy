@@ -1,10 +1,7 @@
 package com.infoshareacademy.emememsy.modes;
 
 
-import com.infoshareacademy.emememsy.Actions;
-import com.infoshareacademy.emememsy.App;
-import com.infoshareacademy.emememsy.InputOutput;
-import com.infoshareacademy.emememsy.SingleWord;
+import com.infoshareacademy.emememsy.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +44,14 @@ public class BrowserMode extends Mode {
 
         // ponizej specyficzne display dla kazdego z trybow tutaj takie:
         System.out.println("\nMasz do wyboru:\n1: Wyswietl slowo-tłumaczenie\n2: Wyjście do Menu Głównego\nWybierz: ");
-        selectMenu(scanner.nextInt()); //wprowadzenie usera jako arg bezp do metody selectMenu()
+        //selectMenu(scanner.nextInt()); //wprowadzenie usera jako arg bezp do metody selectMenu()
+        String s = scanner.nextLine();
+        if (NumberFormatValidator.isNumber(s)) {
+            selectMenu(Integer.valueOf(s));
+        } else {
+            System.out.println("\"Nie zrozumiałem Cię. Podaj jeszcze raz pozycję z menu (1-2)\"");
+            launchMode();
+        }
     }
 }
 

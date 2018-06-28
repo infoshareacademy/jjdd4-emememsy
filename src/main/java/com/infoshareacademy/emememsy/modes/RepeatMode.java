@@ -3,6 +3,7 @@ package com.infoshareacademy.emememsy.modes;
 
 
 import com.infoshareacademy.emememsy.App;
+import com.infoshareacademy.emememsy.NumberFormatValidator;
 
 import java.util.Scanner;
 
@@ -50,7 +51,13 @@ public class RepeatMode extends Mode {
 
         //dodatkowe txt spec dla kazdego z trybow
         System.out.println("\nMasz do wyboru:\n1: Utrwalaj slowa\n2: Wyswietl tłumaczenie\n3: Usun z utrwalania\n4: Wyjście do Menu Głównego\nWybierz: ");
-        selectMenu(scanner.nextInt());
+        String s = scanner.nextLine();
+        if (NumberFormatValidator.isNumber(s)) {
+            selectMenu(Integer.valueOf(s));
+        } else {
+            System.out.println("\"Nie zrozumiałem Cię. Podaj jeszcze raz pozycję z menu (1-4)\"");
+            launchMode();
+        }
 
     }
 

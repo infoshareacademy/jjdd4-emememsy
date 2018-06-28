@@ -1,9 +1,5 @@
 package com.infoshareacademy.emememsy;
 
-import com.opencsv.exceptions.CsvDataTypeMismatchException;
-import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,11 +21,16 @@ public class Test {
         //symulacja trybu nauki
         String singleWord = new Actions().pickRandomLearnMode(myList);
 
-            InputOutput.writeToCSV(myList);
+         //   InputOutput.writeToCSV(myList);
 
 
         //weryfikacja stanu listy
         //myList.stream().forEach(System.out::println);
+
+        NumberFormatValidator numberFormatValidator = new NumberFormatValidator();
+        System.out.println( numberFormatValidator.isNumber("1"));
+
+
     }
 
 

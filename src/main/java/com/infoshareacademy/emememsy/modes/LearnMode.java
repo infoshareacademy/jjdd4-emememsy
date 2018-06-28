@@ -3,7 +3,6 @@ package com.infoshareacademy.emememsy.modes;
 
 import com.infoshareacademy.emememsy.*;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -56,9 +55,14 @@ public class LearnMode extends Mode {
     @Override
     public void launchMode() {
         super.launchMode();
-
         //dodatkowe txt spec dla kazdego z trybow
         System.out.println("\nMasz do wyboru:\n0: Wyswietl słowo\n1: Ocen na ŹLE\n2: Oceń na TAK-SOBIE\n 3: Oceń na DOBRZE\n4: Wyjście do Menu Głównego\nWybierz: ");
-        selectMenu(scanner.nextInt());
+        String s = scanner.nextLine();
+        if (NumberFormatValidator.isNumber(s)) {
+            selectMenu(Integer.valueOf(s));
+        } else {
+            System.out.println("\"Nie zrozumiałem Cię. Podaj jeszcze raz pozycję z menu (1-4)\"");
+            launchMode();
+        }
     }
 }
