@@ -1,5 +1,7 @@
 package com.infoshareacademy.emememsy;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class App {
@@ -11,6 +13,9 @@ public class App {
     private void run() {
         System.out.println("Witamy w aplikacji do nauki słówek - myWords.");
         mainMenu();
+        List<SingleWord> myList = new ArrayList<>();
+        myList = InputOutput.createListOfWords();
+        SingleWord singleWord = new SingleWord();
     }
 
     // funkcja czyszczaca ekran

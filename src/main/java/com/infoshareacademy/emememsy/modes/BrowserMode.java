@@ -10,12 +10,12 @@ import java.util.Scanner;
 public class BrowserMode extends Mode {
 
     private static Scanner scanner = new Scanner(System.in); //skaner do wprowadzenia poz menu
-    List<SingleWord> myList = new ArrayList<>();
-
     //konstruktor objektu trybu "ustawiający" jego nazwe i opis ktore z automatu sa wypisywane przez .lounchMode (rodzica)
     public BrowserMode(String modeName, String modeDescriptopn) {
         super(modeName, modeDescriptopn);
     }
+    private List<SingleWord> myList = InputOutput.createListOfWords();
+    private SingleWord singleWord = new SingleWord();
 
     //realizacja menu dla objektu tego trybu (tej klasy)
     public void selectMenu(Integer menuInt) {
@@ -23,8 +23,8 @@ public class BrowserMode extends Mode {
         switch (menuInt) {
             case 1:
                 //TODO replace sout by Monika's function
-                myList = InputOutput.createListOfWords();
-                String singleWord = new Actions().pickRandomLearnMode(myList);
+                SingleWord singleWord = new Actions().pickRandomLearnMode(myList);
+                singleWord.increaseCounterByOne();
                 InputOutput.writeToCSV(myList);
                 //System.out.println("\n\n\nTu wywolanie funkcji wwywolania pary slowo-tlumaczenie \n\n\n");
                 launchMode();
