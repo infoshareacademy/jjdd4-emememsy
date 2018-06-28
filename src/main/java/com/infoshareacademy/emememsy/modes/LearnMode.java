@@ -31,22 +31,20 @@ public class LearnMode extends Mode {
                 //TODO replace sout to Monica's function - incr word counter
                 singleWord.bad();
                 InputOutput.writeToCSV(myList);
-                System.out.println("\n\n\nNastepuje ocena - ZLE\n\n\n");;
+                System.out.println("\n\n\nZapisaliśmy ocenę. Wybierz 0 aby wyświetlić kolejne słowo.\n\n\n");;
                 launchMode();
                 break;
             case 2:
                 //TODO replace sout to Monica's function - incr word counter
                 singleWord.soso();
                 InputOutput.writeToCSV(myList);
-                System.out.println("\n\n\nNastepuje ocena - TAK-SOBIE\n\n\n");
-                launchMode();
+                System.out.println("\n\n\nMusisz jeszcze poćwiczyć. Wybierz 0 aby wyświetlić kolejne słowo.\n\n\n");;                launchMode();
                 break;
             case 3:
                 //TODO replace sout to Monica's function - incr word counter
                 singleWord.good();
                 InputOutput.writeToCSV(myList);
-                System.out.println("\n\n\nNastepuje ocena - DOBRZE\n\n\n");;
-                launchMode();
+                System.out.println("\n\n\nGratulacje! To słowo będzie nadal dostępne w trybie powtórek. Wybierz 0 aby wyświetlić kolejne słowo.\n\n\n");;                launchMode();
                 break;
             case 4:
                 App.mainMenu();
@@ -61,7 +59,7 @@ public class LearnMode extends Mode {
     public void launchMode() {
         super.launchMode();
         //dodatkowe txt spec dla kazdego z trybow
-        System.out.println("\nMasz do wyboru:\n0: Wyswietl słowo\n1: Ocen na ŹLE\n2: Oceń na TAK-SOBIE\n 3: Oceń na DOBRZE\n4: Wyjście do Menu Głównego\nWybierz: ");
+        System.out.println("\nMasz do wyboru:\n0: Wyswietl słowo\n1: Ocen na ŹLE\n2: Oceń na TAK-SOBIE\n3: Oceń na DOBRZE\n4: Wyjście do Menu Głównego\nWybierz: ");
         String s = scanner.nextLine();
         if (NumberFormatValidator.isNumber(s)) {
             selectMenu(Integer.valueOf(s));
