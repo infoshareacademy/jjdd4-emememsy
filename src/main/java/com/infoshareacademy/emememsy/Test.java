@@ -25,7 +25,7 @@ public class Test {
         //SingleWord singleWord1 = new Actions().pickRandomLearnMode(myList);
 
 
-        Actions.setAllCountersToZero(myList);
+        //Actions.setAllCountersToZero(myList);
 
 
 
@@ -33,7 +33,7 @@ public class Test {
 
 
         //weryfikacja stanu listy
-        //myList.stream().forEach(System.out::println);
+        myList.stream().forEach(System.out::println);
 
         //NumberFormatValidator numberFormatValidator = new NumberFormatValidator();
         //System.out.println( numberFormatValidator.isNumber("1"));

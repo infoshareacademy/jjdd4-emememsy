@@ -1,16 +1,17 @@
 package com.infoshareacademy.emememsy;
-
 import com.opencsv.CSVReader;
+import com.opencsv.bean.CsvToBean;
+import com.opencsv.bean.HeaderColumnNameTranslateMappingStrategy;
 import com.opencsv.bean.StatefulBeanToCsv;
 import com.opencsv.bean.StatefulBeanToCsvBuilder;
 import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
-
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -19,11 +20,26 @@ public class InputOutput {
 
     public static Map<String, String> properties = PropertiesReader.read("config.properties");
 
+    private static HeaderColumnNameTranslateMappingStrategy<SingleWord> strategy;
+    private static Map<String, String> columnMapping = new HashMap<>();
+
+    static {
+        columnMapping.put("WORD", "word");
+        columnMapping.put("TRANSLATION", "translation");
+        columnMapping.put("CATEGORY", "category");
+        columnMapping.put("COUNTER", "counter");
+
+        strategy = new HeaderColumnNameTranslateMappingStrategy<>();
+        strategy.setType(SingleWord.class);
+        strategy.setColumnMapping(columnMapping);
+    }
+
+
     public static void checkReader() throws IOException {
         CSVReader reader = new CSVReader(new FileReader(PropertiesReader.read("config.properties").get(PropertiesReader.PATH_KEY)));
         String[] nextLine;
         while ((nextLine = reader.readNext()) != null) {
-            System.out.println(nextLine[0] + " " + nextLine[1] + " " + nextLine[2]);
+            System.out.println(nextLine[0] + " " + nextLine[1] + " " + nextLine[2]  + " " + nextLine[2]);
         }
     }
 
@@ -37,13 +53,12 @@ public class InputOutput {
         boolean isUppercase = isUppercase(properties);
         try {
             CSVReader reader = new CSVReader(new FileReader(properties.get(PropertiesReader.PATH_KEY)));
-            String[] nextLine = reader.readNext();
-            while ((nextLine = reader.readNext()) != null) {
-                if (isUppercase == true) {
-                    listOfWords.add(new SingleWord(nextLine[2].toUpperCase(), nextLine[1].toUpperCase(), Integer.parseInt(nextLine[0])));
-                } else {
-                    listOfWords.add(new SingleWord(nextLine[2].toLowerCase(), nextLine[1].toLowerCase(), Integer.parseInt(nextLine[0])));
-                }
+            CsvToBean<SingleWord> csvToBean = new CsvToBean<>();
+            listOfWords.addAll(csvToBean.parse(strategy, reader));
+            if (isUppercase == true) {
+                listOfWords.stream().forEach(SingleWord::toUpperCase);
+            } else {
+                listOfWords.stream().forEach(SingleWord::toLowerCase);
             }
         } catch (IOException | NumberFormatException e) {
             System.out.println("Wystąpił problem z wczytaniem pliku CSV. Skontaktuj się z administratorem Emememsów. ");
