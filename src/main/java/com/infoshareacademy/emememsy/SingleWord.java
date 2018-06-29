@@ -4,19 +4,22 @@ import java.util.Objects;
 
 public class SingleWord implements Comparable {
 
-    @CsvBindByName
+    @CsvBindByName(column = "word")
     private String word;
-    @CsvBindByName
+    @CsvBindByName(column = "translation")
     private String translation;
-    @CsvBindByName
+    @CsvBindByName(column = "category")
+    private String category;
+    @CsvBindByName(column = "counter")
     private int counter;
 
     public SingleWord(){};
 
-    public SingleWord(String word, String translation, int counter) {
+    public SingleWord(String word, String translation, String category, int counter) {
         this.word = word;
         this.translation = translation;
         this.counter = counter;
+        this.category = category;
     }
 
     public void good() {
@@ -67,12 +70,20 @@ public class SingleWord implements Comparable {
         this.counter = counter;
     }
 
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
 
     @Override
     public String toString() {
         return "SingleWord{" +
                 "word='" + word + '\'' +
                 ", translation='" + translation + '\'' +
+                ", category='" + category + '\'' +
                 ", counter=" + counter +
                 '}';
     }
@@ -96,5 +107,17 @@ public class SingleWord implements Comparable {
     @Override
     public int compareTo(Object o) {
         return this.getWord().compareTo(((SingleWord) o).getWord());
+    }
+
+    public void toLowerCase() {
+        this.category = this.category.toLowerCase();
+        this.word = this.word.toLowerCase();
+        this.translation = this.word.toLowerCase();
+    }
+
+    public void toUpperCase() {
+        this.category = this.category.toUpperCase();
+        this.word = this.word.toUpperCase();
+        this.translation = this.word.toUpperCase();
     }
 }
