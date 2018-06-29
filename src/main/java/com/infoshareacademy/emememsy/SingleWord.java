@@ -11,6 +11,7 @@ public class SingleWord implements Comparable {
     @CsvBindByName
     private int counter;
 
+    public SingleWord(){};
 
     public SingleWord(String word, String translation, int counter) {
         this.word = word;
@@ -23,10 +24,14 @@ public class SingleWord implements Comparable {
     }
 
     public void soso() {
-        setCounter(this.counter);
+        setCounter(this.counter + 1);
     }
 
     public void bad() {
+        setCounter(this.counter);
+    }
+
+    public void increaseCounterByOne() {
         setCounter(this.counter + 1);
     }
 
