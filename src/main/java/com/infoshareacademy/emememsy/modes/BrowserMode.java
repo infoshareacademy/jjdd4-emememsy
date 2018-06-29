@@ -15,7 +15,6 @@ public class BrowserMode extends Mode {
     }
     private List<SingleWord> myList = InputOutput.createListOfWords();
     private SingleWord singleWord = new SingleWord();
-    private ModeLauncher modeLauncher = new ModeLauncher();
 
     //realizacja menu dla objektu tego trybu (tej klasy)
     public void selectMenu(Integer menuInt) {
@@ -30,7 +29,7 @@ public class BrowserMode extends Mode {
                 launchMode();
                 break;
             case 2:
-                modeLauncher.launchMainMenu();
+                ModeLauncher.launchMainMenu();
                 break;
             default:
                 System.out.println("Sprobuj jeszcze raz: ");
@@ -40,10 +39,10 @@ public class BrowserMode extends Mode {
     // "uruchomienie" trybu - ekran powitalny plus pobranie nr menu od usera
     @Override
     public void launchMode() {
+        ModeLauncher.clearScreen();
         super.launchMode(); //wywolanie ciala metody klasy-rodzica - wspolnej dla wszystkich obiektow od typu Mode
 
         // ponizej specyficzne display dla kazdego z trybow tutaj takie:
-        modeLauncher.clearScreen();
         System.out.println("\nMasz do wyboru:\n1: Wyswietl slowo-tłumaczenie\n2: Wyjście do Menu Głównego\nWybierz: ");
         //selectMenu(scanner.nextInt()); //wprowadzenie usera jako arg bezp do metody selectMenu()
         String s = scanner.nextLine();

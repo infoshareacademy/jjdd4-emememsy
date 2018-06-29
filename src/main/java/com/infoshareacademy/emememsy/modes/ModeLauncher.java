@@ -9,16 +9,16 @@ import java.util.Scanner;
 //klasa tworzaca obiekt wybranego trybu.
 public class ModeLauncher {
 
-    private final Mode browserMode = new BrowserMode("Przeglądanie", "1szy etap nauki");
-    private final Mode learnMode = new LearnMode("Nauka", "2gi etap nauki");
-    private final Mode repeatMode = new RepeatMode("Utrwalanie", "3ci etap nauki");
-    Scanner scanner = new Scanner(System.in);
+    private static final Mode browserMode = new BrowserMode("Przeglądanie", "1szy etap nauki");
+    private static final Mode learnMode = new LearnMode("Nauka", "2gi etap nauki");
+    private static final Mode repeatMode = new RepeatMode("Utrwalanie", "3ci etap nauki");
+    static Scanner scanner = new Scanner(System.in);
 
     public ModeLauncher() {
 
     }
 
-    public void selectMode(Integer modeInt) {
+    public static void selectMode(Integer modeInt) {
 
         switch (modeInt) {
             case 1:
@@ -38,7 +38,7 @@ public class ModeLauncher {
 
     }
 
-    public void launchMainMenu() {
+    public static void launchMainMenu() {
         clearScreen();
         System.out.println("Masz do wyboru:\n1: Przegladanie\n2: Nauka\n3: Utrwalanie\n4: Zakończ\nWybierz tryb:");
         String s = scanner.nextLine();
@@ -52,7 +52,7 @@ public class ModeLauncher {
     }
 
     // funkcja czyszczaca ekran
-    public void clearScreen() {
+    public static void clearScreen() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
