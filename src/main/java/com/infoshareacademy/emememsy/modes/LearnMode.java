@@ -24,7 +24,8 @@ public class LearnMode extends Mode {
             case 0:
                 ModeLauncher.clearScreen();
                 singleWord = new Actions().pickRandomLearnMode(myList);
-                InputOutput.writeToCSV(myList);
+                String output = "Czy znasz tłumazcenie słowa " + "\"" + singleWord.getWord() + "\"?";
+                System.out.println(output);
                 //System.out.println("\n\n\nTu wywolanie funkcji do wyswietlenia slowa po ang \n\n\n");
                 launchMode();
                 break;

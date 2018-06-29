@@ -25,6 +25,8 @@ public class BrowserMode extends Mode {
                 ModeLauncher.clearScreen();
                 SingleWord singleWord = new Actions().pickRandomLearnMode(myList);
                 singleWord.increaseCounterByOne();
+                String output = "Słowo: " + singleWord.getWord() + ", Tłumaczenie: " + singleWord.getTranslation();
+                System.out.println(output);
                 InputOutput.writeToCSV(myList);
                 //System.out.println("\n\n\nTu wywolanie funkcji wwywolania pary slowo-tlumaczenie \n\n\n");
                 launchMode();

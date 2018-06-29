@@ -13,7 +13,7 @@ public class Actions {
             int random = randomGenerator.nextInt(listOfWords.size());
             SingleWord singleWord = listOfWords.get(random);
             if (singleWord.getCounter() == 0) {
-                System.out.println(singleWord); //weryfikacja, że wylosowano liczbę z przedziału 1
+                //System.out.println(singleWord); //weryfikacja, że wylosowano liczbę z przedziału 1
                 return singleWord;
             }
         }
