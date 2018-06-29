@@ -22,17 +22,21 @@ public class ModeLauncher {
 
         switch (modeInt) {
             case 1:
+                clearScreen();
                 browserMode.launchMode();
                 break;
             case 2:
+                clearScreen();
                 learnMode.launchMode();
                 break;
             case 3:
+                clearScreen();
                 repeatMode.launchMode();
                 break;
             case 4:
                 System.exit(0);
             default:
+                clearScreen();
                 System.out.println("Sprobuj jeszcze raz!");
         }
 
