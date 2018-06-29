@@ -3,7 +3,6 @@ package com.infoshareacademy.emememsy.modes;
 
 import com.infoshareacademy.emememsy.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 

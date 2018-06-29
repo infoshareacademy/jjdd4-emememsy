@@ -2,7 +2,6 @@ package com.infoshareacademy.emememsy.modes;
 
 
 
-import com.infoshareacademy.emememsy.App;
 import com.infoshareacademy.emememsy.NumberFormatValidator;
 
 import java.util.Scanner;

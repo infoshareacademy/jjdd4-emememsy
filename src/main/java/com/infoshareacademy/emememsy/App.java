@@ -17,8 +17,7 @@ public class App {
         List<SingleWord> myList = new ArrayList<>();
         myList = InputOutput.createListOfWords();
         SingleWord singleWord = new SingleWord();
-        ModeLauncher modeLauncher = new ModeLauncher();
-        modeLauncher.launchMainMenu();
+        ModeLauncher.launchMainMenu();
     }
 
 
