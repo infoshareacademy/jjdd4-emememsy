@@ -22,6 +22,7 @@ public class BrowserMode extends Mode {
         switch (menuInt) {
             case 1:
                 //TODO replace sout by Monika's function
+                ModeLauncher.clearScreen();
                 SingleWord singleWord = new Actions().pickRandomLearnMode(myList);
                 singleWord.increaseCounterByOne();
                 InputOutput.writeToCSV(myList);
@@ -39,9 +40,8 @@ public class BrowserMode extends Mode {
     // "uruchomienie" trybu - ekran powitalny plus pobranie nr menu od usera
     @Override
     public void launchMode() {
-        ModeLauncher.clearScreen();
+        //ModeLauncher.clearScreen();
         super.launchMode(); //wywolanie ciala metody klasy-rodzica - wspolnej dla wszystkich obiektow od typu Mode
-
         // ponizej specyficzne display dla kazdego z trybow tutaj takie:
         System.out.println("\nMasz do wyboru:\n1: Wyswietl slowo-tłumaczenie\n2: Wyjście do Menu Głównego\nWybierz: ");
         //selectMenu(scanner.nextInt()); //wprowadzenie usera jako arg bezp do metody selectMenu()

@@ -112,12 +112,12 @@ public class SingleWord implements Comparable {
     public void toLowerCase() {
         this.category = this.category.toLowerCase();
         this.word = this.word.toLowerCase();
-        this.translation = this.word.toLowerCase();
+        this.translation = this.translation.toLowerCase();
     }
 
     public void toUpperCase() {
         this.category = this.category.toUpperCase();
         this.word = this.word.toUpperCase();
-        this.translation = this.word.toUpperCase();
+        this.translation = this.translation.toUpperCase();
     }
 }

@@ -39,7 +39,7 @@ public class InputOutput {
         CSVReader reader = new CSVReader(new FileReader(PropertiesReader.read("config.properties").get(PropertiesReader.PATH_KEY)));
         String[] nextLine;
         while ((nextLine = reader.readNext()) != null) {
-            System.out.println(nextLine[0] + " " + nextLine[1] + " " + nextLine[2]  + " " + nextLine[2]);
+            System.out.println(nextLine[0] + " " + nextLine[1] + " " + nextLine[2]  + " " + nextLine[3]);
         }
     }
 

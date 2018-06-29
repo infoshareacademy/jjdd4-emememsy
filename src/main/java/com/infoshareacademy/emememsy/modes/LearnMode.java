@@ -22,6 +22,7 @@ public class LearnMode extends Mode {
 
         switch (menuInt) {
             case 0:
+                ModeLauncher.clearScreen();
                 singleWord = new Actions().pickRandomLearnMode(myList);
                 InputOutput.writeToCSV(myList);
                 //System.out.println("\n\n\nTu wywolanie funkcji do wyswietlenia slowa po ang \n\n\n");
@@ -29,6 +30,7 @@ public class LearnMode extends Mode {
                 break;
             case 1:
                 //TODO replace sout to Monica's function - incr word counter
+                ModeLauncher.clearScreen();
                 singleWord.bad();
                 InputOutput.writeToCSV(myList);
                 System.out.println("\n\n\nZapisaliśmy ocenę. Wybierz 0 aby wyświetlić kolejne słowo.\n\n\n");;
@@ -36,17 +38,20 @@ public class LearnMode extends Mode {
                 break;
             case 2:
                 //TODO replace sout to Monica's function - incr word counter
+                ModeLauncher.clearScreen();
                 singleWord.soso();
                 InputOutput.writeToCSV(myList);
                 System.out.println("\n\n\nMusisz jeszcze poćwiczyć. Wybierz 0 aby wyświetlić kolejne słowo.\n\n\n");;                launchMode();
                 break;
             case 3:
                 //TODO replace sout to Monica's function - incr word counter
+                ModeLauncher.clearScreen();
                 singleWord.good();
                 InputOutput.writeToCSV(myList);
                 System.out.println("\n\n\nGratulacje! To słowo będzie nadal dostępne w trybie powtórek. Wybierz 0 aby wyświetlić kolejne słowo.\n\n\n");;                launchMode();
                 break;
             case 4:
+                ModeLauncher.clearScreen();
                 ModeLauncher.launchMainMenu();
                 break;
             default:
@@ -57,7 +62,7 @@ public class LearnMode extends Mode {
 
     @Override
     public void launchMode() {
-        ModeLauncher.clearScreen();
+        //ModeLauncher.clearScreen();
         super.launchMode();
         //dodatkowe txt spec dla kazdego z trybow
         System.out.println("\nMasz do wyboru:\n0: Wyswietl słowo\n1: Ocen na ŹLE\n2: Oceń na TAK-SOBIE\n3: Oceń na DOBRZE\n4: Wyjście do Menu Głównego\nWybierz: ");
