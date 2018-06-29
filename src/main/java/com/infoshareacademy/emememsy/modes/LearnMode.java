@@ -15,6 +15,7 @@ public class LearnMode extends Mode {
     }
     private List<SingleWord> myList = InputOutput.createListOfWords();
     private SingleWord singleWord = new SingleWord();
+    private ModeLauncher modeLauncher = new ModeLauncher();
 
 
     //realizacja menu dla objektu tego trybu (tej klasy)
@@ -47,7 +48,7 @@ public class LearnMode extends Mode {
                 System.out.println("\n\n\nGratulacje! To słowo będzie nadal dostępne w trybie powtórek. Wybierz 0 aby wyświetlić kolejne słowo.\n\n\n");;                launchMode();
                 break;
             case 4:
-                App.mainMenu();
+                modeLauncher.launchMainMenu();
                 break;
             default:
                 System.out.println("Sprobuj jeszcze raz: ");;
@@ -59,6 +60,7 @@ public class LearnMode extends Mode {
     public void launchMode() {
         super.launchMode();
         //dodatkowe txt spec dla kazdego z trybow
+        modeLauncher.clearScreen();
         System.out.println("\nMasz do wyboru:\n0: Wyswietl słowo\n1: Ocen na ŹLE\n2: Oceń na TAK-SOBIE\n3: Oceń na DOBRZE\n4: Wyjście do Menu Głównego\nWybierz: ");
         String s = scanner.nextLine();
         if (NumberFormatValidator.isNumber(s)) {

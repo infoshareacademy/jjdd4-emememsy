@@ -18,4 +18,5 @@ public abstract class Mode {
         System.out.println("Opis: " + this.modeDescriptopn);
 
     }
+
 }

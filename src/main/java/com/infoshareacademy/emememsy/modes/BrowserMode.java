@@ -3,7 +3,6 @@ package com.infoshareacademy.emememsy.modes;
 
 import com.infoshareacademy.emememsy.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -16,6 +15,7 @@ public class BrowserMode extends Mode {
     }
     private List<SingleWord> myList = InputOutput.createListOfWords();
     private SingleWord singleWord = new SingleWord();
+    private ModeLauncher modeLauncher = new ModeLauncher();
 
     //realizacja menu dla objektu tego trybu (tej klasy)
     public void selectMenu(Integer menuInt) {
@@ -30,7 +30,7 @@ public class BrowserMode extends Mode {
                 launchMode();
                 break;
             case 2:
-                App.mainMenu();
+                modeLauncher.launchMainMenu();
                 break;
             default:
                 System.out.println("Sprobuj jeszcze raz: ");
@@ -43,6 +43,7 @@ public class BrowserMode extends Mode {
         super.launchMode(); //wywolanie ciala metody klasy-rodzica - wspolnej dla wszystkich obiektow od typu Mode
 
         // ponizej specyficzne display dla kazdego z trybow tutaj takie:
+        modeLauncher.clearScreen();
         System.out.println("\nMasz do wyboru:\n1: Wyswietl slowo-tłumaczenie\n2: Wyjście do Menu Głównego\nWybierz: ");
         //selectMenu(scanner.nextInt()); //wprowadzenie usera jako arg bezp do metody selectMenu()
         String s = scanner.nextLine();
