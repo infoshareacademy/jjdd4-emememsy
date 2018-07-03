@@ -37,19 +37,20 @@ public class ModeLauncher {
                 System.exit(0);
             default:
                 clearScreen();
-                System.out.println("Sprobuj jeszcze raz!");
+                System.out.println("Sprobuj jeszcze raz!\n");
+                launchMainMenu();
         }
 
     }
 
     public static void launchMainMenu() {
-        clearScreen();
-        System.out.println("Masz do wyboru:\n1: Przegladanie\n2: Nauka\n3: Utrwalanie\n4: Zakończ\nWybierz tryb:");
+        System.out.println("Masz do wyboru:\n \n1: Przegladanie\n2: Nauka\n3: Utrwalanie\n4: Zakończ\n \nWybierz tryb:");
         String s = scanner.nextLine();
         if (NumberFormatValidator.isNumber(s)) {
             selectMode(Integer.valueOf(s));
         } else {
-            System.out.println("Nie zrozumiałem Cię. Podaj jeszcze raz pozycję z menu (1-4)");
+            clearScreen();
+            System.out.println("Nie zrozumiałem Cię. Podaj jeszcze raz pozycję z menu (1-4)\n");
             launchMainMenu();
         }
 

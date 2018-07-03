@@ -37,6 +37,7 @@ public class BrowserMode extends Mode {
                 launchMode();
                 break;
             case 2:
+                ModeLauncher.clearScreen();
                 ModeLauncher.launchMainMenu();
                 break;
             default:

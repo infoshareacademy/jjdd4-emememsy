@@ -28,6 +28,7 @@ public class App {
         myList = InputOutput.createListOfWords();
         SingleWord singleWord = new SingleWord();
         ModeLauncher.pressEnterKeyToContinue();
+        ModeLauncher.clearScreen();
         ModeLauncher.launchMainMenu();
     }
 
