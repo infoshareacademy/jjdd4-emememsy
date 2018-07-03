@@ -23,11 +23,16 @@ public class BrowserMode extends Mode {
             case 1:
                 //TODO replace sout by Monika's function
                 ModeLauncher.clearScreen();
-                SingleWord singleWord = new Actions().pickRandomLearnMode(myList);
-                singleWord.increaseCounterByOne();
-                String output = "Słowo: " + singleWord.getWord() + ", Tłumaczenie: " + singleWord.getTranslation();
-                System.out.println(output);
-                InputOutput.writeToCSV(myList);
+                SingleWord singleWord = new SingleWord();
+                if ((singleWord = new Actions().pickRandomLearnMode(myList)) != null) {
+                    singleWord.increaseCounterByOne();
+                    String output = "Słowo: " + singleWord.getWord() + ", Tłumaczenie: " + singleWord.getTranslation();
+                    System.out.println(output);
+                    InputOutput.writeToCSV(myList);
+                } else {
+                    System.out.println("Nie ma więcej słów do nauki. Przejdź do trybu testu.");
+                }
+
                 //System.out.println("\n\n\nTu wywolanie funkcji wwywolania pary slowo-tlumaczenie \n\n\n");
                 launchMode();
                 break;
