@@ -21,42 +21,59 @@ public class LearnMode extends Mode {
     public void selectMenu(Integer menuInt) {
 
         switch (menuInt) {
-            case 0:
+            case 1:
                 ModeLauncher.clearScreen();
                 singleWord = new Actions().pickRandomLearnMode(myList);
-                String output = "Czy znasz tłumazcenie słowa " + "\"" + singleWord.getWord() + "\"?";
-                System.out.println(output);
                 //System.out.println("\n\n\nTu wywolanie funkcji do wyswietlenia slowa po ang \n\n\n");
-                launchMode();
-                break;
-            case 1:
-                //TODO replace sout to Monica's function - incr word counter
-                ModeLauncher.clearScreen();
-                singleWord.bad();
-                InputOutput.writeToCSV(myList);
-                System.out.println("\n\n\nZapisaliśmy ocenę. Wybierz 0 aby wyświetlić kolejne słowo.\n\n\n");;
-                launchMode();
+                launchAssessmentMenu();
                 break;
             case 2:
-                //TODO replace sout to Monica's function - incr word counter
-                ModeLauncher.clearScreen();
-                singleWord.soso();
-                InputOutput.writeToCSV(myList);
-                System.out.println("\n\n\nMusisz jeszcze poćwiczyć. Wybierz 0 aby wyświetlić kolejne słowo.\n\n\n");;                launchMode();
-                break;
-            case 3:
-                //TODO replace sout to Monica's function - incr word counter
-                ModeLauncher.clearScreen();
-                singleWord.good();
-                InputOutput.writeToCSV(myList);
-                System.out.println("\n\n\nGratulacje! To słowo będzie nadal dostępne w trybie powtórek. Wybierz 0 aby wyświetlić kolejne słowo.\n\n\n");;                launchMode();
-                break;
-            case 4:
                 ModeLauncher.clearScreen();
                 ModeLauncher.launchMainMenu();
                 break;
             default:
-                System.out.println("Sprobuj jeszcze raz: ");;
+                ModeLauncher.clearScreen();
+                System.out.println("Nie zrozumiałem Cię. Podaj jeszcze raz pozycję z menu (1-2)");
+                launchMode();
+        }
+    }
+
+    public void selectAssessment(Integer menuInt) {
+
+        switch (menuInt) {
+            case 1:
+                ModeLauncher.clearScreen();
+                System.out.println("Poprawne tłumaczenie słowa: " + singleWord.getWord() + " to: " + singleWord.getTranslation());
+                launchAssessmentMenu();
+                break;
+            case 2:
+                //TODO replace sout to Monica's function - incr word counter
+                ModeLauncher.clearScreen();
+                singleWord.good();
+                InputOutput.writeToCSV(myList);
+                System.out.println("Zapisaliśmy Twój postęp w nauce");
+                launchMode();
+                break;
+            case 3:
+                //TODO replace sout to Monica's function - incr word counter
+                ModeLauncher.clearScreen();
+                singleWord.soso();
+                InputOutput.writeToCSV(myList);
+                System.out.println("Zapisaliśmy Twój postęp w nauce");
+                launchMode();
+                break;
+            case 4:
+                //TODO replace sout to Monica's function - incr word counter
+                ModeLauncher.clearScreen();
+                singleWord.bad();
+                InputOutput.writeToCSV(myList);
+                System.out.println("Zapisaliśmy Twój postęp w nauce.");
+                launchMode();
+                break;
+            default:
+                ModeLauncher.clearScreen();
+                System.out.println("Nie zrozumiałem Cię. Podaj jeszcze raz pozycję z menu (1-4)");
+                launchAssessmentMenu();
         }
     }
 
@@ -66,13 +83,26 @@ public class LearnMode extends Mode {
         //ModeLauncher.clearScreen();
         //super.launchMode();
         //dodatkowe txt spec dla kazdego z trybow
-        System.out.println("\nMasz do wyboru:\n0: Wyswietl słowo\n1: Ocen na ŹLE\n2: Oceń na TAK-SOBIE\n3: Oceń na DOBRZE\n4: Wyjście do Menu Głównego\nWybierz: ");
+        System.out.print("\nMasz do wyboru:\n\n1: Wyswietl słowo\n2: Wyjście do Menu Głównego\n\nWybierz: ");
         String s = scanner.nextLine();
         if (NumberFormatValidator.isNumber(s)) {
             selectMenu(Integer.valueOf(s));
         } else {
-            System.out.println("\"Nie zrozumiałem Cię. Podaj jeszcze raz pozycję z menu (1-4)\"");
+            ModeLauncher.clearScreen();
+            System.out.println("Nie zrozumiałem Cię. Podaj jeszcze raz pozycję z menu (1-2)");
             launchMode();
+        }
+    }
+
+    public void launchAssessmentMenu() {
+        System.out.print("\nMasz do wyboru:\n\n1: Wyświetl tłumaczenie \n2: Dobrze znam tłumaczenie słowa " + singleWord.getWord() + "\n3: Średnio znam tłumaczenie tego słowa \n4: Nie wiem jak przetłumaczyć to słowo\n\nWybierz: ");
+        String s = scanner.nextLine();
+        if (NumberFormatValidator.isNumber(s)) {
+            selectAssessment(Integer.valueOf(s));
+        } else {
+            ModeLauncher.clearScreen();
+            System.out.println("Nie zrozumiałem Cię. Podaj jeszcze raz pozycję z menu (1-4)");
+            launchAssessmentMenu();
         }
     }
 }

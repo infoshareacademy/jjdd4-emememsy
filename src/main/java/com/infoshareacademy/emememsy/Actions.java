@@ -13,6 +13,7 @@ public class Actions {
             int random = randomGenerator.nextInt(listOfWords.size());
             SingleWord singleWord = listOfWords.get(random);
             if (singleWord.getCounter() == 0) {
+                System.out.println("Słowo: " + singleWord.getWord() + ", Tłumaczenie: " + singleWord.getTranslation());
                 return singleWord;
             }
         }
@@ -30,7 +31,7 @@ public class Actions {
         if (testWords.size() > 0) {
             int random = randomGenerator.nextInt(testWords.size());
             SingleWord singleWord = testWords.get(random);
-            System.out.println("Podaj tłumaczenie słowa: " + singleWord.getWord());
+            System.out.println("Czy znasz tłumaczenie słowa: " + "\"" + singleWord.getWord() + "\"" + "?");
             return singleWord;
         }
         System.out.println(msg);

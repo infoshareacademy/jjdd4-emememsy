@@ -26,8 +26,6 @@ public class BrowserMode extends Mode {
                 SingleWord singleWord = new SingleWord();
                 if ((singleWord = new Actions().pickRandomBrowserMode(myList)) != null) {
                     singleWord.increaseCounterByOne();
-                    String output = "Słowo: " + singleWord.getWord() + ", Tłumaczenie: " + singleWord.getTranslation();
-                    System.out.println(output);
                     InputOutput.writeToCSV(myList);
                 } else {
                     System.out.println("Nie ma więcej słów do nauki. Przejdź do trybu testu.");
@@ -60,7 +58,7 @@ public class BrowserMode extends Mode {
             selectMenu(Integer.valueOf(s));
         } else {
             ModeLauncher.clearScreen();
-            System.out.println("\"Nie zrozumiałem Cię. Podaj jeszcze raz pozycję z menu (1-2)\"");
+            System.out.println("Nie zrozumiałem Cię. Podaj jeszcze raz pozycję z menu (1-2)");
             launchMode();
         }
     }
