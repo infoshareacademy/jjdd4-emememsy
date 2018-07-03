@@ -8,7 +8,7 @@ public class Actions {
 
     private Random randomGenerator = new Random();
 
-    public SingleWord pickRandomLearnMode(List<SingleWord> listOfWords) {
+    public SingleWord pickRandomBrowserMode(List<SingleWord> listOfWords) {
         for (SingleWord word : listOfWords) {
             int random = randomGenerator.nextInt(listOfWords.size());
             SingleWord singleWord = listOfWords.get(random);
@@ -37,7 +37,7 @@ public class Actions {
         return null;
     }
 
-    public SingleWord pickRandomTestMode(List<SingleWord> listOfWords) {
+    public SingleWord pickRandomLearnMode(List<SingleWord> listOfWords) {
         return pickWord(listOfWords, 0, 4,
                 "Nie ma dostępnych słów w tym trybie. Przejdź do trybu nauki aby poznać nowe słowa lub wróć za jakiś czas do trybu powrótek aby utrwalić materiał");
     }

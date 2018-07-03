@@ -25,7 +25,7 @@ public class Test {
         //SingleWord singleWord1 = new Actions().pickRandomLearnMode(myList);
 
 
-        //Actions.setAllCountersToZero(myList);
+        Actions.setAllCountersToZero(myList);
 
 
 

@@ -24,7 +24,7 @@ public class BrowserMode extends Mode {
                 //TODO replace sout by Monika's function
                 ModeLauncher.clearScreen();
                 SingleWord singleWord = new SingleWord();
-                if ((singleWord = new Actions().pickRandomLearnMode(myList)) != null) {
+                if ((singleWord = new Actions().pickRandomBrowserMode(myList)) != null) {
                     singleWord.increaseCounterByOne();
                     String output = "Słowo: " + singleWord.getWord() + ", Tłumaczenie: " + singleWord.getTranslation();
                     System.out.println(output);
