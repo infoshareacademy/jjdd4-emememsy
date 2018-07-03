@@ -13,6 +13,7 @@ public class App {
     }
 
     private void run() {
+        ModeLauncher.clearScreen();
         System.out.println("Witamy w aplikacji do nauki słówek - myWords.");
         System.out.println(
                 "        ___  ___      _    _               _\n" +
