@@ -36,17 +36,19 @@ public class RepeatMode extends Mode {
                 break;
             case 4:
                 //wyjscie do menu gl
+                ModeLauncher.clearScreen();
                 ModeLauncher.launchMainMenu();
                 break;
             default:
+                ModeLauncher.clearScreen();
                 System.out.println("Sprobuj jeszcze raz: ");;
         }
     }
 
     @Override
     public void launchMode() {
-        ModeLauncher.clearScreen();
-        super.launchMode();
+        //ModeLauncher.clearScreen();
+        //super.launchMode();
         //dodatkowe txt spec dla kazdego z trybow
 
         //dodatkowe txt spec dla kazdego z trybow

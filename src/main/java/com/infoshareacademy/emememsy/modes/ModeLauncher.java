@@ -23,28 +23,31 @@ public class ModeLauncher {
         switch (modeInt) {
             case 1:
                 clearScreen();
+                System.out.println("Jesteś w trybie przeglądania. To pierwszy etap.");
                 browserMode.launchMode();
                 break;
             case 2:
                 clearScreen();
+                System.out.println("Jesteś w trybie nauki. To drugi etap.");
                 learnMode.launchMode();
                 break;
             case 3:
                 clearScreen();
+                System.out.println("Jesteś w trybie nauki. To trzeci etap.");
                 repeatMode.launchMode();
                 break;
             case 4:
                 System.exit(0);
             default:
                 clearScreen();
-                System.out.println("Sprobuj jeszcze raz!\n");
+                System.out.println("Nie zrozumiałem Cię. Podaj jeszcze raz pozycję z menu (1-4)\n");
                 launchMainMenu();
         }
 
     }
 
     public static void launchMainMenu() {
-        System.out.println("Masz do wyboru:\n \n1: Przegladanie\n2: Nauka\n3: Utrwalanie\n4: Zakończ\n \nWybierz tryb:");
+        System.out.print("Masz do wyboru:\n \n1: Przeglądanie\n2: Nauka\n3: Utrwalanie\n4: Zakończ\n \nWybierz tryb:");
         String s = scanner.nextLine();
         if (NumberFormatValidator.isNumber(s)) {
             selectMode(Integer.valueOf(s));

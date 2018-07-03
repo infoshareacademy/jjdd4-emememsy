@@ -64,7 +64,7 @@ public class LearnMode extends Mode {
     @Override
     public void launchMode() {
         //ModeLauncher.clearScreen();
-        super.launchMode();
+        //super.launchMode();
         //dodatkowe txt spec dla kazdego z trybow
         System.out.println("\nMasz do wyboru:\n0: Wyswietl słowo\n1: Ocen na ŹLE\n2: Oceń na TAK-SOBIE\n3: Oceń na DOBRZE\n4: Wyjście do Menu Głównego\nWybierz: ");
         String s = scanner.nextLine();

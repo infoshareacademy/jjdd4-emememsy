@@ -42,7 +42,7 @@ public class BrowserMode extends Mode {
                 break;
             default:
                 ModeLauncher.clearScreen();
-                System.out.println("Sprobuj jeszcze raz: ");
+                System.out.println("Nie zrozumiałem Cię. Podaj jeszcze raz pozycję z menu (1-2)");
                 launchMode();
         }
     }
@@ -51,14 +51,15 @@ public class BrowserMode extends Mode {
     @Override
     public void launchMode() {
         //ModeLauncher.clearScreen();
-        super.launchMode(); //wywolanie ciala metody klasy-rodzica - wspolnej dla wszystkich obiektow od typu Mode
+        //super.launchMode(); //wywolanie ciala metody klasy-rodzica - wspolnej dla wszystkich obiektow od typu Mode
         // ponizej specyficzne display dla kazdego z trybow tutaj takie:
-        System.out.println("\nMasz do wyboru:\n1: Wyswietl slowo-tłumaczenie\n2: Wyjście do Menu Głównego\nWybierz: ");
+        System.out.print("\nMasz do wyboru:\n\n1: Wyswietl slowo-tłumaczenie\n2: Wyjście do Menu Głównego\n\nWybierz: ");
         //selectMenu(scanner.nextInt()); //wprowadzenie usera jako arg bezp do metody selectMenu()
         String s = scanner.nextLine();
         if (NumberFormatValidator.isNumber(s)) {
             selectMenu(Integer.valueOf(s));
         } else {
+            ModeLauncher.clearScreen();
             System.out.println("\"Nie zrozumiałem Cię. Podaj jeszcze raz pozycję z menu (1-2)\"");
             launchMode();
         }
