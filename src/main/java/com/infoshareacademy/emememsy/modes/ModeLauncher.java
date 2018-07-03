@@ -61,5 +61,16 @@ public class ModeLauncher {
         System.out.flush();
     }
 
+    public static void pressEnterKeyToContinue()
+    {
+        System.out.println("Press Enter key to continue...");
+        try
+        {
+            System.in.read();
+        }
+        catch(Exception e)
+        {}
+    }
+
 }
 
