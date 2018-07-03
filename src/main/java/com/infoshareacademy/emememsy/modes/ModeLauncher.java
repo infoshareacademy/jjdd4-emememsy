@@ -43,8 +43,9 @@ public class ModeLauncher {
                 System.out.println("Nie zrozumiałem Cię. Podaj jeszcze raz pozycję z menu (1-4)\n");
                 launchMainMenu();
         }
-
     }
+
+
 
     public static void launchMainMenu() {
         System.out.print("Masz do wyboru:\n \n1: Przeglądanie\n2: Nauka\n3: Utrwalanie\n4: Zakończ\n \nWybierz tryb:");

@@ -8,23 +8,25 @@ import java.util.Scanner;
 
 public class LearnMode extends Mode {
 
-    private static Scanner scanner = new Scanner(System.in); //skaner do wprowadzenia poz menu
-    public LearnMode(String modeName, String modeDescriptopn) {
-        super(modeName, modeDescriptopn);
+    private static Scanner scanner = new Scanner(System.in);
+    public LearnMode(String modeName, String modeDescription) {
+        super(modeName, modeDescription);
     }
     private List<SingleWord> myList = InputOutput.createListOfWords();
     private SingleWord singleWord = new SingleWord();
 //    private ModeLauncher modeLauncher = new ModeLauncher();
 
-
-    //realizacja menu dla objektu tego trybu (tej klasy)
     public void selectMenu(Integer menuInt) {
 
         switch (menuInt) {
             case 1:
                 ModeLauncher.clearScreen();
-                singleWord = new Actions().pickRandomLearnMode(myList);
-                //System.out.println("\n\n\nTu wywolanie funkcji do wyswietlenia slowa po ang \n\n\n");
+                myList = InputOutput.createListOfWords();
+                if ((singleWord = new Actions().pickRandomLearnMode(myList)) != null) {
+                } else {
+                    ModeLauncher.launchMainMenu();
+                    break;
+                }
                 launchAssessmentMenu();
                 break;
             case 2:
