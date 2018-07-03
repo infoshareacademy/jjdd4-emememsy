@@ -14,10 +14,19 @@ public class App {
 
     private void run() {
         System.out.println("Witamy w aplikacji do nauki słówek - myWords.");
+        System.out.println(
+                "        ___  ___      _    _               _\n" +
+                "        |  \\/  |     | |  | |             | |    \n" +
+                "        | .  . |_   _| |  | | ___  _ __ __| |___\n" +
+                "        | |\\/| | | | | |/\\| |/ _ \\| '__/ _` / __|\n" +
+                "        | |  | | |_| \\  /\\  / (_) | | | (_| \\__ \\\n" +
+                "        \\_|  |_/\\__, |\\/  \\/ \\___/|_|  \\__,_|___/\n" +
+                "                 __/ |                           \n" +
+                "                |___/\n");
         List<SingleWord> myList = new ArrayList<>();
         myList = InputOutput.createListOfWords();
         SingleWord singleWord = new SingleWord();
-        ModeLauncher.launchMainMenu();
+        //ModeLauncher.launchMainMenu();
     }
 
 
