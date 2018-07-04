@@ -8,23 +8,19 @@ public class Actions {
 
     private Random randomGenerator = new Random();
 
-    public String pickRandomLearnMode(List<SingleWord> listOfWords) {
+    public SingleWord pickRandomBrowserMode(List<SingleWord> listOfWords) {
         for (SingleWord word : listOfWords) {
             int random = randomGenerator.nextInt(listOfWords.size());
             SingleWord singleWord = listOfWords.get(random);
             if (singleWord.getCounter() == 0) {
-                System.out.println(singleWord); //weryfikacja, że wylosowano liczbę z przedziału 1
-                singleWord.setCounter(singleWord.getCounter() + 1);
-                //System.out.println(singleWord); //weryfikacja inkrementacji licznika
-                return singleWord.toString();
+                System.out.println("Słowo: " + singleWord.getWord() + ", Tłumaczenie: " + singleWord.getTranslation());
+                return singleWord;
             }
         }
-        String message = "Nie ma więcej słów do nauki. Przejdź do trybu testu.";
-        System.out.println(message);
-        return message;
+        return null;
     }
 
-    public void setAllCountersToZero(List<SingleWord> listOfWords) {
+    public static void setAllCountersToZero(List<SingleWord> listOfWords) {
         listOfWords.forEach(o -> o.setCounter(0));
     }
 
@@ -35,24 +31,24 @@ public class Actions {
         if (testWords.size() > 0) {
             int random = randomGenerator.nextInt(testWords.size());
             SingleWord singleWord = testWords.get(random);
-            System.out.println("Podaj tłumaczenie słowa: " + singleWord.getWord());
+            System.out.println("Czy znasz tłumaczenie słowa: " + "\"" + singleWord.getWord() + "\"" + "?");
             return singleWord;
         }
         System.out.println(msg);
         return null;
     }
 
-    public SingleWord pickRandomTestMode(List<SingleWord> listOfWords) {
+    public SingleWord pickRandomLearnMode(List<SingleWord> listOfWords) {
         return pickWord(listOfWords, 0, 4,
                 "Nie ma dostępnych słów w tym trybie. Przejdź do trybu nauki aby poznać nowe słowa lub wróć za jakiś czas do trybu powrótek aby utrwalić materiał");
     }
 
-    public SingleWord pickRandomReviewMode(List<SingleWord> listOfWords) {
-        return pickWord(listOfWords, 5, 10,
+    public SingleWord pickRandomRepeatMode(List<SingleWord> listOfWords) {
+        return pickWord(listOfWords, 3, 99,
                 "Nie ma dostępnych słów w tym trybie. Przejdź do trybu nauki aby poznać nowe słowa");
     }
 
     public String showCorrectTranslation(SingleWord pickedWord) {
-        return "Correct translation: " + pickedWord.getTranslation();
+        return "Poprawne tłumaczenie to: " + pickedWord.getTranslation();
     }
 }
