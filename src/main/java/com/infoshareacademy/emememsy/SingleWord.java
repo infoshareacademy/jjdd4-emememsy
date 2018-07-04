@@ -1,5 +1,7 @@
 package com.infoshareacademy.emememsy;
+
 import com.opencsv.bean.CsvBindByName;
+
 import java.util.Objects;
 
 public class SingleWord implements Comparable {
@@ -13,7 +15,8 @@ public class SingleWord implements Comparable {
     @CsvBindByName(column = "counter")
     private int counter;
 
-    public SingleWord(){};
+    public SingleWord() {
+    }
 
     public SingleWord(String word, String translation, String category, int counter) {
         this.word = word;
@@ -102,7 +105,6 @@ public class SingleWord implements Comparable {
     public int hashCode() {
         return Objects.hash(word, translation, counter);
     }
-
 
     @Override
     public int compareTo(Object o) {

@@ -1,6 +1,5 @@
 package com.infoshareacademy.emememsy.modes;
 
-
 import com.infoshareacademy.emememsy.*;
 
 import java.util.List;
@@ -8,11 +7,12 @@ import java.util.Scanner;
 
 public class BrowserMode extends Mode {
 
-    private static Scanner scanner = new Scanner(System.in); //skaner do wprowadzenia poz menu
-    //konstruktor objektu trybu "ustawiający" jego nazwe i opis ktore z automatu sa wypisywane przez .lounchMode (rodzica)
+    private static Scanner scanner = new Scanner(System.in);
+
     public BrowserMode(String modeName, String modeDescription) {
         super(modeName, modeDescription);
     }
+
     private List<SingleWord> myList = InputOutput.createListOfWords();
     private SingleWord singleWord = new SingleWord();
 
@@ -47,11 +47,7 @@ public class BrowserMode extends Mode {
     // "uruchomienie" trybu - ekran powitalny plus pobranie nr menu od usera
     @Override
     public void launchMode() {
-        //ModeLauncher.clearScreen();
-        //super.launchMode(); //wywolanie ciala metody klasy-rodzica - wspolnej dla wszystkich obiektow od typu Mode
-        // ponizej specyficzne display dla kazdego z trybow tutaj takie:
         System.out.print("\nMasz do wyboru:\n\n1: Wyswietl slowo-tłumaczenie\n2: Wyjście do Menu Głównego\n\nWybierz: ");
-        //selectMenu(scanner.nextInt()); //wprowadzenie usera jako arg bezp do metody selectMenu()
         String s = scanner.nextLine();
         if (NumberFormatValidator.isNumber(s)) {
             selectMenu(Integer.valueOf(s));

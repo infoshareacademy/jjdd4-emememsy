@@ -1,6 +1,5 @@
 package com.infoshareacademy.emememsy.modes;
 
-
 import com.infoshareacademy.emememsy.*;
 
 import java.util.List;
@@ -9,12 +8,13 @@ import java.util.Scanner;
 public class LearnMode extends Mode {
 
     private static Scanner scanner = new Scanner(System.in);
+
     public LearnMode(String modeName, String modeDescription) {
         super(modeName, modeDescription);
     }
+
     private List<SingleWord> myList = InputOutput.createListOfWords();
     private SingleWord singleWord = new SingleWord();
-//    private ModeLauncher modeLauncher = new ModeLauncher();
 
     public void selectMenu(Integer menuInt) {
 
@@ -49,7 +49,6 @@ public class LearnMode extends Mode {
                 launchAssessmentMenu();
                 break;
             case 2:
-                //TODO replace sout to Monica's function - incr word counter
                 ModeLauncher.clearScreen();
                 singleWord.good();
                 InputOutput.writeToCSV(myList);
@@ -57,7 +56,6 @@ public class LearnMode extends Mode {
                 launchMode();
                 break;
             case 3:
-                //TODO replace sout to Monica's function - incr word counter
                 ModeLauncher.clearScreen();
                 singleWord.soso();
                 InputOutput.writeToCSV(myList);
@@ -65,7 +63,6 @@ public class LearnMode extends Mode {
                 launchMode();
                 break;
             case 4:
-                //TODO replace sout to Monica's function - incr word counter
                 ModeLauncher.clearScreen();
                 singleWord.bad();
                 InputOutput.writeToCSV(myList);
@@ -82,9 +79,6 @@ public class LearnMode extends Mode {
 
     @Override
     public void launchMode() {
-        //ModeLauncher.clearScreen();
-        //super.launchMode();
-        //dodatkowe txt spec dla kazdego z trybow
         System.out.print("\nMasz do wyboru:\n\n1: Wyswietl słowo\n2: Wyjście do Menu Głównego\n\nWybierz: ");
         String s = scanner.nextLine();
         if (NumberFormatValidator.isNumber(s)) {

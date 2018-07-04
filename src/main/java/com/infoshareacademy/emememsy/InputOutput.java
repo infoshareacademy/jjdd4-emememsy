@@ -1,4 +1,5 @@
 package com.infoshareacademy.emememsy;
+
 import com.opencsv.CSVReader;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.HeaderColumnNameTranslateMappingStrategy;
@@ -6,6 +7,7 @@ import com.opencsv.bean.StatefulBeanToCsv;
 import com.opencsv.bean.StatefulBeanToCsvBuilder;
 import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
+
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -39,15 +41,15 @@ public class InputOutput {
         CSVReader reader = new CSVReader(new FileReader(PropertiesReader.read("config.properties").get(PropertiesReader.PATH_KEY)));
         String[] nextLine;
         while ((nextLine = reader.readNext()) != null) {
-            System.out.println(nextLine[0] + " " + nextLine[1] + " " + nextLine[2]  + " " + nextLine[3]);
+            System.out.println(nextLine[0] + " " + nextLine[1] + " " + nextLine[2] + " " + nextLine[3]);
         }
     }
 
-    private static boolean isUppercase (Map<String, String> properties) {
+    private static boolean isUppercase(Map<String, String> properties) {
         return properties.get(PropertiesReader.FORMATTING_KEY).equals("toUpperCase");
     }
 
-    public static List<SingleWord> createListOfWords()  {
+    public static List<SingleWord> createListOfWords() {
 
         List<SingleWord> listOfWords = new ArrayList<>();
         boolean isUppercase = isUppercase(properties);

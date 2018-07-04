@@ -1,7 +1,5 @@
 package com.infoshareacademy.emememsy.modes;
 
-
-
 import com.infoshareacademy.emememsy.Actions;
 import com.infoshareacademy.emememsy.InputOutput;
 import com.infoshareacademy.emememsy.NumberFormatValidator;
@@ -13,9 +11,11 @@ import java.util.Scanner;
 public class RepeatMode extends Mode {
 
     private static Scanner scanner = new Scanner(System.in);
+
     public RepeatMode(String modeName, String modeDescription) {
         super(modeName, modeDescription);
     }
+
     private List<SingleWord> myList = InputOutput.createListOfWords();
     private SingleWord singleWord = new SingleWord();
 
@@ -33,7 +33,6 @@ public class RepeatMode extends Mode {
                 launchAssessmentMenu();
                 break;
             case 2:
-                //wyjscie do menu gl
                 ModeLauncher.clearScreen();
                 ModeLauncher.launchMainMenu();
                 break;
@@ -93,5 +92,4 @@ public class RepeatMode extends Mode {
             launchAssessmentMenu();
         }
     }
-
 }

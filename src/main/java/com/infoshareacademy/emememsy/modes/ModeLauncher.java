@@ -1,10 +1,8 @@
 package com.infoshareacademy.emememsy.modes;
 
-
 import com.infoshareacademy.emememsy.NumberFormatValidator;
 
 import java.util.Scanner;
-
 
 //klasa tworzaca obiekt wybranego trybu.
 public class ModeLauncher {
@@ -15,7 +13,6 @@ public class ModeLauncher {
     static Scanner scanner = new Scanner(System.in);
 
     public ModeLauncher() {
-
     }
 
     public static void selectMode(Integer modeInt) {
@@ -46,7 +43,6 @@ public class ModeLauncher {
     }
 
 
-
     public static void launchMainMenu() {
         System.out.print("Masz do wyboru:\n \n1: Przeglądanie\n2: Nauka\n3: Utrwalanie\n4: Zakończ\n \nWybierz tryb:");
         String s = scanner.nextLine();
@@ -57,25 +53,19 @@ public class ModeLauncher {
             System.out.println("Nie zrozumiałem Cię. Podaj jeszcze raz pozycję z menu (1-4)\n");
             launchMainMenu();
         }
-
     }
 
-    // funkcja czyszczaca ekran
     public static void clearScreen() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
 
-    public static void pressEnterKeyToContinue()
-    {
+    public static void pressEnterKeyToContinue() {
         System.out.println("Press Enter key to continue...");
-        try
-        {
+        try {
             System.in.read();
+        } catch (Exception e) {
         }
-        catch(Exception e)
-        {}
     }
-
 }
 

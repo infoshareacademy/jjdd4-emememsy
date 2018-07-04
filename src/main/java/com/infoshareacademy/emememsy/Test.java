@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Test {
 
-    //this is another main fot testing purposes - please don't assess - WILL BE REMOVED after merging all modules
+    //this is another main fot testing purposes - please don't assess - WILL BE REMOVED after merging all modules and adding proper tests
 
     public static void main(String[] args) {
         new Test().run();
@@ -17,17 +17,12 @@ public class Test {
         //test wczytania pliku i stworenia tablicy
             myList = InputOutput.createListOfWords();
 
-
-
         //symulacja trybu nauki
         //String singleWord = new Actions().pickRandomLearnMode(myList);
 
         //SingleWord singleWord1 = new Actions().pickRandomLearnMode(myList);
 
-
         //Actions.setAllCountersToZero(myList);
-
-
 
          InputOutput.writeToCSV(myList);
 
@@ -38,10 +33,7 @@ public class Test {
         //NumberFormatValidator numberFormatValidator = new NumberFormatValidator();
         //System.out.println( numberFormatValidator.isNumber("1"));
 
-
     }
-
-
     }
 
 
