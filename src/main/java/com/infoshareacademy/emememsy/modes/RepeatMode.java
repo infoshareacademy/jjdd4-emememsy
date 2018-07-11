@@ -71,11 +71,12 @@ public class RepeatMode extends Mode {
 
     @Override
     public void launchMode() {
-        System.out.print("\n\nMasz do wyboru:\n1: Utrwalaj slowa\n2: Wyjście do Menu Głównego\n\nWybierz: ");
+        System.out.print("\nMasz do wyboru: \n\n1: Utrwalaj slowa\n2: Wyjście do Menu Głównego\n\nWybierz: ");
         String s = scanner.nextLine();
         if (NumberFormatValidator.isNumber(s)) {
             selectMenu(Integer.valueOf(s));
         } else {
+            ModeLauncher.clearScreen();
             System.out.println("Nie zrozumiałem Cię. Podaj jeszcze raz pozycję z menu (1-2)");
             launchMode();
         }
