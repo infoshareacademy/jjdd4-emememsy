@@ -15,13 +15,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-@WebServlet("/welcome-user")
-public class WelcomeUserServlet extends HttpServlet {
-
-    private final static Logger logger = Logger.getLogger(WelcomeUserServlet.class.getName());
+@WebServlet("/choose-category")
+public class ChooseCategoryServlet extends HttpServlet {
 
     @Inject
     private TemplateProvider templateProvider;
@@ -29,22 +25,30 @@ public class WelcomeUserServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        String name = req.getParameter("name");
+        String mode = req.getParameter("mode");
 
-        if (name == null || name.isEmpty()) {
+        if (mode == null || mode.isEmpty()) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             return;
         }
+        Template template = templateProvider.getTemplate(getServletContext(), "choose-category.ftlh");
 
 
-        Template template = templateProvider.getTemplate(getServletContext(), "welcome-user.ftlh");
         Map<String, Object> model = new HashMap<>();
-        model.put("name", name);
+        model.put("mode", mode);
+        model.put("category", categories);
+        resp.setContentType("text/html;charset=UTF-8");
 
         try {
             template.process(model, resp.getWriter());
         } catch (TemplateException e) {
-            logger.log(Level.SEVERE, e.getMessage());
+            e.printStackTrace();
         }
     }
 }
+
+
+
+
+
+

@@ -28,9 +28,9 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tryby nauki</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
-                    <a class="dropdown-item" href="/choose-category?mode=przeglądanie">Przeglądanie</a>
-                    <a class="dropdown-item" href="/choose-category?mode=nauka">Nauka</a>
-                    <a class="dropdown-item" href="/choose-category?mode=powtórki">Powtórki</a>
+                    <a class="dropdown-item" href="#">Przeglądanie</a>
+                    <a class="dropdown-item" href="#">Nauka</a>
+                    <a class="dropdown-item" href="#">Powtórki</a>
                 </div>
             </li>
         </ul>
@@ -50,24 +50,16 @@
 
     <div class="container">
         <!-- Example row of columns -->
-        <div class="row">
-            <div class="col-md-4">
-                <h2>Przeglądanie</h2>
-                <p>To pierwszy tryb nauki nowych słów. W tym trybie wyświetlimy Ci parę słowo - tłumaczenie. Nie spiesz się i postaraj się zapamiętać dane słowo. W tym trybie będzie ono dostępne tylko raz!</p>
-                <p><a class="btn btn-secondary" href="/choose-category?mode=przeglądanie" role="button">Start &raquo;</a></p>
-            </div>
-            <div class="col-md-4">
-                <h2>Nauka</h2>
-                <p>To drugi tryb nauki. </p>
-                <p><a class="btn btn-secondary" href="/choose-category?mode=nauka" role="button">Start &raquo;</a></p>
-            </div>
-            <div class="col-md-4">
-                <h2>Powtórka</h2>
-                <p>To trzeci tryb nauki.</p>
-                <p><a class="btn btn-secondary" href="/choose-category?mode=powtórki" role="button">Start &raquo;</a></p>
-            </div>
-        </div>
+        <h2>Jesteś w trybie ${mode}</h2>
 
+        <p><a class="btn btn-secondary" href="/choose-category?category=wszystkie" role="button">Wszystkie</a></p>
+        <#list categories>
+            <#items as category>
+                <p><a class="btn btn-secondary" href="#" role="button">${category}</a></p>
+            </#items>
+        </#list>
+            // for each /nowy-servlet?category=XXXXXXXX&mode=XXXXX
+        </div>
         <hr>
 
     </div> <!-- /container -->
