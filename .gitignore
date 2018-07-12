@@ -1,4 +1,4 @@
 .idea/
-base/target/
 *.iml
+base/target/
 web/target/
