@@ -1,9 +1,11 @@
 package com.infoshareacademy.emememsy;
 
+import javax.enterprise.context.RequestScoped;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
+@RequestScoped
 public class PropertiesReader {
 
     public static final String PATH_KEY = "path";

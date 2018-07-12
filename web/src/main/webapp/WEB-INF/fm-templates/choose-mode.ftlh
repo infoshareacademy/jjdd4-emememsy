@@ -14,38 +14,14 @@
 
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
 
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="/main">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Ustawienia</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#">Mój postęp</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tryby nauki</a>
-                <div class="dropdown-menu" aria-labelledby="dropdown01">
-                    <a class="dropdown-item" href="/choose-category?mode=przeglądanie">Przeglądanie</a>
-                    <a class="dropdown-item" href="/choose-category?mode=nauka">Nauka</a>
-                    <a class="dropdown-item" href="/choose-category?mode=powtórki">Powtórki</a>
-                </div>
-            </li>
-        </ul>
-    </div>
+<!--   inject navbar here  -->
 </nav>
 
 <main role="main">
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
-        <div class="container">
-            <h1 class="display-3">Welcome to myWords!</h1>
-            <p>Witaj w aplikacji do nauki słówek w języku obcym. Jeśli chcesz korzystać z naszej bazy danych możesz od razu rozpocząć naukę.
-                Możesz wczytać własny plik ze słowami aby uczyć się własnych słów w dowolnym języku. Miłej zabawy! .</p>
-        </div>
+        <!--   inject banner here  -->
     </div>
 
     <div class="container">
@@ -54,17 +30,17 @@
             <div class="col-md-4">
                 <h2>Przeglądanie</h2>
                 <p>To pierwszy tryb nauki nowych słów. W tym trybie wyświetlimy Ci parę słowo - tłumaczenie. Nie spiesz się i postaraj się zapamiętać dane słowo. W tym trybie będzie ono dostępne tylko raz!</p>
-                <p><a class="btn btn-secondary" href="/choose-category?mode=przeglądanie" role="button">Start &raquo;</a></p>
+                <p><a class="btn btn-secondary" href="/choose-category?mode=1" role="button">Start &raquo;</a></p>
             </div>
             <div class="col-md-4">
                 <h2>Nauka</h2>
                 <p>To drugi tryb nauki. </p>
-                <p><a class="btn btn-secondary" href="/choose-category?mode=nauka" role="button">Start &raquo;</a></p>
+                <p><a class="btn btn-secondary" href="/choose-category?mode=2" role="button">Start &raquo;</a></p>
             </div>
             <div class="col-md-4">
                 <h2>Powtórka</h2>
                 <p>To trzeci tryb nauki.</p>
-                <p><a class="btn btn-secondary" href="/choose-category?mode=powtórki" role="button">Start &raquo;</a></p>
+                <p><a class="btn btn-secondary" href="/choose-category?mode=3" role="button">Start &raquo;</a></p>
             </div>
         </div>
 

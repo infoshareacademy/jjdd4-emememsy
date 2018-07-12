@@ -21,8 +21,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-@WebServlet("/choose-category")
-public class ChooseCategoryServlet extends HttpServlet {
+@WebServlet("/repeat-mode")
+public class RepeatModeServlet extends HttpServlet {
 
     @Inject
     private TemplateProvider templateProvider;
@@ -36,24 +36,18 @@ public class ChooseCategoryServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String mode = req.getParameter("mode");
+        String category = req.getParameter("catogory").toLowerCase();
 
         if (mode == null || mode.isEmpty()) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             return;
         }
-        Template template = templateProvider.getTemplate(getServletContext(), "choose-category.ftlh");
-
-        List<SingleWord> tempList = inputOutput.createListOfWordsOmmitProperties();
-        //tempList = InputOutput.createListOfWordsOmmitProperties();
-        List<String> categories = tempList.stream()
-                .map(o -> o.getCategory())
-                .distinct()
-                .collect(Collectors.toList());
+        Template template = templateProvider.getTemplate(getServletContext(), "repeat-mode.ftlh");
 
 
         Map<String, Object> model = new HashMap<>();
         model.put("mode", mode);
-        model.put("category", categories);
+        model.put("category", category);
 
         resp.setContentType("text/html;charset=UTF-8");
 

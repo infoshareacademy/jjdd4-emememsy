@@ -27,16 +27,7 @@
 
     <div class="container">
         <!-- Example row of columns -->
-        <h2>Jesteś w trybie ${mode}</h2>
 
-        <p><a class="btn btn-secondary" href="/choose-category?category=wszystkie" role="button">Wszystkie</a></p>
-        <#list categories>
-            <ul>
-                <#items as category>
-                    <li><p>Kategoria: ${category}</p></li>
-                </#items>
-            </ul>
-        </#list>
 
 
         <!-- // for each /nowy-servlet?category=XXXXXXXX&mode=XXXXX   -->

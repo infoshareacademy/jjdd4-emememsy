@@ -2,8 +2,10 @@ package com.infoshareacademy.emememsy;
 
 import com.opencsv.bean.CsvBindByName;
 
+import javax.enterprise.context.RequestScoped;
 import java.util.Objects;
 
+@RequestScoped
 public class SingleWord implements Comparable {
 
     @CsvBindByName(column = "word")

@@ -8,6 +8,7 @@ import com.opencsv.bean.StatefulBeanToCsvBuilder;
 import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 
+import javax.enterprise.context.RequestScoped;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -17,7 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
+@RequestScoped
 public class InputOutput {
 
     public static Map<String, String> properties = PropertiesReader.read("config.properties");
@@ -47,6 +48,19 @@ public class InputOutput {
 
     private static boolean isUppercase(Map<String, String> properties) {
         return properties.get(PropertiesReader.FORMATTING_KEY).equals("toUpperCase");
+    }
+
+    public static List<SingleWord> createListOfWordsOmmitProperties(){
+        List<SingleWord> listOfWords = new ArrayList<>();
+        try {
+            CSVReader reader = new CSVReader(new FileReader("input_words.csv"));
+            CsvToBean<SingleWord> csvToBean = new CsvToBean<>();
+            listOfWords.addAll(csvToBean.parse(strategy, reader));
+
+        } catch (IOException | NumberFormatException e) {
+            System.out.println("Wystąpił problem z wczytaniem pliku CSV. Skontaktuj się z administratorem Emememsów. ");
+        }
+        return listOfWords;
     }
 
     public static List<SingleWord> createListOfWords() {
