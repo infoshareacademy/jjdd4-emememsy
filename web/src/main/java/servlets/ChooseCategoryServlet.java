@@ -1,5 +1,7 @@
 package servlets;
 
+import com.infoshareacademy.emememsy.InputOutput;
+import com.infoshareacademy.emememsy.SingleWord;
 import freemarker.TemplateProvider;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -15,6 +17,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @WebServlet("/choose-category")
 public class ChooseCategoryServlet extends HttpServlet {
@@ -33,10 +36,19 @@ public class ChooseCategoryServlet extends HttpServlet {
         }
         Template template = templateProvider.getTemplate(getServletContext(), "choose-category.ftlh");
 
+        List<SingleWord> tempList = new ArrayList<>();
+        tempList = InputOutput.createListOfWords();
+        InputOutput.writeToCSV(tempList);
+        List<String> categories = tempList.stream()
+                .map(o -> o.getCategory())
+                .distinct()
+                .collect(Collectors.toList());
+
 
         Map<String, Object> model = new HashMap<>();
         model.put("mode", mode);
         model.put("category", categories);
+
         resp.setContentType("text/html;charset=UTF-8");
 
         try {

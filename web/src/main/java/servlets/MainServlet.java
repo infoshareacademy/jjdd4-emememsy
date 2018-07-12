@@ -30,16 +30,7 @@ public class MainServlet extends HttpServlet {
 
         Template template = templateProvider.getTemplate(getServletContext(), "choose-mode.ftlh");
 
-        List<SingleWord> tempList = new ArrayList<>();
-        tempList = InputOutput.createListOfWords();
-        InputOutput.writeToCSV(tempList);
-        List<String> categories = tempList.stream()
-                .map(o -> o.getCategory())
-                .distinct()
-                .collect(Collectors.toList());
-
         Map<String, Object> model = new HashMap<>();
-        model.put("category", categories);
 
         resp.setContentType("text/html;charset=UTF-8");
         try {
