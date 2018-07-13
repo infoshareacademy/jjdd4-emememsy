@@ -4,6 +4,7 @@ import com.infoshareacademy.emememsy.Actions;
 import com.infoshareacademy.emememsy.InputOutput;
 import com.infoshareacademy.emememsy.PropertiesReader;
 import com.infoshareacademy.emememsy.SingleWord;
+import data.DataProvider;
 import freemarker.TemplateProvider;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -26,7 +27,10 @@ public class ChooseCategoryServlet extends HttpServlet {
 
     @Inject
     private TemplateProvider templateProvider;
-    private InputOutput inputOutput;
+
+    @Inject
+    private DataProvider dataProvider;
+
     private Actions actions;
     private PropertiesReader propertiesReader;
     private SingleWord singleWord;
@@ -43,7 +47,7 @@ public class ChooseCategoryServlet extends HttpServlet {
         }
         Template template = templateProvider.getTemplate(getServletContext(), "choose-category.ftlh");
 
-        List<SingleWord> tempList = inputOutput.createListOfWords();
+        List<SingleWord> tempList = dataProvider.getListofWords();
         //tempList = InputOutput.createListOfWordsOmmitProperties();
         List<String> categories = tempList.stream()
                 .map(o -> o.getCategory())
