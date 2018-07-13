@@ -28,14 +28,16 @@
     <div class="container">
         <!-- Example row of columns -->
         <h2>Jesteś w trybie ${mode}</h2>
+        <h2>Licba kategorii: ${size}</h2>
 
-        <p><a class="btn btn-secondary" href="/choose-category?category=wszystkie" role="button">Wszystkie</a></p>
+
         <#list categories>
-            <ul>
+
+                <p><a class="btn btn-secondary" href="/choose-category?category=wszystkie" role="button">Wszystkie</a></p>
                 <#items as category>
-                    <li><p>Kategoria: ${category}</p></li>
+                    <p><a class="btn btn-secondary" href="/${mode}?category=${category}" role="button">${category}</a></p>
                 </#items>
-            </ul>
+
         </#list>
 
 

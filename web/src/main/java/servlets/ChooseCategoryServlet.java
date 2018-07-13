@@ -43,17 +43,19 @@ public class ChooseCategoryServlet extends HttpServlet {
         }
         Template template = templateProvider.getTemplate(getServletContext(), "choose-category.ftlh");
 
-        List<SingleWord> tempList = inputOutput.createListOfWordsOmmitProperties();
+        List<SingleWord> tempList = inputOutput.createListOfWords();
         //tempList = InputOutput.createListOfWordsOmmitProperties();
         List<String> categories = tempList.stream()
                 .map(o -> o.getCategory())
                 .distinct()
                 .collect(Collectors.toList());
+        String size = String.valueOf(categories.size());
 
 
         Map<String, Object> model = new HashMap<>();
         model.put("mode", mode);
-        model.put("category", categories);
+        model.put("categories", categories);
+        model.put("size", size);
 
         resp.setContentType("text/html;charset=UTF-8");
 

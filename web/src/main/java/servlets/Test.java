@@ -14,7 +14,7 @@ public class Test {
     public static void main(String[] args) {
 
         List<SingleWord> tempList = new ArrayList<>();
-        tempList = InputOutput.createListOfWords();
+        tempList = InputOutput.createListOfWordsOmmitProperties();
         InputOutput.writeToCSV(tempList);
         List<String> categories = tempList.stream()
                 .map(o -> o.getCategory())
