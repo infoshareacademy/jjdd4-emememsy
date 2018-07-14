@@ -20,11 +20,11 @@ public class Test {
         //symulacja trybu nauki
         //String singleWord = new Actions().pickRandomLearnMode(myList);
 
-        //SingleWord singleWord1 = new Actions().pickRandomLearnMode(myList);
+        SingleWord singleWord1 = new Actions().pickRandomLearnMode(myList);
 
         //Actions.setAllCountersToZero(myList);
 
-         InputOutput.writeToCSV(myList);
+         //InputOutput.writeToCSV(myList);
 
 
         //weryfikacja stanu listy

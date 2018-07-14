@@ -27,9 +27,10 @@
 
     <div class="container">
         <!-- Example row of columns -->
-        <h1>Słowo: ${singleWord.word}</h1>
-        <h1>Tłumaczenie: ${singleWord.translation}</h1>
-        <p><a class="btn btn-secondary" href="/choose-category?mode=learn-mode" role="button">test button &raquo;</a></p>
+        <h1>Jesteś w trybie ${mode}</h1>
+        <h1>Poprawne tłumaczenie słowa xxx to xxx.</h1>
+
+
 
 
         <!-- // for each /nowy-servlet?category=XXXXXXXX&mode=XXXXX   -->

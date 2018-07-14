@@ -33,7 +33,7 @@
 
         <#list categories>
 
-                <p><a class="btn btn-secondary" href="/choose-category?category=wszystkie" role="button">Wszystkie</a></p>
+                <p><a class="btn btn-secondary" href="/${mode}?category=wszystkie" role="button">WSZYSTKIE</a></p>
                 <#items as category>
                     <p><a class="btn btn-secondary" href="/${mode}?category=${category}" role="button">${category}</a></p>
                 </#items>

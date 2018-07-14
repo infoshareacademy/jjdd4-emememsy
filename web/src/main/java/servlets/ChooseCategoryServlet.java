@@ -50,7 +50,7 @@ public class ChooseCategoryServlet extends HttpServlet {
         List<SingleWord> tempList = dataProvider.getListofWords();
         //tempList = InputOutput.createListOfWordsOmmitProperties();
         List<String> categories = tempList.stream()
-                .map(o -> o.getCategory())
+                .map(o -> o.getCategory().toUpperCase())
                 .distinct()
                 .collect(Collectors.toList());
         String size = String.valueOf(categories.size());

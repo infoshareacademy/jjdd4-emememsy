@@ -1,15 +1,22 @@
 package data;
 
+import com.infoshareacademy.emememsy.PropertiesReader;
 import com.infoshareacademy.emememsy.SingleWord;
 import com.opencsv.CSVReader;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.HeaderColumnNameTranslateMappingStrategy;
+import com.opencsv.bean.StatefulBeanToCsv;
+import com.opencsv.bean.StatefulBeanToCsvBuilder;
+import com.opencsv.exceptions.CsvDataTypeMismatchException;
+import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.servlet.ServletContext;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Writer;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -54,5 +61,17 @@ public class DataProvider {
             System.out.println("Wystąpił problem z wczytaniem pliku CSV. Skontaktuj się z administratorem Emememsów. ");
         }
         return listOfWords;
+    }
+
+    public void writeToFile(List<SingleWord> listOfWords) throws MalformedURLException {
+        String filePath = servletContext.getResource("/WEB-INF/input_words.csv").getPath();
+        try {
+            Writer writer = new FileWriter(filePath);
+            StatefulBeanToCsv beanToCsv = new StatefulBeanToCsvBuilder(writer).build();
+            beanToCsv.write(listOfWords);
+            writer.close();
+        } catch (IOException | CsvDataTypeMismatchException | CsvRequiredFieldEmptyException e) {
+            System.out.println("Wystąpił problem z zapisaniem zmian. Skontaktuj się z administratorem.");
+        }
     }
 }
