@@ -40,37 +40,9 @@ public class ActionsWeb {
         return null;
     }
 
-
     public static void setAllCountersToZero(List<SingleWord> listOfWords) {
         listOfWords.forEach(o -> o.setCounter(0));
     }
-
-
-
-/*
-    private SingleWord pickWordCategory(List<SingleWord> listOfWords, int min, int max, String category) {
-        for (SingleWord word : listOfWords) {
-            int random = randomGenerator.nextInt(listOfWords.size());
-            SingleWord singleWord = listOfWords.get(random);
-            if (singleWord.getCounter() > min && singleWord.getCounter() < max && singleWord.getCategory().equalsIgnoreCase(category)) {
-                return singleWord;
-            }
-        }
-        return null;
-    }
-
-    private SingleWord pickWordNoCategory(List<SingleWord> listOfWords, int min, int max) {
-        for (SingleWord word : listOfWords) {
-            int random = randomGenerator.nextInt(listOfWords.size());
-            SingleWord singleWord = listOfWords.get(random);
-            if (singleWord.getCounter() > min && singleWord.getCounter() < max) {
-                return singleWord;
-            }
-        }
-        return null;
-    }
-
-    */
 
     private SingleWord pickWordCategory(List<SingleWord> listOfWords, int min, int max, String category) {
         List<SingleWord> testWords = listOfWords.stream()

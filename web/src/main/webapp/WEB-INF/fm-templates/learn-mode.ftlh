@@ -28,18 +28,18 @@
     <div class="container">
         <!-- Example row of columns -->
         <h1>Czy znasz tłumaczenie słowa: ${singleWord.word} ?</h1>
-        <h1>Tłumaczenie: ${singleWord.translation}</h1>
-
-        <p><a class="btn btn-secondary" href="/translation?mode=${mode}&category=${category}&word=${singleWord.word}&translation=${singleWord.translation}" role="button">Pokaż tłumaczenie</a></p>
-
-
-
-        <!-- // for each /nowy-servlet?category=XXXXXXXX&mode=XXXXX   -->
+        <div class="row">
+            <div class="col-md-4">
+                <p><a class="btn btn-primary" href="/translation?mode=${mode}&category=${category}&word=${singleWord.word}&translation=${singleWord.translation}" role="button">Sprawdź odpowiedź<br/>i oceń się!</a></p>
+            </div>
+            <div class="col-md-4">
+                <p><a class="btn btn-success" href="/choose-category?mode=${mode}" role="button">Zmień kategorię</a></p>
+            </div>
+            <div class="col-md-4">
+                <p><a class="btn btn-danger" href="/main" role="button">Main menu</a></p>
+            </div>
+        </div>
     </div>
-    <hr>
-
-    </div> <!-- /container -->
-
 </main>
 
 

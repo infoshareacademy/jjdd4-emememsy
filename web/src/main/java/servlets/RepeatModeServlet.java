@@ -35,21 +35,37 @@ public class RepeatModeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        String category = req.getParameter("category").toLowerCase();
+        String category = req.getParameter("category");
+        String mode = req.getParameter("mode");
+        String counter = req.getParameter("counter");
+        String word = req.getParameter("word");
 
-        if (category == null || category.isEmpty()) {
+        List<SingleWord> listOfWords = dataProvider.getListofWords();
+
+        if ((category == null || category.isEmpty()) && (mode == null || mode.isEmpty())) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             return;
         }
+
+        if (counter == null || counter.equalsIgnoreCase("remain")){
+            singleWord = actionsWeb.pickRandomRepeatMode(listOfWords, category);
+        } else if (counter.equalsIgnoreCase("remove")) {
+            SingleWord wordToAssess = listOfWords.stream().filter(s_-> s_.getWord().equalsIgnoreCase(word)).findFirst().orElse(null);
+            wordToAssess.setCounter(wordToAssess.getCounter()+100);
+            // dataProvider.writeToFile(listOfWords);
+            singleWord = actionsWeb.pickRandomRepeatMode(listOfWords, category);
+        }
+
+
+
         Template template = templateProvider.getTemplate(getServletContext(), "repeat-mode.ftlh");
 
-        List<SingleWord> listOfWords = dataProvider.getListofWords();
-        singleWord = actionsWeb.pickRandomRepeatMode(listOfWords, category);
-        dataProvider.writeToFile(listOfWords);
+
 
         Map<String, Object> model = new HashMap<>();
         model.put("category", category);
         model.put("singleWord", singleWord);
+        model.put("mode", mode);
 
         resp.setContentType("text/html;charset=UTF-8");
 

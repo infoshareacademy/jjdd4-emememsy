@@ -26,27 +26,15 @@
     </div>
 
     <div class="container">
-        <!-- Example row of columns -->
-        <h2>Jesteś w trybie ${mode}</h2>
-        <h2>Licba kategorii: ${size}</h2>
-
-
         <#list categories>
-
-                <p><a class="btn btn-secondary" href="/${mode}?category=wszystkie&mode=${mode}" role="button">WSZYSTKIE</a></p>
+            <div class="row">
+                <p><a class="btn btn-outline-primary" href="/${mode}?category=wszystkie&mode=${mode}" role="button">WSZYSTKIE</a></p>
                 <#items as category>
-                    <p><a class="btn btn-secondary" href="/${mode}?category=${category}&mode=${mode}" role="button">${category}</a></p>
+                    <p><a class="btn btn-outline-primary" href="/${mode}?category=${category}&mode=${mode}" role="button">${category}</a></p>
                 </#items>
-
+            </div>
         </#list>
-
-
-        <!-- // for each /nowy-servlet?category=XXXXXXXX&mode=XXXXX   -->
     </div>
-    <hr>
-
-    </div> <!-- /container -->
-
 </main>
 
 <footer class="container">

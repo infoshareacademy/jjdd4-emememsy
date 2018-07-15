@@ -27,21 +27,27 @@
 
     <div class="container">
         <!-- Example row of columns -->
-        <h1>Czy znasz tłumaczenie słowa: ${singleWord.word} ?</h1>
+        <h1>Poprawne tłumaczenie słowa ${word} to ${translation}.</h1>
+
         <div class="row">
-            <div class="col-md-4">
-                <p><a class="btn btn-primary" href="/translation-repeat?mode=${mode}&category=${category}&word=${singleWord.word}&translation=${singleWord.translation}" role="button">Sprawdź odpowiedź<br/>i oceń się!</a></p>
+            <div class="col-md-6">
+                <p><a class="btn btn-success btn-lg" href="/${mode}?category=${category}&mode=${mode}&word=${word}&counter=remain" role="button">Pozostaw słowo<br/>w trybie powtórek</a></p>
             </div>
-            <div class="col-md-4">
-                <p><a class="btn btn-success" href="/choose-category?mode=${mode}" role="button">Zmień kategorię</a></p>
-            </div>
-            <div class="col-md-4">
-                <p><a class="btn btn-danger" href="/main" role="button">Main menu</a></p>
+            <div class="col-md-6">
+                <p><a class="btn btn-warning btn-lg" href="/${mode}?category=${category}&mode=${mode}&word=${word}&counter=remove" role="button">Usuń słowo <br/>z trybu powtórek</a></p>
             </div>
         </div>
-    </div>
-</main>
 
+
+
+
+        <!-- // for each /nowy-servlet?category=XXXXXXXX&mode=XXXXX   -->
+    </div>
+    <hr>
+
+    </div> <!-- /container -->
+
+</main>
 
 <footer class="container">
     <p>&copy; Inject footer</p>
