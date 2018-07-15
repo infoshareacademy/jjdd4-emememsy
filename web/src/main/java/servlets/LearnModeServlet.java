@@ -34,16 +34,35 @@ public class LearnModeServlet extends HttpServlet {
 
         String category = req.getParameter("category");
         String mode = req.getParameter("mode");
+        String counter = req.getParameter("counter");
+        String word = req.getParameter("word");
 
-        if (category == null || category.isEmpty()) {
+        List<SingleWord> listOfWords = dataProvider.getListofWords();
+
+        if ((category == null || category.isEmpty()) && (mode == null || mode.isEmpty())) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             return;
         }
+
+        if (counter == null || counter.equalsIgnoreCase("bad")){
+            singleWord = actionsWeb.pickRandomLearnMode(listOfWords, category);
+        } else if (counter.equalsIgnoreCase("good")) {
+           SingleWord wordToAssess = listOfWords.stream().filter(s_-> s_.getWord().equalsIgnoreCase(word)).findFirst().orElse(null);
+           wordToAssess.setCounter(wordToAssess.getCounter()+3);
+           // dataProvider.writeToFile(listOfWords);
+            singleWord = actionsWeb.pickRandomLearnMode(listOfWords, category);
+        } else if (counter.equalsIgnoreCase("soso")) {
+            SingleWord wordToAssess = listOfWords.stream().filter(s_-> s_.getWord().equalsIgnoreCase(word)).findFirst().orElse(null);
+            wordToAssess.setCounter(wordToAssess.getCounter()+1);
+            //dataProvider.writeToFile(listOfWords);
+            singleWord = actionsWeb.pickRandomLearnMode(listOfWords, category);
+        }
+
+
+
         Template template = templateProvider.getTemplate(getServletContext(), "learn-mode.ftlh");
 
-        List<SingleWord> listOfWords = dataProvider.getListofWords();
-        singleWord = actionsWeb.pickRandomLearnMode(listOfWords, category);
-        dataProvider.writeToFile(listOfWords);
+
 
         Map<String, Object> model = new HashMap<>();
         model.put("category", category);

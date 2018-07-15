@@ -29,7 +29,9 @@
         <!-- Example row of columns -->
         <h1>Czy znasz tłumaczenie słowa: ${singleWord.word} ?</h1>
         <h1>Tłumaczenie: ${singleWord.translation}</h1>
-        <p><a class="btn btn-secondary" href="/translation?mode=${mode}" role="button">Pokaż tłumaczenie</a></p>
+
+        <p><a class="btn btn-secondary" href="/translation?mode=${mode}&category=${category}&word=${singleWord.word}&translation=${singleWord.translation}" role="button">Pokaż tłumaczenie</a></p>
+
 
 
         <!-- // for each /nowy-servlet?category=XXXXXXXX&mode=XXXXX   -->

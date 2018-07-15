@@ -33,9 +33,9 @@
 
         <#list categories>
 
-                <p><a class="btn btn-secondary" href="/${mode}?category=wszystkie" role="button">WSZYSTKIE</a></p>
+                <p><a class="btn btn-secondary" href="/${mode}?category=wszystkie&mode=${mode}" role="button">WSZYSTKIE</a></p>
                 <#items as category>
-                    <p><a class="btn btn-secondary" href="/${mode}?category=${category}" role="button">${category}</a></p>
+                    <p><a class="btn btn-secondary" href="/${mode}?category=${category}&mode=${mode}" role="button">${category}</a></p>
                 </#items>
 
         </#list>

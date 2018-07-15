@@ -29,8 +29,18 @@
         <!-- Example row of columns -->
         <h1>Słowo: ${singleWord.word}</h1>
         <h1>Tłumaczenie: ${singleWord.translation}</h1>
-        <p><a class="btn btn-secondary" href="/choose-category?mode=learn-mode" role="button">test button &raquo;</a></p>
-
+        <br/>
+        <div class="row">
+            <div class="col-md-4">
+                <p><a class="btn btn-primary" href="/${mode}?category=${category}&mode=${mode}" role="button">Następne słowo</a></p>
+            </div>
+            <div class="col-md-4">
+                <p><a class="btn btn-success" href="/choose-category?mode=${mode}" role="button">Zmień kategorię</a></p>
+            </div>
+            <div class="col-md-4">
+                <p><a class="btn btn-danger" href="/main" role="button">Main menu</a></p>
+            </div>
+        </div>
 
         <!-- // for each /nowy-servlet?category=XXXXXXXX&mode=XXXXX   -->
     </div>

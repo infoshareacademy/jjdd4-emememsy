@@ -28,7 +28,19 @@
     <div class="container">
         <!-- Example row of columns -->
         <h1>Jesteś w trybie ${mode}</h1>
-        <h1>Poprawne tłumaczenie słowa xxx to xxx.</h1>
+        <h1>Poprawne tłumaczenie słowa ${word} to ${translation}.</h1>
+
+        <div class="row">
+            <div class="col-md-4">
+                <p><a class="btn btn-success btn-lg" href="/${mode}?category=${category}&mode=${mode}&word=${word}&counter=good" role="button">Dobrze! :-)</a></p>
+            </div>
+            <div class="col-md-4">
+                <p><a class="btn btn-warning btn-lg" href="/${mode}?category=${category}&mode=${mode}&word=${word}&counter=soso" role="button">Średnio :-|</a></p>
+            </div>
+            <div class="col-md-4">
+                <p><a class="btn btn-danger btn-lg" href="/${mode}?category=${category}&mode=${mode}&word=${word}&counter=bad" role="button">Źle... :-(</a></p>
+            </div>
+        </div>
 
 
 

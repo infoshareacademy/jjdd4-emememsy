@@ -38,9 +38,9 @@ public class DisplayTranslation extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String mode = req.getParameter("mode");
-        //String category = req.getParameter("category");
-       // String word = req.getParameter("word");
-       // String translation = req.getParameter("translation");
+        String category = req.getParameter("category");
+        String word = req.getParameter("word");
+        String translation = req.getParameter("translation");
 
         if (mode == null || mode.isEmpty()) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
@@ -50,9 +50,9 @@ public class DisplayTranslation extends HttpServlet {
 
         Map<String, Object> model = new HashMap<>();
         model.put("mode", mode);
-        //model.put("category", category);
-       // model.put("word", word);
-       // model.put("translation", translation);
+        model.put("category", category);
+        model.put("word", word);
+        model.put("translation", translation);
 
         resp.setContentType("text/html;charset=UTF-8");
 
