@@ -11,20 +11,51 @@ import static org.junit.Assert.*;
 public class ActionsTest {
 
     @Test
-    public static void isSingleWordReturnedFromPickRandomBrowserMode() {
+    public void pickRandomBrowserMode() {
         //GIVEN
-        List<SingleWord> myList = new ArrayList<>();
+        List<SingleWord> myBMWordList = new ArrayList<>();
 
 
-        myList.add(new SingleWord("dom", "chair", "dom", 0));
-        myList.add(new SingleWord("ziemniak", "JEDZENIE", "something", 23));
-        myList.add(new SingleWord("test", "test", "test-category", 100));
+        myBMWordList.add(new SingleWord("dom", "chair", "dom", 0));
+        myBMWordList.add(new SingleWord("ziemniak", "JEDZENIE", "something", 23));
+        myBMWordList.add(new SingleWord("test", "test", "test-category", 100));
 
         //WHEN
         Actions actions = new Actions();
-        SingleWord result = actions.pickRandomBrowserMode(myList);
+        SingleWord result = actions.pickRandomBrowserMode(myBMWordList);
 
         //THEN
-        assertTrue(myList.contains(result));
+        assertTrue(myBMWordList.contains(result));
+    }
+
+    @Test
+    public void pickRandomLearnMode() {
+        //GIVEN
+        List<SingleWord> myLMWordList = new ArrayList<>();
+        myLMWordList.add(new SingleWord())
+
+        //WHEN
+
+        //THEN
+    }
+
+    @Test
+    public void pickRandomRepeatMode() {
+        //GIVEN
+
+        //WHEN
+
+        //THEN
+    }
+
+    @Test
+    public void showCorrectTranslation() {
+        //GIVEN
+
+        //WHEN
+
+        //THEN
     }
 }
+
+
