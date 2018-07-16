@@ -15,46 +15,54 @@ public class ActionsTest {
     @Test
     public void pickRandomBrowserMode() {
         //GIVEN
-        List<SingleWord> myBMWordList = new ArrayList<>();
+        List<SingleWord> testList = new ArrayList<>();
 
-        myBMWordList.add(new SingleWord("dom", "chair", "dom", 0));
-        myBMWordList.add(new SingleWord("ziemniak", "JEDZENIE", "something", 0));
-        myBMWordList.add(new SingleWord("test", "test", "test-category", 0));
+        testList.add(new SingleWord("dom", "chair", "dom", 0));
+        testList.add(new SingleWord("ziemniak", "JEDZENIE", "something", 0));
+        testList.add(new SingleWord("test", "test", "test-category", 0));
 
         //WHEN
         Actions actions = new Actions();
-        SingleWord result = actions.pickRandomBrowserMode(myBMWordList);
+        SingleWord result = actions.pickRandomBrowserMode(testList);
 
         //THEN
-        assertTrue(myBMWordList.contains(result));
+        assertTrue(testList.contains(result));
     }
 
-    //testing if SingleWord obj is for LearnMode (counter is between 1 and 4)
+    //testing if SingleWord obj is for LearnMode (counter is between 1 and 3 including)
     @Test
     public void pickRandomLearnMode() {
         //GIVEN
-        List<SingleWord> myLMWordList = new ArrayList<>();
+        List<SingleWord> testList = new ArrayList<>();
 
-        myLMWordList.add(new SingleWord("test1", "test1", "test1", 1));
-        myLMWordList.add(new SingleWord("test2", "test2", "test2", 2));
-        myLMWordList.add(new SingleWord("test3", "test3", "test3", 3));
-        myLMWordList.add(new SingleWord("test4", "test4", "test4", 4));
+        testList.add(new SingleWord("test1", "test1", "test1", 1));
+        testList.add(new SingleWord("test2", "test2", "test2", 2));
+        testList.add(new SingleWord("test3", "test3", "test3", 3));
 
         //WHEN
         Actions actions = new Actions();
-        SingleWord result = actions.pickRandomLearnMode(myLMWordList);
+        SingleWord result = actions.pickRandomLearnMode(testList);
 
         //THEN
-        assertTrue(myLMWordList.contains(result));
+        assertTrue(testList.contains(result));
     }
 
+    //testing if SingleWord obj is for RepeatMode (counter is between 4 and 98 including)
     @Test
     public void pickRandomRepeatMode() {
         //GIVEN
+        List<SingleWord> testList = new ArrayList<>();
+
+        testList.add(new SingleWord("test1", "test1", "test1", 4));
+        testList.add(new SingleWord("test2", "test2", "test2", 50));
+        testList.add(new SingleWord("test3", "test3", "test3", 99));
 
         //WHEN
+        Actions actions = new Actions();
+        SingleWord result = actions.pickRandomRepeatMode(testList);
 
         //THEN
+        assertTrue(testList.contains(result));
     }
 
     @Test
