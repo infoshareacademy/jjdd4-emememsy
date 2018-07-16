@@ -17,8 +17,8 @@ public class ActionsTest {
 
 
         myList.add(new SingleWord("dom", "chair", "dom", 0));
-        myList.add(new SingleWord("ziemniak", "JEDZENIE", "", 0));
-        myList.add(new SingleWord("", "", "", 0));
+        myList.add(new SingleWord("ziemniak", "JEDZENIE", "something", 23));
+        myList.add(new SingleWord("test", "test", "test-category", 100));
 
         //WHEN
         Actions actions = new Actions();
