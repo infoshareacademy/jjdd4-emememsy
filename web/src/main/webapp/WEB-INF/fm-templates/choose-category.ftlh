@@ -28,7 +28,7 @@
     <div class="container">
         <#list categories>
             <div class="row">
-                <p><a class="btn btn-outline-primary" href="/${mode}?category=wszystkie&mode=${mode}" role="button">WSZYSTKIE</a></p>
+                <p><a class="btn btn-outline-primary"  href="/${mode}?category=wszystkie&mode=${mode}" role="button">WSZYSTKIE</a></p>
                 <#items as category>
                     <p><a class="btn btn-outline-primary" href="/${mode}?category=${category}&mode=${mode}" role="button">${category}</a></p>
                 </#items>

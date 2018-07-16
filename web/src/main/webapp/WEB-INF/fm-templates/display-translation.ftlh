@@ -27,7 +27,6 @@
 
     <div class="container">
         <!-- Example row of columns -->
-        <h1>Jesteś w trybie ${mode}</h1>
         <h1>Poprawne tłumaczenie słowa ${word} to ${translation}.</h1>
 
         <div class="row">

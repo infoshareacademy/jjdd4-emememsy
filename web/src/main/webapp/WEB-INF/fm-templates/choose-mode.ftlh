@@ -34,12 +34,12 @@
             </div>
             <div class="col-md-4">
                 <h2>Nauka</h2>
-                <p>To drugi tryb nauki. </p>
+                <p>To drugi tryb nauki. W tym trybie wyświetlimy słowa, które poznałeś w trybie przeglądania. Dokonuj uczciwie oceny :) </p>
                 <p><a class="btn btn-secondary" href="/choose-category?mode=learn-mode" role="button">Start &raquo;</a></p>
             </div>
             <div class="col-md-4">
                 <h2>Powtórka</h2>
-                <p>To trzeci tryb nauki.</p>
+                <p>To trzeci i ostatni tryb nauki. Tutaj pojawią się słowa, które już znasz. Możesz zadecydować, czy chcesz je pozostawić aby móc do nich wrócić w przyszłości, czy chcesz je trwale usunąć z programu.</p>
                 <p><a class="btn btn-secondary" href="/choose-category?mode=repeat-mode" role="button">Start &raquo;</a></p>
             </div>
         </div>

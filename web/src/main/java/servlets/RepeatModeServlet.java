@@ -52,15 +52,11 @@ public class RepeatModeServlet extends HttpServlet {
         } else if (counter.equalsIgnoreCase("remove")) {
             SingleWord wordToAssess = listOfWords.stream().filter(s_-> s_.getWord().equalsIgnoreCase(word)).findFirst().orElse(null);
             wordToAssess.setCounter(wordToAssess.getCounter()+100);
-            // dataProvider.writeToFile(listOfWords);
+            dataProvider.writeToFile(listOfWords);
             singleWord = actionsWeb.pickRandomRepeatMode(listOfWords, category);
         }
 
-
-
         Template template = templateProvider.getTemplate(getServletContext(), "repeat-mode.ftlh");
-
-
 
         Map<String, Object> model = new HashMap<>();
         model.put("category", category);
