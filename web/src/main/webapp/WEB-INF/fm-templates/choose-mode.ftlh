@@ -30,17 +30,17 @@
             <div class="col-md-4">
                 <h2>Przeglądanie</h2>
                 <p>To pierwszy tryb nauki nowych słów. W tym trybie wyświetlimy Ci parę słowo - tłumaczenie. Nie spiesz się i postaraj się zapamiętać dane słowo. W tym trybie będzie ono dostępne tylko raz!</p>
-                <p><a class="btn btn-secondary" href="/choose-category?mode=browse-mode" role="button">Start &raquo;</a></p>
+                <p><a class="btn btn-primary" href="/choose-category?mode=browse-mode" role="button">Start &raquo;</a></p>
             </div>
             <div class="col-md-4">
                 <h2>Nauka</h2>
                 <p>To drugi tryb nauki. W tym trybie wyświetlimy słowa, które poznałeś w trybie przeglądania. Dokonuj uczciwie oceny :) </p>
-                <p><a class="btn btn-secondary" href="/choose-category?mode=learn-mode" role="button">Start &raquo;</a></p>
+                <p><a class="btn btn-primary" href="/choose-category?mode=learn-mode" role="button">Start &raquo;</a></p>
             </div>
             <div class="col-md-4">
                 <h2>Powtórka</h2>
                 <p>To trzeci i ostatni tryb nauki. Tutaj pojawią się słowa, które już znasz. Możesz zadecydować, czy chcesz je pozostawić aby móc do nich wrócić w przyszłości, czy chcesz je trwale usunąć z programu.</p>
-                <p><a class="btn btn-secondary" href="/choose-category?mode=repeat-mode" role="button">Start &raquo;</a></p>
+                <p><a class="btn btn-primary" href="/choose-category?mode=repeat-mode" role="button">Start &raquo;</a></p>
             </div>
         </div>
 
