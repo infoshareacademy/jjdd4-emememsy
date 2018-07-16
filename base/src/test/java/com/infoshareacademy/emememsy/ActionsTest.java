@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 public class ActionsTest {
 
     @Test
-    public static void isSingleWordInPickRandomBrowserMode() {
+    public static void isSingleWordReturnedFromPickRandomBrowserMode() {
         //GIVEN
         List<SingleWord> myList = new ArrayList<>();
 

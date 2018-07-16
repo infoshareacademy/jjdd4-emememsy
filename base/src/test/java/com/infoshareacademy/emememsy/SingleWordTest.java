@@ -9,15 +9,15 @@ public class SingleWordTest {
     @Test
     public void toLowerCase() {
         // given
-        SingleWord subject = new SingleWord("Dupa", "Ass", "Niezwykle", 1);
+        SingleWord subject = new SingleWord("TEST", "TEST", "TEST", 1);
 
         // when
         subject.toLowerCase();
 
         // then
-        assertTrue(subject.getWord().equals("dupa"));
-        assertTrue(subject.getTranslation().equals("ass"));
-        assertTrue(subject.getCategory().equals("niezwykle"));
+        assertTrue(subject.getWord().equals("test"));
+        assertTrue(subject.getTranslation().equals("test"));
+        assertTrue(subject.getCategory().equals("test"));
 
     }
 }
