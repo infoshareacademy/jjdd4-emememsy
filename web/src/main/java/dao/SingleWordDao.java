@@ -36,7 +36,14 @@ public class SingleWordDao {
 
     public List<SingleWord> findAll() {
         final Query query = entityManager.createQuery("SELECT s FROM SingleWord s");
-
         return query.getResultList();
     }
+
+    public SingleWord findByCategory(String category) {
+        final Query query = entityManager.createNativeQuery(
+            "SELECT * FROM WORDS WHERE category = CZŁOWIEK ORDER BY RAND() LIMIT 1");
+        return (SingleWord) query.getResultList();
+    }
+
+
 }

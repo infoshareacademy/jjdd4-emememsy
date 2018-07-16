@@ -2,6 +2,7 @@ package servlets;
 
         import com.infoshareacademy.emememsy.*;
         import com.infoshareacademy.emememsy.SingleWord;
+        import dao.SingleWordDao;
         import data.DataProvider;
         import freemarker.TemplateProvider;
         import freemarker.template.Template;
@@ -22,11 +23,9 @@ public class LearnModeServlet extends HttpServlet {
     @Inject
     private TemplateProvider templateProvider;
     @Inject
-    private DataProvider dataProvider;
-    @Inject
     private ActionsWeb actionsWeb;
-
-    private SingleWord singleWord;
+    @Inject
+    private SingleWordDao singleWordDao;
 
 
     @Override
@@ -34,35 +33,15 @@ public class LearnModeServlet extends HttpServlet {
 
         String category = req.getParameter("category");
         String mode = req.getParameter("mode");
-        String counter = req.getParameter("counter");
-        String word = req.getParameter("word");
-
-        List<SingleWord> listOfWords = dataProvider.getListofWords();
 
         if ((category == null || category.isEmpty()) && (mode == null || mode.isEmpty())) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             return;
         }
 
-        if (counter == null || counter.equalsIgnoreCase("bad")){
-            singleWord = actionsWeb.pickRandomLearnMode(listOfWords, category);
-        } else if (counter.equalsIgnoreCase("good")) {
-           SingleWord wordToAssess = listOfWords.stream().filter(s_-> s_.getWord().equalsIgnoreCase(word)).findFirst().orElse(null);
-           wordToAssess.setCounter(wordToAssess.getCounter()+3);
-           dataProvider.writeToFile(listOfWords);
-            singleWord = actionsWeb.pickRandomLearnMode(listOfWords, category);
-        } else if (counter.equalsIgnoreCase("soso")) {
-            SingleWord wordToAssess = listOfWords.stream().filter(s_-> s_.getWord().equalsIgnoreCase(word)).findFirst().orElse(null);
-            wordToAssess.setCounter(wordToAssess.getCounter()+1);
-            dataProvider.writeToFile(listOfWords);
-            singleWord = actionsWeb.pickRandomLearnMode(listOfWords, category);
-        }
-
-
+        SingleWord singleWord = selectWord(req, resp);
 
         Template template = templateProvider.getTemplate(getServletContext(), "learn-mode.ftlh");
-
-
 
         Map<String, Object> model = new HashMap<>();
         model.put("category", category);
@@ -76,6 +55,31 @@ public class LearnModeServlet extends HttpServlet {
         } catch (TemplateException e) {
             e.printStackTrace();
         }
+    }
+
+    private SingleWord selectWord (HttpServletRequest req, HttpServletResponse resp){
+        String category = req.getParameter("category");
+        String counter = req.getParameter("counter");
+        String word = req.getParameter("word");
+        SingleWord singleWord = new SingleWord();
+        List<SingleWord> listOfWords = singleWordDao.findAll();
+
+        if (counter == null || counter.equalsIgnoreCase("bad")){
+            singleWord = actionsWeb.pickRandomLearnMode(listOfWords, category);
+            return singleWord;
+        } else if (counter.equalsIgnoreCase("good")) {
+            SingleWord wordToAssess = listOfWords.stream().filter(s_-> s_.getWord().equalsIgnoreCase(word)).findFirst().orElse(null);
+            wordToAssess.setCounter(wordToAssess.getCounter()+3);
+            singleWordDao.update(wordToAssess);
+            singleWord = actionsWeb.pickRandomLearnMode(listOfWords, category);
+            return singleWord;
+        } else if (counter.equalsIgnoreCase("soso")) {
+            SingleWord wordToAssess = listOfWords.stream().filter(s_-> s_.getWord().equalsIgnoreCase(word)).findFirst().orElse(null);
+            wordToAssess.setCounter(wordToAssess.getCounter()+1);
+            singleWordDao.update(wordToAssess);
+            singleWord = actionsWeb.pickRandomLearnMode(listOfWords, category);
+        }
+        return singleWord;
     }
 }
 

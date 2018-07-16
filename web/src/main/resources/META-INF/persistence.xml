@@ -17,6 +17,7 @@
       <property name="hibernate.hbm2ddl.auto" value="create"/>
       <property name="hibernate.connection.useUnicode" value="true"/>
       <property name="hibernate.connection.characterEncoding" value="UTF-8"/>
+      <property name="hibernate.connection.url" value="jdbc:mysql://0.0.0.0:6603/mywords?useLegacyDatetimeCode=false&amp;serverTimezone=Europe/Warsaw&amp;Unicode=yes&amp;characterEncoding=UTF-8"/>
     </properties>
   </persistence-unit>
 

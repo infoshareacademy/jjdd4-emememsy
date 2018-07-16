@@ -2,6 +2,7 @@ package servlets;
 
 import com.infoshareacademy.emememsy.*;
 import com.infoshareacademy.emememsy.SingleWord;
+import dao.SingleWordDao;
 import data.DataProvider;
 import freemarker.TemplateProvider;
 import freemarker.template.Template;
@@ -24,11 +25,9 @@ public class RepeatModeServlet extends HttpServlet {
     @Inject
     private TemplateProvider templateProvider;
     @Inject
-    private DataProvider dataProvider;
-    @Inject
     private ActionsWeb actionsWeb;
-
-    private SingleWord singleWord;
+    @Inject
+    private SingleWordDao singleWordDao;
 
 
     @Override
@@ -36,24 +35,13 @@ public class RepeatModeServlet extends HttpServlet {
 
         String category = req.getParameter("category");
         String mode = req.getParameter("mode");
-        String counter = req.getParameter("counter");
-        String word = req.getParameter("word");
-
-        List<SingleWord> listOfWords = dataProvider.getListofWords();
 
         if ((category == null || category.isEmpty()) && (mode == null || mode.isEmpty())) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             return;
         }
 
-        if (counter == null || counter.equalsIgnoreCase("remain")){
-            singleWord = actionsWeb.pickRandomRepeatMode(listOfWords, category);
-        } else if (counter.equalsIgnoreCase("remove")) {
-            SingleWord wordToAssess = listOfWords.stream().filter(s_-> s_.getWord().equalsIgnoreCase(word)).findFirst().orElse(null);
-            wordToAssess.setCounter(wordToAssess.getCounter()+100);
-            dataProvider.writeToFile(listOfWords);
-            singleWord = actionsWeb.pickRandomRepeatMode(listOfWords, category);
-        }
+        SingleWord singleWord = selectWord(req, resp);
 
         Template template = templateProvider.getTemplate(getServletContext(), "repeat-mode.ftlh");
 
@@ -69,6 +57,24 @@ public class RepeatModeServlet extends HttpServlet {
         } catch (TemplateException e) {
             e.printStackTrace();
         }
+    }
+
+    private SingleWord selectWord (HttpServletRequest req, HttpServletResponse resp){
+        String category = req.getParameter("category");
+        String counter = req.getParameter("counter");
+        String word = req.getParameter("word");
+        SingleWord singleWord = new SingleWord();
+        List<SingleWord> listOfWords = singleWordDao.findAll();
+
+        if (counter == null || counter.equalsIgnoreCase("remain")){
+            singleWord = actionsWeb.pickRandomRepeatMode(listOfWords, category);
+        } else if (counter.equalsIgnoreCase("remove")) {
+            SingleWord wordToAssess = listOfWords.stream().filter(s_-> s_.getWord().equalsIgnoreCase(word)).findFirst().orElse(null);
+            wordToAssess.setCounter(wordToAssess.getCounter()+100);
+            singleWordDao.update(wordToAssess);
+            singleWord = actionsWeb.pickRandomRepeatMode(listOfWords, category);
+        }
+        return singleWord;
     }
 }
 
