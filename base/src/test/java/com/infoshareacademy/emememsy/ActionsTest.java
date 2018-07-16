@@ -28,8 +28,3 @@ public class ActionsTest {
         assertTrue(myList.contains(result));
     }
 }
-
-// "DOM","4","CHAIR","KRZESŁO"
-// "JEDZENIE","0","TOMATO","POMIDOR"
-//"JEDZENIE","5","POTATO","ZIEMNIAK"
-//"JEDZENIE","4","CUCUMBER","OGÓREK"
