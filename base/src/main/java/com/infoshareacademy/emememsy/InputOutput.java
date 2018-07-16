@@ -8,6 +8,7 @@ import com.opencsv.bean.StatefulBeanToCsvBuilder;
 import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 
+import javax.enterprise.context.RequestScoped;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -17,10 +18,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
+@RequestScoped
 public class InputOutput {
 
-    public static Map<String, String> properties = PropertiesReader.read("config.properties");
+    public static Map<String, String> properties = PropertiesReader.read("/home/monika/config.properties");
 
     private static HeaderColumnNameTranslateMappingStrategy<SingleWord> strategy;
     private static Map<String, String> columnMapping = new HashMap<>();
@@ -38,7 +39,7 @@ public class InputOutput {
 
 
     public static void checkReader() throws IOException {
-        CSVReader reader = new CSVReader(new FileReader(PropertiesReader.read("config.properties").get(PropertiesReader.PATH_KEY)));
+        CSVReader reader = new CSVReader(new FileReader(PropertiesReader.read("/home/monika/config.properties").get(PropertiesReader.PATH_KEY)));
         String[] nextLine;
         while ((nextLine = reader.readNext()) != null) {
             System.out.println(nextLine[0] + " " + nextLine[1] + " " + nextLine[2] + " " + nextLine[3]);
@@ -47,6 +48,19 @@ public class InputOutput {
 
     private static boolean isUppercase(Map<String, String> properties) {
         return properties.get(PropertiesReader.FORMATTING_KEY).equals("toUpperCase");
+    }
+
+    public static List<SingleWord> createListOfWordsOmmitProperties(){
+        List<SingleWord> listOfWords = new ArrayList<>();
+        try {
+            CSVReader reader = new CSVReader(new FileReader("/home/monika/input_words.csv"));
+            CsvToBean<SingleWord> csvToBean = new CsvToBean<>();
+            listOfWords.addAll(csvToBean.parse(strategy, reader));
+
+        } catch (IOException | NumberFormatException e) {
+            System.out.println("Wystąpił problem z wczytaniem pliku CSV. Skontaktuj się z administratorem Emememsów. ");
+        }
+        return listOfWords;
     }
 
     public static List<SingleWord> createListOfWords() {
@@ -70,7 +84,7 @@ public class InputOutput {
 
     public static void writeToCSV(List<SingleWord> listOfWords) {
         try {
-            Writer writer = new FileWriter(PropertiesReader.read("config.properties").get(PropertiesReader.PATH_KEY));
+            Writer writer = new FileWriter(PropertiesReader.read("/home/monika/config.properties").get(PropertiesReader.PATH_KEY));
             StatefulBeanToCsv beanToCsv = new StatefulBeanToCsvBuilder(writer).build();
             beanToCsv.write(listOfWords);
             writer.close();
