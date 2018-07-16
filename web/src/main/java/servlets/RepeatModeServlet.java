@@ -1,6 +1,7 @@
 package servlets;
 
 import com.infoshareacademy.emememsy.*;
+import com.infoshareacademy.emememsy.model.SingleWord;
 import data.DataProvider;
 import freemarker.TemplateProvider;
 import freemarker.template.Template;
@@ -13,11 +14,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 @WebServlet("/repeat-mode")
 public class RepeatModeServlet extends HttpServlet {

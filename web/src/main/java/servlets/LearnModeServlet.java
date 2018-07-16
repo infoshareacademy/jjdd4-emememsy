@@ -1,6 +1,7 @@
 package servlets;
 
         import com.infoshareacademy.emememsy.*;
+        import com.infoshareacademy.emememsy.model.SingleWord;
         import data.DataProvider;
         import freemarker.TemplateProvider;
         import freemarker.template.Template;
@@ -14,7 +15,6 @@ package servlets;
         import javax.servlet.http.HttpServletResponse;
         import java.io.IOException;
         import java.util.*;
-        import java.util.stream.Collectors;
 
 @WebServlet("/learn-mode")
 public class LearnModeServlet extends HttpServlet {
