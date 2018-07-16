@@ -1,7 +1,7 @@
 package servlets;
 
 import com.infoshareacademy.emememsy.InputOutput;
-import com.infoshareacademy.emememsy.model.SingleWord;
+import com.infoshareacademy.emememsy.SingleWord;
 
 import java.util.ArrayList;
 import java.util.List;

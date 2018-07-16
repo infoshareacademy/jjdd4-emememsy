@@ -3,7 +3,7 @@ package com.infoshareacademy.emememsy.modes;
 import com.infoshareacademy.emememsy.Actions;
 import com.infoshareacademy.emememsy.InputOutput;
 import com.infoshareacademy.emememsy.NumberFormatValidator;
-import com.infoshareacademy.emememsy.model.SingleWord;
+import com.infoshareacademy.emememsy.SingleWord;
 
 import java.util.List;
 import java.util.Scanner;

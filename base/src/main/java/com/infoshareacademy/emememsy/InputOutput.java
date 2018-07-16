@@ -1,6 +1,5 @@
 package com.infoshareacademy.emememsy;
 
-import com.infoshareacademy.emememsy.model.SingleWord;
 import com.opencsv.CSVReader;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.HeaderColumnNameTranslateMappingStrategy;

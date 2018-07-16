@@ -1,8 +1,9 @@
-package com.infoshareacademy.emememsy.model;
+package com.infoshareacademy.emememsy;
 
 import com.opencsv.bean.CsvBindByName;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @Entity
@@ -16,17 +17,24 @@ public class SingleWord{
 
     @CsvBindByName(column = "word")
     @Column(name = "word")
+    @NotNull
     private String word;
 
     @CsvBindByName(column = "translation")
     @Column(name = "translation")
+    @NotNull
     private String translation;
 
     @CsvBindByName(column = "category")
     @Column(name = "category")
+    @NotNull
     private String category;
+
     @CsvBindByName(column = "counter")
+    @Column(name = "counter")
+    @NotNull
     private int counter;
+
 
     public SingleWord() {
     }
@@ -88,6 +96,14 @@ public class SingleWord{
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     @Override

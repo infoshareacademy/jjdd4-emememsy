@@ -1,11 +1,10 @@
 package com.infoshareacademy.model;
 
-import com.infoshareacademy.emememsy.model.SingleWord;
+import com.infoshareacademy.emememsy.SingleWord;
 
 import static java.util.stream.Collectors.joining;
 
 import java.util.List;
-import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;

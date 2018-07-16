@@ -1,7 +1,7 @@
 package servlets;
 
 import com.infoshareacademy.emememsy.*;
-import com.infoshareacademy.emememsy.model.SingleWord;
+import com.infoshareacademy.emememsy.SingleWord;
 import data.DataProvider;
 import freemarker.TemplateProvider;
 import freemarker.template.Template;
@@ -25,9 +25,6 @@ public class BrowseModeServlet extends HttpServlet {
     private DataProvider dataProvider;
     @Inject
     private ActionsWeb actionsWeb;
-    @Inject
-    private SingleWord singleWord;
-
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -45,7 +42,7 @@ public class BrowseModeServlet extends HttpServlet {
         Template template = templateProvider.getTemplate(getServletContext(), "browse-mode.ftlh");
 
         List<SingleWord> listOfWords = dataProvider.getListofWords();
-        singleWord = actionsWeb.pickRandomBrowserMode(listOfWords, category);
+        SingleWord singleWord = actionsWeb.pickRandomBrowserMode(listOfWords, category);
         singleWord.setCounter(singleWord.getCounter()+1);
         dataProvider.writeToFile(listOfWords);
 

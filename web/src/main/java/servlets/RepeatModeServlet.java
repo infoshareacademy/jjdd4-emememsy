@@ -1,7 +1,7 @@
 package servlets;
 
 import com.infoshareacademy.emememsy.*;
-import com.infoshareacademy.emememsy.model.SingleWord;
+import com.infoshareacademy.emememsy.SingleWord;
 import data.DataProvider;
 import freemarker.TemplateProvider;
 import freemarker.template.Template;
@@ -27,7 +27,7 @@ public class RepeatModeServlet extends HttpServlet {
     private DataProvider dataProvider;
     @Inject
     private ActionsWeb actionsWeb;
-    @Inject
+
     private SingleWord singleWord;
 
 

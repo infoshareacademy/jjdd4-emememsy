@@ -2,7 +2,7 @@ package servlets;
 
 import com.infoshareacademy.emememsy.Actions;
 import com.infoshareacademy.emememsy.PropertiesReader;
-import com.infoshareacademy.emememsy.model.SingleWord;
+import com.infoshareacademy.emememsy.SingleWord;
 import data.DataProvider;
 import freemarker.TemplateProvider;
 import freemarker.template.Template;

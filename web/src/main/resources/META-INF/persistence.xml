@@ -7,6 +7,8 @@
   <persistence-unit name="emememsyPU" transaction-type="JTA">
     <jta-data-source>java:ds/emememsyds</jta-data-source>
 
+    <class>com.infoshareacademy.emememsy.SingleWord</class>
+
     <properties>
       <!-- Hibernate settings -->
       <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
