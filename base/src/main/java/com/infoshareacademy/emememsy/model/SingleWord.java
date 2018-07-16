@@ -1,18 +1,29 @@
-package com.infoshareacademy.emememsy;
+package com.infoshareacademy.emememsy.model;
 
 import com.opencsv.bean.CsvBindByName;
 
-import javax.enterprise.context.RequestScoped;
+import javax.persistence.*;
 import java.util.Objects;
 
-@RequestScoped
-public class SingleWord implements Comparable {
+@Entity
+@Table(name = "WORDS")
+public class SingleWord{
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
 
     @CsvBindByName(column = "word")
+    @Column(name = "word")
     private String word;
+
     @CsvBindByName(column = "translation")
+    @Column(name = "translation")
     private String translation;
+
     @CsvBindByName(column = "category")
+    @Column(name = "category")
     private String category;
     @CsvBindByName(column = "counter")
     private int counter;
@@ -59,10 +70,6 @@ public class SingleWord implements Comparable {
         return translation;
     }
 
-    public String getCorrectTranslation() {
-        return "Correct translation: " + translation;
-    }
-
     public void setTranslation(String translation) {
         this.translation = translation;
     }
@@ -103,15 +110,6 @@ public class SingleWord implements Comparable {
                 Objects.equals(translation, that.translation);
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(word, translation, counter);
-    }
-
-    @Override
-    public int compareTo(Object o) {
-        return this.getWord().compareTo(((SingleWord) o).getWord());
-    }
 
     public void toLowerCase() {
         this.category = this.category.toLowerCase();

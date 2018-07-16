@@ -1,5 +1,6 @@
 package com.infoshareacademy.emememsy;
 
+import com.infoshareacademy.emememsy.model.SingleWord;
 import com.infoshareacademy.emememsy.modes.ModeLauncher;
 
 import java.util.ArrayList;

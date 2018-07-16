@@ -1,5 +1,7 @@
 package com.infoshareacademy.emememsy;
 
+import com.infoshareacademy.emememsy.model.SingleWord;
+
 import javax.enterprise.context.RequestScoped;
 import java.util.List;
 import java.util.Random;

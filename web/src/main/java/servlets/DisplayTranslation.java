@@ -2,7 +2,7 @@ package servlets;
 
 import com.infoshareacademy.emememsy.Actions;
 import com.infoshareacademy.emememsy.PropertiesReader;
-import com.infoshareacademy.emememsy.SingleWord;
+import com.infoshareacademy.emememsy.model.SingleWord;
 import data.DataProvider;
 import freemarker.TemplateProvider;
 import freemarker.template.Template;
@@ -16,9 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 @WebServlet("/translation")
 public class DisplayTranslation extends HttpServlet {
