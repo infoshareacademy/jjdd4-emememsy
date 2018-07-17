@@ -21,7 +21,7 @@
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
-        <!--   inject banner here  -->
+        <#include "macros/welcome-banner.ftlh">
     </div>
 
     <div class="container">
@@ -51,7 +51,7 @@
 </main>
 
 <footer class="container">
-    <p>&copy; Inject footer</p>
+    <#include "macros/copyright-footer.ftlh">
 </footer>
 
 <!-- Bootstrap core JavaScript
