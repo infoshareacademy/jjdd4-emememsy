@@ -68,10 +68,14 @@ public class ActionsTest {
     @Test
     public void showCorrectTranslation() {
         //GIVEN
+        SingleWord singleWord = new SingleWord("word", "translation", "category", 3);
 
         //WHEN
+        Actions actions = new Actions();
+        String result = actions.showCorrectTranslation(singleWord);
 
         //THEN
+        assertTrue(result.equals("Poprawne tłumaczenie to: translation"));
     }
 }
 

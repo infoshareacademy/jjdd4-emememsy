@@ -40,7 +40,7 @@ public class InputOutput {
 
 
     public static void checkReader() throws IOException {
-        CSVReader reader = new CSVReader(new FileReader(PropertiesReader.read("/home/monika/config.properties").get(PropertiesReader.PATH_KEY)));
+        CSVReader reader = new CSVReader(new FileReader(PropertiesReader.read("config.properties").get(PropertiesReader.PATH_KEY)));
         String[] nextLine;
         while ((nextLine = reader.readNext()) != null) {
             System.out.println(nextLine[0] + " " + nextLine[1] + " " + nextLine[2] + " " + nextLine[3]);
@@ -85,7 +85,7 @@ public class InputOutput {
 
     public static void writeToCSV(List<SingleWord> listOfWords) {
         try {
-            Writer writer = new FileWriter(PropertiesReader.read("/home/monika/config.properties").get(PropertiesReader.PATH_KEY));
+            Writer writer = new FileWriter(PropertiesReader.read("config.properties").get(PropertiesReader.PATH_KEY));
             StatefulBeanToCsv beanToCsv = new StatefulBeanToCsvBuilder(writer).build();
             beanToCsv.write(listOfWords);
             writer.close();
