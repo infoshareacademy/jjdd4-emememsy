@@ -1,8 +1,6 @@
 package servlets;
 
-import com.infoshareacademy.emememsy.Actions;
-import com.infoshareacademy.emememsy.PropertiesReader;
-import com.infoshareacademy.emememsy.model.SingleWord;
+import com.infoshareacademy.emememsy.SingleWord;
 import data.DataProvider;
 import freemarker.TemplateProvider;
 import freemarker.template.Template;
@@ -29,9 +27,6 @@ public class ChooseCategoryServlet extends HttpServlet {
     @Inject
     private DataProvider dataProvider;
 
-    private Actions actions;
-    private PropertiesReader propertiesReader;
-    private SingleWord singleWord;
 
 
     @Override

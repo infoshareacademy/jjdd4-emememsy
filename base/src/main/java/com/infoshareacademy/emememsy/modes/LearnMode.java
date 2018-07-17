@@ -1,7 +1,7 @@
 package com.infoshareacademy.emememsy.modes;
 
 import com.infoshareacademy.emememsy.*;
-import com.infoshareacademy.emememsy.model.SingleWord;
+import com.infoshareacademy.emememsy.SingleWord;
 
 import java.util.List;
 import java.util.Scanner;

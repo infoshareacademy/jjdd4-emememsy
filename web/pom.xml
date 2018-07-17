@@ -90,7 +90,7 @@
                 <artifactId>wildfly-maven-plugin</artifactId>
                 <version>1.2.1.Final</version>
                 <configuration>
-                    <name>myWords-web-1.0-SNAPSHOT.war</name>
+                    <name>myWords.war</name>
                 </configuration>
                 <executions>
                     <execution>

@@ -1,7 +1,5 @@
 package com.infoshareacademy.emememsy;
 
-import com.infoshareacademy.emememsy.model.SingleWord;
-
 import javax.enterprise.context.RequestScoped;
 import java.util.List;
 import java.util.Random;
@@ -76,7 +74,7 @@ public class ActionsWeb {
         } else {
             return pickWordCategory(listOfWords,0, 4, category);
         }
-    };
+    }
 
     public SingleWord pickRandomRepeatMode(List<SingleWord> listOfWords, String category) {
         if (category.equalsIgnoreCase("wszystkie")) {
@@ -84,6 +82,6 @@ public class ActionsWeb {
         } else {
             return pickWordCategory(listOfWords,3, 99, category);
         }
-    };
+    }
 
 }

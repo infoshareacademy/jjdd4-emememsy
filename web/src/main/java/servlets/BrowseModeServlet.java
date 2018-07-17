@@ -1,7 +1,8 @@
 package servlets;
 
 import com.infoshareacademy.emememsy.*;
-import com.infoshareacademy.emememsy.model.SingleWord;
+import com.infoshareacademy.emememsy.SingleWord;
+import dao.SingleWordDao;
 import data.DataProvider;
 import freemarker.TemplateProvider;
 import freemarker.template.Template;
@@ -22,32 +23,25 @@ public class BrowseModeServlet extends HttpServlet {
     @Inject
     private TemplateProvider templateProvider;
     @Inject
-    private DataProvider dataProvider;
+    private SingleWordDao singleWordDao;
     @Inject
     private ActionsWeb actionsWeb;
-    @Inject
-    private SingleWord singleWord;
-
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String category = req.getParameter("category");
         String mode = req.getParameter("mode");
-        /*
 
         if (category == null || category.isEmpty()) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             return;
         }
 
-        */
         Template template = templateProvider.getTemplate(getServletContext(), "browse-mode.ftlh");
 
-        List<SingleWord> listOfWords = dataProvider.getListofWords();
-        singleWord = actionsWeb.pickRandomBrowserMode(listOfWords, category);
-        singleWord.setCounter(singleWord.getCounter()+1);
-        dataProvider.writeToFile(listOfWords);
+        SingleWord singleWord = selectWord(req, resp);
+        singleWordDao.update(singleWord);
 
         Map<String, Object> model = new HashMap<>();
         model.put("category", category);
@@ -61,6 +55,13 @@ public class BrowseModeServlet extends HttpServlet {
         } catch (TemplateException e) {
             e.printStackTrace();
         }
+    }
+
+    private SingleWord selectWord (HttpServletRequest req, HttpServletResponse resp){
+        List<SingleWord> listOfWords = singleWordDao.findAll();
+        SingleWord singleWord = actionsWeb.pickRandomBrowserMode(listOfWords, req.getParameter("category"));
+        singleWord.setCounter(singleWord.getCounter()+1);
+        return singleWord;
     }
 }
 

@@ -7,12 +7,17 @@
   <persistence-unit name="emememsyPU" transaction-type="JTA">
     <jta-data-source>java:ds/emememsyds</jta-data-source>
 
+    <class>com.infoshareacademy.emememsy.SingleWord</class>
+
     <properties>
       <!-- Hibernate settings -->
       <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
       <property name="hibernate.show_sql" value="true"/>
       <property name="hibernate.format_sql" value="true"/>
       <property name="hibernate.hbm2ddl.auto" value="create"/>
+      <property name="hibernate.connection.useUnicode" value="true"/>
+      <property name="hibernate.connection.characterEncoding" value="UTF-8"/>
+      <property name="hibernate.connection.url" value="jdbc:mysql://0.0.0.0:6603/mywords?useLegacyDatetimeCode=false&amp;serverTimezone=Europe/Warsaw&amp;Unicode=yes&amp;characterEncoding=UTF-8"/>
     </properties>
   </persistence-unit>
 
