@@ -74,7 +74,7 @@ public class ActionsWeb {
         } else {
             return pickWordCategory(listOfWords,0, 4, category);
         }
-    };
+    }
 
     public SingleWord pickRandomRepeatMode(List<SingleWord> listOfWords, String category) {
         if (category.equalsIgnoreCase("wszystkie")) {
@@ -82,6 +82,6 @@ public class ActionsWeb {
         } else {
             return pickWordCategory(listOfWords,3, 99, category);
         }
-    };
+    }
 
 }

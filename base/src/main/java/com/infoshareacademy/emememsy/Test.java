@@ -14,26 +14,12 @@ public class Test {
     private void run() {
 
         List<SingleWord> myList = new ArrayList<>();
-        //test wczytania pliku i stworenia tablicy
             myList = InputOutput.createListOfWords();
-
-        //symulacja trybu nauki
-        //String singleWord = new Actions().pickRandomLearnMode(myList);
 
         SingleWord singleWord1 = new Actions().pickRandomLearnMode(myList);
 
-        //Actions.setAllCountersToZero(myList);
-
-         //InputOutput.writeToCSV(myList);
-
-
-        //weryfikacja stanu listy
         myList.stream().forEach(System.out::println);
-
-        //NumberFormatValidator numberFormatValidator = new NumberFormatValidator();
-        //System.out.println( numberFormatValidator.isNumber("1"));
-
-    }
+        }
     }
 
 
