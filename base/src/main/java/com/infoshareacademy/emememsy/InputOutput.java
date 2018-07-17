@@ -22,7 +22,7 @@ import java.util.Map;
 @RequestScoped
 public class InputOutput {
 
-    public static Map<String, String> properties = PropertiesReader.read("/home/monika/config.properties");
+    public static Map<String, String> properties = PropertiesReader.read("config.properties");
 
     private static HeaderColumnNameTranslateMappingStrategy<SingleWord> strategy;
     private static Map<String, String> columnMapping = new HashMap<>();
