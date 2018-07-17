@@ -1,9 +1,12 @@
 package com.infoshareacademy.emememsy;
 
+import javax.enterprise.context.RequestScoped;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
+
+@RequestScoped
 public class Actions {
 
     private Random randomGenerator = new Random();
@@ -52,3 +55,4 @@ public class Actions {
         return "Poprawne tłumaczenie to: " + pickedWord.getTranslation();
     }
 }
+
