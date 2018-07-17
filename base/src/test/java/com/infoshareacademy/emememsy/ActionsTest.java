@@ -1,6 +1,5 @@
 package com.infoshareacademy.emememsy;
 
-import com.infoshareacademy.emememsy.model.SingleWord;
 import org.junit.Test;
 
 import java.util.ArrayList;

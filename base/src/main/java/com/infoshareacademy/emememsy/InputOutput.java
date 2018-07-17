@@ -53,7 +53,7 @@ public class InputOutput {
     public static List<SingleWord> createListOfWordsOmmitProperties(){
         List<SingleWord> listOfWords = new ArrayList<>();
         try {
-            CSVReader reader = new CSVReader(new FileReader("/home/monika/input_words.csv"));
+            CSVReader reader = new CSVReader(new FileReader("input_words.csv"));
             CsvToBean<SingleWord> csvToBean = new CsvToBean<>();
             listOfWords.addAll(csvToBean.parse(strategy, reader));
 
