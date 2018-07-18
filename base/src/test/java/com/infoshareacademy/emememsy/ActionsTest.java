@@ -64,6 +64,7 @@ public class ActionsTest {
         assertTrue(testList.contains(result));
     }
 
+    //Testing if displaying translation variable for singleWord is correct
     @Test
     public void showCorrectTranslation() {
         //GIVEN
