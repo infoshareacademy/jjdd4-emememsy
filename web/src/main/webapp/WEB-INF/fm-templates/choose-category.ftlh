@@ -29,18 +29,22 @@
     <div class="container">
         <#list categories>
             <div class="row">
-                <p><a class="btn btn-outline-primary"  href="/${mode}?category=wszystkie&mode=${mode}" role="button">WSZYSTKIE</a></p>
+                <p style="margin-right: 10px;"><a class="btn btn-outline-primary btn-block"  href="/${mode}?category=wszystkie&mode=${mode}" role="button">WSZYSTKIE</a></p>
                 <#items as category>
-                    <p><a class="btn btn-outline-primary" href="/${mode}?category=${category}&mode=${mode}" role="button">${category}</a></p>
+                    <p style="margin-right: 10px;"><a class="btn btn-outline-primary btn-block" href="/${mode}?category=${category}&mode=${mode}" role="button">${category}</a></p>
                 </#items>
             </div>
         </#list>
     </div>
 </main>
 
-<footer class="container">
-    <p>&copy; Inject footer</p>
+<footer class="container fixed-bottom">
+    <hr>
+    <#include "macros/copyright-footer.ftlh">
 </footer>
 
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
 </body>
 </html>

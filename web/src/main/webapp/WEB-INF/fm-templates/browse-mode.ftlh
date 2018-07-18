@@ -23,13 +23,19 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
         <!--   inject banner here  -->
+                <#include "macros/browse-banner.ftlh">
     </div>
 
     <div class="container">
         <!-- Example row of columns -->
         <#if singleWord?? >
-            <h1>Słowo: ${singleWord.word}</h1>
-            <h1>Tłumaczenie: ${singleWord.translation}</h1>
+            <div class="row">
+
+               <h2><div class="col-md-4"><h2>${singleWord.word}</div></h2>
+                <div class="col-md-3"></div>
+                <h2><div class="col-md-4">${singleWord.translation}</div></h2>
+                <div class="col-md-3"></div>
+        </div>
         <#else>
             <h2>Nie ma więcej słów dostępnych w kategorii ${category} trybie przeglądania. Zmień kategorię lub przejdź do innego trybu.</h2>
         </#if>
@@ -48,16 +54,18 @@
 
         <!-- // for each /nowy-servlet?category=XXXXXXXX&mode=XXXXX   -->
     </div>
-    <hr>
 
     </div> <!-- /container -->
 
 </main>
 
 <footer class="container fixed-bottom">
-    <hr/>
-    <p>&copy; Inject footer</p>
+    <hr>
+    <#include "macros/copyright-footer.ftlh">
 </footer>
 
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
 </body>
 </html>
