@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@WebServlet("/index")
+@WebServlet("/main")
 public class MainServlet extends HttpServlet {
 
     @Inject

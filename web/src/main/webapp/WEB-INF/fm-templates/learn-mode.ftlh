@@ -27,7 +27,11 @@
 
     <div class="container">
         <!-- Example row of columns -->
-        <h1>Czy znasz tłumaczenie słowa: ${singleWord.word} ?</h1>
+                <#if singleWord?? >
+                   <h1>Czy znasz tłumaczenie słowa: ${singleWord.word} ?</h1>
+                <#else>
+                    <h2>Nie ma więcej słów dostępnych w tej kategorii w tym trybie. Zmień kategorię lub przejdź do następnego trybu naki.</h2>
+                </#if>
         <div class="row">
             <div class="col-md-4">
                 <p><a class="btn btn-primary" href="/translation?mode=${mode}&category=${category}&word=${singleWord.word}&translation=${singleWord.translation}" role="button">Sprawdź odpowiedź<br/>i oceń się!</a></p>

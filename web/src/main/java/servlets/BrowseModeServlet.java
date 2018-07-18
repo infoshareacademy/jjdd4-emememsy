@@ -41,7 +41,7 @@ public class BrowseModeServlet extends HttpServlet {
         Template template = templateProvider.getTemplate(getServletContext(), "browse-mode.ftlh");
 
         SingleWord singleWord = selectWord(req, resp);
-        singleWordDao.update(singleWord);
+        //singleWordDao.update(singleWord);
 
         Map<String, Object> model = new HashMap<>();
         model.put("category", category);
@@ -60,8 +60,11 @@ public class BrowseModeServlet extends HttpServlet {
     private SingleWord selectWord (HttpServletRequest req, HttpServletResponse resp){
         List<SingleWord> listOfWords = singleWordDao.findAll();
         SingleWord singleWord = actionsWeb.pickRandomBrowserMode(listOfWords, req.getParameter("category"));
-        singleWord.setCounter(singleWord.getCounter()+1);
-        return singleWord;
+        if(singleWord != null) {
+            singleWord.setCounter(singleWord.getCounter() + 1);
+            singleWordDao.update(singleWord);
+        }
+            return singleWord;
     }
 }
 
