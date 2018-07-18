@@ -29,9 +29,7 @@
         <!-- Example row of columns -->
                 <#if singleWord?? >
                    <h1>Czy znasz tłumaczenie słowa: ${singleWord.word} ?</h1>
-                <#else>
-                    <h2>Nie ma więcej słów dostępnych w tej kategorii w tym trybie. Zmień kategorię lub przejdź do następnego trybu naki.</h2>
-                </#if>
+                    <br/><br/><br/>
         <div class="row">
             <div class="col-md-4">
                 <p><a class="btn btn-primary" href="/translation?mode=${mode}&category=${category}&word=${singleWord.word}&translation=${singleWord.translation}" role="button">Sprawdź odpowiedź<br/>i oceń się!</a></p>
@@ -43,11 +41,25 @@
                 <p><a class="btn btn-danger" href="/main" role="button">Main menu</a></p>
             </div>
         </div>
+
+                <#else>
+                    <h2>Nie ma więcej słów dostępnych w kategorii ${category} trybie przeglądania. Zmień kategorię lub przejdź do innego trybu.</h2>
+                       <br/><br/><br/>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <p><a class="btn btn-success" href="/choose-category?mode=${mode}" role="button">Zmień kategorię</a></p>
+                        </div>
+                        <div class="col-md-4">
+                            <p><a class="btn btn-danger" href="/main" role="button">Main menu</a></p>
+                        </div>
+                    </div>
+                </#if>
     </div>
 </main>
 
 
-<footer class="container">
+<footer class="container fixed-bottom">
+    <hr/>
     <p>&copy; Inject footer</p>
 </footer>
 

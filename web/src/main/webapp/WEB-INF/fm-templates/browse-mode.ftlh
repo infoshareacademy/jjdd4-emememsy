@@ -31,7 +31,7 @@
             <h1>Słowo: ${singleWord.word}</h1>
             <h1>Tłumaczenie: ${singleWord.translation}</h1>
         <#else>
-            <h2>Nie ma więcej słów dostępnych w tej kategorii w tym trybie. Zmień kategorię lub przejdź do następnego trybu naki.</h2>
+            <h2>Nie ma więcej słów dostępnych w kategorii ${category} trybie przeglądania. Zmień kategorię lub przejdź do innego trybu.</h2>
         </#if>
         <br/><br/><br/>
         <div class="row">
@@ -54,18 +54,10 @@
 
 </main>
 
-<footer class="container">
+<footer class="container fixed-bottom">
+    <hr/>
     <p>&copy; Inject footer</p>
 </footer>
 
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-<script src="../../../../assets/js/vendor/popper.min.js"></script>
-<script src="../../../../dist/js/bootstrap.min.js"></script>
 </body>
 </html>
