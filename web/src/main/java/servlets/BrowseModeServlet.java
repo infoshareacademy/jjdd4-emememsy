@@ -41,7 +41,6 @@ public class BrowseModeServlet extends HttpServlet {
         Template template = templateProvider.getTemplate(getServletContext(), "browse-mode.ftlh");
 
         SingleWord singleWord = selectWord(req, resp);
-        //singleWordDao.update(singleWord);
 
         Map<String, Object> model = new HashMap<>();
         model.put("category", category);
@@ -58,13 +57,25 @@ public class BrowseModeServlet extends HttpServlet {
     }
 
     private SingleWord selectWord (HttpServletRequest req, HttpServletResponse resp){
-        List<SingleWord> listOfWords = singleWordDao.findAll();
-        SingleWord singleWord = actionsWeb.pickRandomBrowserMode(listOfWords, req.getParameter("category"));
-        if(singleWord != null) {
+
+        List<SingleWord> listOfWords = new ArrayList<>();
+
+        if (req.getParameter("category").equalsIgnoreCase("wszystkie")) {
+            listOfWords =  singleWordDao.findByAllCategoriesBrowseMode();
+        } else {
+            listOfWords = singleWordDao.findByCategoryBrowseMode(req.getParameter("category"));
+        }
+
+        if(listOfWords.isEmpty()){
+            return null;
+        } else {
+            Random randomGenerator = new Random();
+            int random = randomGenerator.nextInt(listOfWords.size());
+            SingleWord singleWord = listOfWords.get(random);
             singleWord.setCounter(singleWord.getCounter() + 1);
             singleWordDao.update(singleWord);
-        }
             return singleWord;
+        }
     }
 }
 

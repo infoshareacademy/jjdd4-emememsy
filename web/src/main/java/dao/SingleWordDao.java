@@ -45,12 +45,36 @@ public class SingleWordDao {
         return query.getResultList();
     }
 
-    public SingleWord findByCategory(String category) {
+    public SingleWord findByCategory2(String category) {
         final Query query = entityManager.createNativeQuery(
                // "SELECT s FROM SingleWord s WHERE s.category = :category"
             "SELECT * FROM WORDS WHERE category = CZŁOWIEK ORDER BY RAND() LIMIT 1");
         return (SingleWord) query.getResultList();
     }
 
+    public List<SingleWord> findByAllCategoriesBrowseMode(){
+        final Query query = entityManager.createQuery(
+                "SELECT s FROM SingleWord s WHERE s.counter = 0" );
+        return query.getResultList();
+    }
 
+    public List<SingleWord> findByCategoryBrowseMode(String category){
+        final Query query = entityManager.createQuery(
+                "SELECT s FROM SingleWord s WHERE s.category = :category AND s.counter = 0");
+        query.setParameter("category", category);
+        return query.getResultList();
+    }
+
+    public List<SingleWord> findByAllCategoriesLearnMode(){
+        final Query query = entityManager.createQuery(
+                "SELECT s FROM SingleWord s WHERE s.counter > 0 AND s.counter < 4" );
+        return query.getResultList();
+    }
+
+    public List<SingleWord> findByCategoryLearnMode(String category){
+        final Query query = entityManager.createQuery(
+                "SELECT s FROM SingleWord s WHERE s.category = :category AND s.counter > 0 AND s.counter < 4");
+        query.setParameter("category", category);
+        return query.getResultList();
+    }
 }
