@@ -1,6 +1,7 @@
 package com.infoshareacademy.emememsy;
 
 import com.opencsv.CSVReader;
+import com.opencsv.bean.CsvToBean;
 import org.junit.Test;
 
 import java.io.File;
@@ -8,6 +9,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -18,11 +20,18 @@ public class InputOutputTest {
     @Test
     public void createListOfWords() {
         //GIVEN
-        boolean isUppercase = true;
+        boolean isUpercase = true;
         try {
+            String configFilePath = new File("").getAbsolutePath() + "/src/test/config-test2.properties";
 
-            String CSVfilePath = new File("").getAbsolutePath() + "/src/test/input-words-test.csv";
-            CSVReader reader = new CSVReader(new FileReader(CSVfilePath));
+            Map<String, String> properties = PropertiesReader.read(configFilePath);
+            CSVReader reader = new CSVReader(new FileReader(properties.get("path")));
+
+            String CSVFilePath = new File("").getAbsolutePath() + "/src/test/input-words-test2.csv";
+            //CSVReader reader = new CSVReader(new FileReader(CSVFilePath));
+
+
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -38,7 +47,7 @@ public class InputOutputTest {
 
 
         //THEN
-        assertTrue(singleWordList.equals(result));
+        assertEquals(singleWordList, result);
 
     }
 
