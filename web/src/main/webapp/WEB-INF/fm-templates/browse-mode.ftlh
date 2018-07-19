@@ -14,10 +14,8 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-
-    <!--   inject navbar here  -->
-</nav>
+<!--   inject navbar here  -->
+    <#include "macros/navbar.ftlh">
 
 <main role="main">
 
@@ -43,13 +41,13 @@
         <br/><br/><br/>
         <div class="row">
             <div class="col-md-4">
-                <p><a class="btn btn-primary" href="/${mode}?category=${category}&mode=${mode}" role="button">Następne słowo</a></p>
+                <p><a class="btn btn-outline-primary btn-lg" href="/${mode}?category=${category}&mode=${mode}" role="button">Następne słowo</a></p>
             </div>
             <div class="col-md-4">
-                <p><a class="btn btn-success" href="/choose-category?mode=${mode}" role="button">Zmień kategorię</a></p>
+                <p><a class="btn btn-outline-success btn-lg" href="/choose-category?mode=${mode}" role="button">Zmień kategorię</a></p>
             </div>
             <div class="col-md-4">
-                <p><a class="btn btn-danger" href="/main" role="button">Main menu</a></p>
+                <p><a class="btn btn-outline-danger btn-lg" href="/main" role="button">Main menu</a></p>
             </div>
         </div>
 

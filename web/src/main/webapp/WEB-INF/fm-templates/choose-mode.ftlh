@@ -43,13 +43,13 @@
 
         <div class="row">
             <div class="col-md-4">
-                <p><a class="btn btn-primary" href="/choose-category?mode=browse-mode" role="button">Start &raquo;</a></p>
+                <p><a class="btn btn-outline-primary btn-lg" href="/choose-category?mode=browse-mode" role="button">Start &raquo;</a></p>
             </div>
             <div class="col-md-4">
-                <p><a class="btn btn-primary" href="/choose-category?mode=learn-mode" role="button">Start &raquo;</a></p>
+                <p><a class="btn btn-outline-primary btn-lg" href="/choose-category?mode=learn-mode" role="button">Start &raquo;</a></p>
             </div>
             <div class="col-md-4">
-                <p><a class="btn btn-primary" href="/choose-category?mode=repeat-mode" role="button">Start &raquo;</a></p>
+                <p><a class="btn btn-outline-primary btn-lg" href="/choose-category?mode=repeat-mode" role="button">Start &raquo;</a></p>
             </div>
         </div>
 
