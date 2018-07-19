@@ -16,6 +16,7 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
 
     <!--   inject navbar here  -->
+
 </nav>
 
 <main role="main">
@@ -23,6 +24,7 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
         <!--   inject banner here  -->
+        <#include "macros/learn-banner.ftlh">
 
     </div>
 

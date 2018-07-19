@@ -23,6 +23,7 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
         <!--   inject banner here  -->
+          <#include "macros/learn-banner.ftlh">
     </div>
 
     <div class="container">
