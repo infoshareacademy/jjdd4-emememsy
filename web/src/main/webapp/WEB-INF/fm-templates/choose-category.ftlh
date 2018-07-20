@@ -8,19 +8,18 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
           integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <title>MyWords</title>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-
-    <!--   inject navbar here  -->
-</nav>
+<!--   inject navbar here  -->
+    <#include "macros/navbar.ftlh">
 
 <main role="main">
 
-    <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
         <!--   inject banner here  -->
         <#include "macros/category-banner.ftlh">
@@ -29,9 +28,13 @@
     <div class="container">
         <#list categories>
             <div class="row">
-                <p style="margin-right: 10px;"><a class="btn btn-outline-primary btn-block"  href="/${mode}?category=wszystkie&mode=${mode}" role="button">WSZYSTKIE</a></p>
+                <p style="margin-right: 10px;"><a class="btn btn-outline-primary btn-block btn-lg"
+                                                  href="/${mode}?category=wszystkie&mode=${mode}" role="button">WSZYSTKIE</a>
+                </p>
                 <#items as category>
-                    <p style="margin-right: 10px;"><a class="btn btn-outline-primary btn-block" href="/${mode}?category=${category}&mode=${mode}" role="button">${category}</a></p>
+                    <p style="margin-right: 10px;"><a class="btn btn-outline-primary btn-block btn-lg"
+                                                      href="/${mode}?category=${category}&mode=${mode}"
+                                                      role="button">${category}</a></p>
                 </#items>
             </div>
         </#list>
@@ -43,8 +46,5 @@
     <#include "macros/copyright-footer.ftlh">
 </footer>
 
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
 </body>
 </html>
