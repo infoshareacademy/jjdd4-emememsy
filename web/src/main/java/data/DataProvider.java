@@ -9,6 +9,9 @@ import com.opencsv.bean.StatefulBeanToCsvBuilder;
 import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.servlet.ServletContext;
@@ -24,7 +27,7 @@ import java.util.Map;
 
 @ApplicationScoped
 public class DataProvider {
-
+    static Logger logger = LoggerFactory.getLogger(DataProvider.class);
     private static HeaderColumnNameTranslateMappingStrategy<SingleWord> strategy;
     private static Map<String, String> columnMapping = new HashMap<>();
 
@@ -57,6 +60,8 @@ public class DataProvider {
                 listOfWords.stream().forEach(SingleWord::toLowerCase);
             }
         } catch (IOException | NumberFormatException e) {
+            logger.info("The file has not been read correctl");
+
             System.out.println("Wystąpił problem z wczytaniem pliku CSV. Skontaktuj się z administratorem Emememsów. ");
         }
         return listOfWords;
@@ -70,6 +75,7 @@ public class DataProvider {
             beanToCsv.write(listOfWords);
             writer.close();
         } catch (IOException | CsvDataTypeMismatchException | CsvRequiredFieldEmptyException e) {
+            logger.warn("Changes have not been saved");
             System.out.println("Wystąpił problem z zapisaniem zmian. Skontaktuj się z administratorem.");
         }
     }

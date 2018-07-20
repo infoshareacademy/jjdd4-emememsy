@@ -3,10 +3,11 @@ package servlets;
 import com.infoshareacademy.emememsy.*;
 import com.infoshareacademy.emememsy.SingleWord;
 import dao.SingleWordDao;
-import data.DataProvider;
 import freemarker.TemplateProvider;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -19,7 +20,7 @@ import java.util.*;
 
 @WebServlet("/repeat-mode")
 public class RepeatModeServlet extends HttpServlet {
-
+    static Logger logger = LoggerFactory.getLogger(BrowseModeServlet.class);
     @Inject
     private TemplateProvider templateProvider;
     @Inject
@@ -36,6 +37,8 @@ public class RepeatModeServlet extends HttpServlet {
 
         if ((category == null || category.isEmpty()) && (mode == null || mode.isEmpty())) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            logger.error("The mode was upload uncorectly");
+
             return;
         }
 
@@ -49,11 +52,14 @@ public class RepeatModeServlet extends HttpServlet {
         model.put("mode", mode);
 
         resp.setContentType("text/html;charset=UTF-8");
+        logger.info("The correct template was load");
 
         try {
             template.process(model, resp.getWriter());
         } catch (TemplateException e) {
             e.printStackTrace();
+            logger.error("Problems with template", e.getMessage());
+
         }
     }
 

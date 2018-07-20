@@ -7,6 +7,8 @@ import data.DataProvider;
 import freemarker.TemplateProvider;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -20,7 +22,7 @@ import java.util.Map;
 
 @WebServlet("/translation")
 public class DisplayTranslation extends HttpServlet {
-
+    static Logger logger = LoggerFactory.getLogger(BrowseModeServlet.class);
     @Inject
     private TemplateProvider templateProvider;
 
