@@ -37,6 +37,7 @@ public class BrowseModeServlet extends HttpServlet {
 
         if (category == null || category.isEmpty()) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            logger.error("Correct mode was load");
             return;
         }
 
