@@ -37,7 +37,6 @@ public class InputOutput {
         strategy.setColumnMapping(columnMapping);
     }
 
-
     public static void checkReader() throws IOException {
         CSVReader reader = new CSVReader(new FileReader(PropertiesReader.read("config.properties").get(PropertiesReader.PATH_KEY)));
         String[] nextLine;

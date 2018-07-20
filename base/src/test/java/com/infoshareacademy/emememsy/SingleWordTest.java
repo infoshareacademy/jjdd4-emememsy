@@ -1,13 +1,13 @@
 package com.infoshareacademy.emememsy;
 
 import org.junit.Test;
-
 import static org.junit.Assert.*;
+
 
 public class SingleWordTest {
 
     @Test
-    public void toLowerCase() {
+    public void ifConversionWordsToLowerCase() {
         // given
         SingleWord subject = new SingleWord("TEST", "TEST", "TEST", 1);
 
@@ -21,7 +21,7 @@ public class SingleWordTest {
     }
 
     @Test
-    public void toUpperCase() {
+    public void ifConversionWordsToUpperCase() {
         //GIVEN
         SingleWord subject = new SingleWord("test", "test", "test", 1);
 
@@ -34,9 +34,8 @@ public class SingleWordTest {
         assertTrue(subject.getCategory().equals("TEST"));
     }
 
-    //Testing if counter of singleWord increased by 3
     @Test
-    public void good() {
+    public void ifGoodGradeWhereExpectedIncreaseCounterBy3() {
         //GIVEN
         SingleWord singleWord = new SingleWord("test", "test", "test", 0);
 
@@ -49,7 +48,7 @@ public class SingleWordTest {
 
     //Testing if counter of singleWord increased by 1
     @Test
-    public void soso() {
+    public void ifSosoGradeWhereExpectedIncreaseCounterBy1() {
         //GIVEN
         SingleWord singleWord = new SingleWord("test", "test", "test", 0);
 
@@ -62,7 +61,7 @@ public class SingleWordTest {
 
     //Testing if counter of singleWord is still the same
     @Test
-    public void bad() {
+    public void ifBadGradeWhereExpectedStayCounterAsIs() {
         //GIVEN
         SingleWord singleWord = new SingleWord("test", "test", "test", 0);
 
@@ -73,9 +72,8 @@ public class SingleWordTest {
         assertTrue(0 == singleWord.getCounter());
     }
 
-    //Testing if counter of singleWord increased by 1
     @Test
-    public void increaseCounterByOne() {
+    public void ifIncreaseCounterBy1() {
         //GIVEN
         SingleWord singleWord = new SingleWord("test", "test", "test", 0);
 
@@ -88,7 +86,7 @@ public class SingleWordTest {
 
     //Testing if counter of singleWord increased by 100
     @Test
-    public void exclude() {
+    public void ifExcludeWordActionWhereExpectedIncreaseCounterBy100() {
         //GIVEN
         SingleWord singleWord = new SingleWord("test", "test", "test", 0);
 

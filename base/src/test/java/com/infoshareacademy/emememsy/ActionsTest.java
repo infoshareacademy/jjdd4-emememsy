@@ -1,18 +1,15 @@
 package com.infoshareacademy.emememsy;
 
 import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import static org.junit.Assert.*;
 
 
 public class ActionsTest {
 
-    //testing if SingleWord obj is for BrowserMode (counter == 0)
     @Test
-    public void pickRandomBrowserMode() {
+    public void testIfWordQualifyForBrowserModeWitchCounterExpected0() {
         //GIVEN
         List<SingleWord> testList = new ArrayList<>();
 
@@ -28,9 +25,8 @@ public class ActionsTest {
         assertTrue(testList.contains(result));
     }
 
-    //testing if SingleWord obj is for LearnMode (counter is between 1 and 3 including)
     @Test
-    public void pickRandomLearnMode() {
+    public void testIfWordQualifyForLearnModeWitchCounterExpected1to3() {
         //GIVEN
         List<SingleWord> testList = new ArrayList<>();
 
@@ -46,9 +42,8 @@ public class ActionsTest {
         assertTrue(testList.contains(result));
     }
 
-    //testing if SingleWord obj is for RepeatMode (counter is between 4 and 98 including)
     @Test
-    public void pickRandomRepeatMode() {
+    public void ifWordQualifyForRepeatModeWitchCounterExpected4to99() {
         //GIVEN
         List<SingleWord> testList = new ArrayList<>();
 
@@ -64,18 +59,18 @@ public class ActionsTest {
         assertTrue(testList.contains(result));
     }
 
-    //Testing if displaying translation variable for singleWord is correct
     @Test
-    public void showCorrectTranslation() {
+    public void ifCorrectTranslation() {
         //GIVEN
         SingleWord singleWord = new SingleWord("word", "translation", "category", 3);
+        String expected = "Poprawne tłumaczenie to: " + singleWord.getTranslation();
 
         //WHEN
         Actions actions = new Actions();
         String result = actions.showCorrectTranslation(singleWord);
 
         //THEN
-        assertTrue(result.equals("Poprawne tłumaczenie to: translation"));
+        assertTrue(result.equals(expected));
     }
 }
 
