@@ -25,14 +25,32 @@
         <#include "macros/file-upload-banner.ftlh">
     </div>
 
+    <div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <p><a class="btn btn-outline-danger btn-lg" href="/choose-category?mode=browse-mode" role="button">Wyczyść bazę słów
+                &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <p><a class="btn btn-outline-primary btn-lg" href="/choose-category?mode=learn-mode" role="button">Przywróć bazę słów
+                &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <p></p>
+        </div>
+    </div>
+    </div>
+    <div class="container"></div>
     <form enctype="multipart/form-data"
           action="management"
           method="POST">
         <div class="container">
+            <br/>
             File: <input type="file" name="dataFile"/>
-            <input type="submit" name="save" value="save"/><br/><br/>
+            <input type="submit" name="save" value="save"/>
         </div>
     </form>
+    </div>
 </main>
 
 <footer class="container fixed-bottom">
