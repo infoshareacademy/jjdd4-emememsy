@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 
 @WebServlet("/choose-category")
 public class ChooseCategoryServlet extends HttpServlet {
-    static Logger logger = LoggerFactory.getLogger(BrowseModeServlet.class);
+    static Logger logger = LoggerFactory.getLogger(ChooseCategoryServlet.class);
     @Inject
     private TemplateProvider templateProvider;
 

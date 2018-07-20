@@ -21,7 +21,7 @@ import java.util.*;
 
 @WebServlet("/browse-mode")
 public class BrowseModeServlet extends HttpServlet {
-    static Logger logger = LoggerFactory.getLogger(DataProvider.class);
+    static Logger logger = LoggerFactory.getLogger(BrowseModeServlet.class);
     @Inject
     private TemplateProvider templateProvider;
     @Inject

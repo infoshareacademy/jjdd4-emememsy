@@ -20,7 +20,7 @@ package servlets;
 
 @WebServlet("/learn-mode")
 public class LearnModeServlet extends HttpServlet {
-    static Logger logger = LoggerFactory.getLogger(BrowseModeServlet.class);
+    static Logger logger = LoggerFactory.getLogger(LearnModeServlet.class);
     @Inject
     private TemplateProvider templateProvider;
     @Inject

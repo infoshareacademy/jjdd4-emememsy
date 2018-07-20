@@ -20,7 +20,7 @@ import java.util.*;
 
 @WebServlet("/repeat-mode")
 public class RepeatModeServlet extends HttpServlet {
-    static Logger logger = LoggerFactory.getLogger(BrowseModeServlet.class);
+    static Logger logger = LoggerFactory.getLogger(RepeatModeServlet.class);
     @Inject
     private TemplateProvider templateProvider;
     @Inject

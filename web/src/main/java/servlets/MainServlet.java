@@ -24,7 +24,7 @@ import java.util.Map;
 
 @WebServlet("/main")
 public class MainServlet extends HttpServlet {
-    static Logger logger = LoggerFactory.getLogger(BrowseModeServlet.class);
+    static Logger logger = LoggerFactory.getLogger(MainServlet.class);
     @Inject
     private TemplateProvider templateProvider;
 

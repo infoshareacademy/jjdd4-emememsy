@@ -22,7 +22,7 @@ import java.util.Map;
 
 @WebServlet("/translation")
 public class DisplayTranslation extends HttpServlet {
-    static Logger logger = LoggerFactory.getLogger(BrowseModeServlet.class);
+    static Logger logger = LoggerFactory.getLogger(DisplayTranslation.class);
     @Inject
     private TemplateProvider templateProvider;
 
