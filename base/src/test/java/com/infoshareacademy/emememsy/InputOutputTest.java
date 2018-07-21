@@ -12,7 +12,7 @@ public class InputOutputTest {
     @Test
     public void ifCreatedListOfObjFromCSVAccordingToPropertiesConfig() {
         //GIVEN
-        InputOutput.properties = PropertiesReader.read("config-test2.properties");
+        InputOutput.properties = PropertiesReader.read("../base//src/test/config-test2.properties");
 
         List<SingleWord> expected = new ArrayList<>();
         expected.add(new SingleWord("WORD1", "TRANS1", "CAT1", 0));
