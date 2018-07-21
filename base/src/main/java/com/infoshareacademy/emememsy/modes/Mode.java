@@ -14,7 +14,7 @@ public abstract class Mode {
     }
 
     public void launchMode() {
-        System.out.println("Jestes w trybie: " + this.modeName);
+        System.out.println("Jesteś w trybie: " + this.modeName);
         System.out.println("Opis: " + this.modeDescription);
     }
 }

@@ -40,7 +40,7 @@ public class BrowserMode extends Mode {
                 break;
             default:
                 ModeLauncher.clearScreen();
-                System.out.println("Nie zrozumiałem Cię. Podaj jeszcze raz pozycję z menu (1-2)");
+                System.out.println("Nie zrozumiałem. Podaj jeszcze raz pozycję z menu (1-2)");
                 launchMode();
         }
     }
@@ -48,13 +48,13 @@ public class BrowserMode extends Mode {
     // "uruchomienie" trybu - ekran powitalny plus pobranie nr menu od usera
     @Override
     public void launchMode() {
-        System.out.print("\nMasz do wyboru:\n\n1: Wyswietl slowo-tłumaczenie\n2: Wyjście do Menu Głównego\n\nWybierz: ");
+        System.out.print("\nMasz do wyboru:\n\n1: Wyświetl słowo-tłumaczenie\n2: Wyjście do Menu Głównego\n\nWybierz: ");
         String s = scanner.nextLine();
         if (NumberFormatValidator.isNumber(s)) {
             selectMenu(Integer.valueOf(s));
         } else {
             ModeLauncher.clearScreen();
-            System.out.println("Nie zrozumiałem Cię. Podaj jeszcze raz pozycję z menu (1-2)");
+            System.out.println("Nie zrozumiałem. Podaj jeszcze raz pozycję z menu (1-2)");
             launchMode();
         }
     }

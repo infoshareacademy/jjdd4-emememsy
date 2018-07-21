@@ -37,7 +37,7 @@ public class ModeLauncher {
                 System.exit(0);
             default:
                 clearScreen();
-                System.out.println("Nie zrozumiałem Cię. Podaj jeszcze raz pozycję z menu (1-4)\n");
+                System.out.println("Nie zrozumiałem. Podaj jeszcze raz pozycję z menu (1-4)\n");
                 launchMainMenu();
         }
     }
@@ -50,7 +50,7 @@ public class ModeLauncher {
             selectMode(Integer.valueOf(s));
         } else {
             clearScreen();
-            System.out.println("Nie zrozumiałem Cię. Podaj jeszcze raz pozycję z menu (1-4)\n");
+            System.out.println("Nie zrozumiałem. Podaj jeszcze raz pozycję z menu (1-4)\n");
             launchMainMenu();
         }
     }

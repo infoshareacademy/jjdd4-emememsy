@@ -38,7 +38,7 @@ public class RepeatMode extends Mode {
                 break;
             default:
                 ModeLauncher.clearScreen();
-                System.out.println("Nie zrozumiałem Cię. Podaj jeszcze raz pozycję z menu (1-2)");
+                System.out.println("Nie zrozumiałem. Podaj jeszcze raz pozycję z menu (1-2)");
                 launchMode();
         }
     }
@@ -64,32 +64,32 @@ public class RepeatMode extends Mode {
                 break;
             default:
                 ModeLauncher.clearScreen();
-                System.out.println("Nie zrozumiałem Cię. Podaj jeszcze raz pozycję z menu (1-3)");
+                System.out.println("Nie zrozumiałem. Podaj jeszcze raz pozycję z menu (1-3)");
                 launchAssessmentMenu();
         }
     }
 
     @Override
     public void launchMode() {
-        System.out.print("\nMasz do wyboru: \n\n1: Utrwalaj slowa\n2: Wyjście do Menu Głównego\n\nWybierz: ");
+        System.out.print("\nMasz do wyboru: \n\n1: Utrwalaj słowa\n2: Wyjście do Menu Głównego\n\nWybierz: ");
         String s = scanner.nextLine();
         if (NumberFormatValidator.isNumber(s)) {
             selectMenu(Integer.valueOf(s));
         } else {
             ModeLauncher.clearScreen();
-            System.out.println("Nie zrozumiałem Cię. Podaj jeszcze raz pozycję z menu (1-2)");
+            System.out.println("Nie zrozumiałem. Podaj jeszcze raz pozycję z menu (1-2)");
             launchMode();
         }
     }
 
     public void launchAssessmentMenu() {
-        System.out.print("\nMasz do wyboru:\n\n1: Wyświetl tłumaczenie \n2: Pozostaw słowo " + singleWord.getWord() + " w trybie powtórek\n3: Trwale usuń słowo z trynu powtórek\n\nWybierz: ");
+        System.out.print("\nMasz do wyboru:\n\n1: Wyświetl tłumaczenie \n2: Pozostaw słowo " + singleWord.getWord() + " w trybie powtórek\n3: Trwale usuń słowo z trybu powtórek\n\nWybierz: ");
         String s = scanner.nextLine();
         if (NumberFormatValidator.isNumber(s)) {
             selectAssessment(Integer.valueOf(s));
         } else {
             ModeLauncher.clearScreen();
-            System.out.println("Nie zrozumiałem Cię. Podaj jeszcze raz pozycję z menu (1-3)");
+            System.out.println("Nie zrozumiałem. Podaj jeszcze raz pozycję z menu (1-3)");
             launchAssessmentMenu();
         }
     }

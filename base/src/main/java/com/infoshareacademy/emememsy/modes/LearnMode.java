@@ -36,7 +36,7 @@ public class LearnMode extends Mode {
                 break;
             default:
                 ModeLauncher.clearScreen();
-                System.out.println("Nie zrozumiałem Cię. Podaj jeszcze raz pozycję z menu (1-2)");
+                System.out.println("Nie zrozumiałem. Podaj jeszcze raz pozycję z menu (1-2)");
                 launchMode();
         }
     }
@@ -72,7 +72,7 @@ public class LearnMode extends Mode {
                 break;
             default:
                 ModeLauncher.clearScreen();
-                System.out.println("Nie zrozumiałem Cię. Podaj jeszcze raz pozycję z menu (1-4)");
+                System.out.println("Nie zrozumiałem. Podaj jeszcze raz pozycję z menu (1-4)");
                 launchAssessmentMenu();
         }
     }
@@ -80,13 +80,13 @@ public class LearnMode extends Mode {
 
     @Override
     public void launchMode() {
-        System.out.print("\nMasz do wyboru:\n\n1: Wyswietl słowo\n2: Wyjście do Menu Głównego\n\nWybierz: ");
+        System.out.print("\nMasz do wyboru:\n\n1: Wyświetl słowo\n2: Wyjście do Menu Głównego\n\nWybierz: ");
         String s = scanner.nextLine();
         if (NumberFormatValidator.isNumber(s)) {
             selectMenu(Integer.valueOf(s));
         } else {
             ModeLauncher.clearScreen();
-            System.out.println("Nie zrozumiałem Cię. Podaj jeszcze raz pozycję z menu (1-2)");
+            System.out.println("Nie zrozumiałem. Podaj jeszcze raz pozycję z menu (1-2)");
             launchMode();
         }
     }
@@ -98,7 +98,7 @@ public class LearnMode extends Mode {
             selectAssessment(Integer.valueOf(s));
         } else {
             ModeLauncher.clearScreen();
-            System.out.println("Nie zrozumiałem Cię. Podaj jeszcze raz pozycję z menu (1-4)");
+            System.out.println("Nie zrozumiałem. Podaj jeszcze raz pozycję z menu (1-4)");
             launchAssessmentMenu();
         }
     }
