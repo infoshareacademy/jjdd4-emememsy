@@ -20,7 +20,7 @@ package servlets;
 
 @WebServlet("/learn-mode")
 public class LearnModeServlet extends HttpServlet {
-    static Logger logger = LoggerFactory.getLogger(LearnModeServlet.class);
+    private static final Logger LOG = LoggerFactory.getLogger(LearnModeServlet.class);
     @Inject
     private TemplateProvider templateProvider;
     @Inject
@@ -37,27 +37,27 @@ public class LearnModeServlet extends HttpServlet {
 
         if ((category == null || category.isEmpty()) && (mode == null || mode.isEmpty())) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            logger.error("The mode was upload uncorectly");
+            LOG.error("Problem with loading the correct module");
             return;
         }
 
         SingleWord singleWord = selectWord(req, resp);
 
         Template template = templateProvider.getTemplate(getServletContext(), "learn-mode.ftlh");
-        logger.info("The template was load corectly");
+        LOG.info("The template was load corectly");
         Map<String, Object> model = new HashMap<>();
         model.put("category", category);
         model.put("singleWord", singleWord);
         model.put("mode", mode);
 
         resp.setContentType("text/html;charset=UTF-8");
-        logger.debug("The file was load corectly");
+        LOG.info("The file was load corectly");
 
         try {
             template.process(model, resp.getWriter());
         } catch (TemplateException e) {
             e.printStackTrace();
-            logger.error("Problems with template", e.getMessage());
+            LOG.error("Problems with template", e.getMessage());
 
         }
     }

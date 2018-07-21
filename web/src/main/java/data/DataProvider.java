@@ -24,10 +24,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 @ApplicationScoped
 public class DataProvider {
-    static Logger logger = LoggerFactory.getLogger(DataProvider.class);
+    private static final  Logger LOG = LoggerFactory.getLogger(DataProvider.class);
     private static HeaderColumnNameTranslateMappingStrategy<SingleWord> strategy;
     private static Map<String, String> columnMapping = new HashMap<>();
 
@@ -60,7 +59,7 @@ public class DataProvider {
                 listOfWords.stream().forEach(SingleWord::toLowerCase);
             }
         } catch (IOException | NumberFormatException e) {
-            logger.info("The file has not been read correctl");
+           LOG.error("The file has not been read correctly");
 
             System.out.println("Wystąpił problem z wczytaniem pliku CSV. Skontaktuj się z administratorem Emememsów. ");
         }
@@ -75,7 +74,7 @@ public class DataProvider {
             beanToCsv.write(listOfWords);
             writer.close();
         } catch (IOException | CsvDataTypeMismatchException | CsvRequiredFieldEmptyException e) {
-            logger.warn("Changes have not been saved");
+            LOG.warn("Changes have not been saved");
             System.out.println("Wystąpił problem z zapisaniem zmian. Skontaktuj się z administratorem.");
         }
     }

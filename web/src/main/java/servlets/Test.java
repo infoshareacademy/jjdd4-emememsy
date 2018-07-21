@@ -25,7 +25,6 @@ import java.util.stream.Collectors;
 
 @WebServlet("/test")
 public class Test extends HttpServlet {
-
     @Inject
     private TemplateProvider templateProvider;
     @Inject

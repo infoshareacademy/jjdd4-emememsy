@@ -21,7 +21,7 @@ import java.util.*;
 
 @WebServlet("/browse-mode")
 public class BrowseModeServlet extends HttpServlet {
-    static Logger logger = LoggerFactory.getLogger(BrowseModeServlet.class);
+    private static final Logger LOG = LoggerFactory.getLogger(BrowseModeServlet.class);
     @Inject
     private TemplateProvider templateProvider;
     @Inject
@@ -37,7 +37,7 @@ public class BrowseModeServlet extends HttpServlet {
 
         if (category == null || category.isEmpty()) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            logger.error("Correct mode was load");
+            LOG.error("Problem with loading the correct module");
             return;
         }
 
@@ -51,12 +51,12 @@ public class BrowseModeServlet extends HttpServlet {
         model.put("mode", mode);
 
         resp.setContentType("text/html;charset=UTF-8");
-        logger.debug("The file was load corectly");
+        LOG.info("The file was load corectly");
         try {
             template.process(model, resp.getWriter());
         } catch (TemplateException e) {
             e.printStackTrace();
-            logger.error("Problems with template", e.getMessage());
+            LOG.error("Problems with template", e.getMessage());
         }
     }
 

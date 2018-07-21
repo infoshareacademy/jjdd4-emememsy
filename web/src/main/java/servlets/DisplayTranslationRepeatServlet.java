@@ -22,7 +22,7 @@ import java.util.Map;
 
 @WebServlet("/translation-repeat")
 public class DisplayTranslationRepeatServlet extends HttpServlet {
-    static Logger logger = LoggerFactory.getLogger(DisplayTranslationRepeatServlet.class);
+    private static final Logger LOG = LoggerFactory.getLogger(DisplayTranslationRepeatServlet.class);
     @Inject
     private TemplateProvider templateProvider;
 
@@ -44,7 +44,7 @@ public class DisplayTranslationRepeatServlet extends HttpServlet {
 
         if (mode == null || mode.isEmpty()) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            logger.error("The mode was upload uncorectly");
+            LOG.error("Problem with loading the correct module");
 
             return;
         }
@@ -57,12 +57,12 @@ public class DisplayTranslationRepeatServlet extends HttpServlet {
         model.put("translation", translation);
 
         resp.setContentType("text/html;charset=UTF-8");
-        logger.debug("The file was load corectly");
+        LOG.info("The file was load corectly");
         try {
             template.process(model, resp.getWriter());
         } catch (TemplateException e) {
             e.printStackTrace();
-            logger.error("Problems with template", e.getMessage());
+            LOG.error("Problems with template");
 
         }
     }

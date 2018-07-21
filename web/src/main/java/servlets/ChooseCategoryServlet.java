@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 
 @WebServlet("/choose-category")
 public class ChooseCategoryServlet extends HttpServlet {
-    static Logger logger = LoggerFactory.getLogger(ChooseCategoryServlet.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ChooseCategoryServlet.class);
     @Inject
     private TemplateProvider templateProvider;
 
@@ -38,12 +38,12 @@ public class ChooseCategoryServlet extends HttpServlet {
 
         if (mode == null || mode.isEmpty()) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            logger.error("The mode was upload uncorectly");
+            LOG.error("The mode was upload uncorectly");
 
             return;
         }
         Template template = templateProvider.getTemplate(getServletContext(), "choose-category.ftlh");
-        logger.info("The correct template was load");
+        LOG.info("The correct template was load");
 
 
         List<SingleWord> tempList = dataProvider.getListofWords();
@@ -61,13 +61,13 @@ public class ChooseCategoryServlet extends HttpServlet {
         model.put("size", size);
 
         resp.setContentType("text/html;charset=UTF-8");
-        logger.debug("The file was load corectly");
+        LOG.info("The file was load corectly");
 
         try {
             template.process(model, resp.getWriter());
         } catch (TemplateException e) {
             e.printStackTrace();
-            logger.error("Problems with template", e.getMessage());
+            LOG.error("Problems with template");
 
         }
     }

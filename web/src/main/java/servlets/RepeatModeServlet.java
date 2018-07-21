@@ -20,7 +20,7 @@ import java.util.*;
 
 @WebServlet("/repeat-mode")
 public class RepeatModeServlet extends HttpServlet {
-    static Logger logger = LoggerFactory.getLogger(RepeatModeServlet.class);
+    private static final Logger LOG = LoggerFactory.getLogger(RepeatModeServlet.class);
     @Inject
     private TemplateProvider templateProvider;
     @Inject
@@ -37,7 +37,7 @@ public class RepeatModeServlet extends HttpServlet {
 
         if ((category == null || category.isEmpty()) && (mode == null || mode.isEmpty())) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            logger.error("The mode was upload uncorectly");
+            LOG.error("The mode was upload uncorectly");
 
             return;
         }
@@ -52,13 +52,13 @@ public class RepeatModeServlet extends HttpServlet {
         model.put("mode", mode);
 
         resp.setContentType("text/html;charset=UTF-8");
-        logger.info("The correct template was load");
+        LOG.info("The correct template was load");
 
         try {
             template.process(model, resp.getWriter());
         } catch (TemplateException e) {
             e.printStackTrace();
-            logger.error("Problems with template", e.getMessage());
+            LOG.error("Problems with template");
 
         }
     }

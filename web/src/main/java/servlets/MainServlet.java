@@ -24,7 +24,7 @@ import java.util.Map;
 
 @WebServlet("/main")
 public class MainServlet extends HttpServlet {
-    static Logger logger = LoggerFactory.getLogger(MainServlet.class);
+    private static final Logger LOG = LoggerFactory.getLogger(MainServlet.class);
     @Inject
     private TemplateProvider templateProvider;
 
@@ -44,26 +44,27 @@ public class MainServlet extends HttpServlet {
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
+
         }
     }
 
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        logger.info("The application has been started");
+        LOG.info("The application has been started");
 
         Template template = templateProvider.getTemplate(getServletContext(), "choose-mode.ftlh");
 
         Map<String, Object> model = new HashMap<>();
 
         resp.setContentType("text/html;charset=UTF-8");
-        logger.debug("The file was load corectly");
+        LOG.info("The file was load corectly");
 
         try {
             template.process(model, resp.getWriter());
         } catch (TemplateException e) {
             e.printStackTrace();
-            logger.error("Problems with template", e.getMessage());        }
+            LOG.error("Problems with template");        }
 
     }
     }

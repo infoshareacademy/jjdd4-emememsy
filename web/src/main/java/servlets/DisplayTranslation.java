@@ -22,7 +22,7 @@ import java.util.Map;
 
 @WebServlet("/translation")
 public class DisplayTranslation extends HttpServlet {
-    static Logger logger = LoggerFactory.getLogger(DisplayTranslation.class);
+    private static final Logger LOG = LoggerFactory.getLogger(DisplayTranslation.class);
     @Inject
     private TemplateProvider templateProvider;
 
@@ -44,6 +44,7 @@ public class DisplayTranslation extends HttpServlet {
 
         if (mode == null || mode.isEmpty()) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            LOG.error("Problem with loading the correct module");
             return;
         }
         Template template = templateProvider.getTemplate(getServletContext(), "display-translation.ftlh");
@@ -55,11 +56,14 @@ public class DisplayTranslation extends HttpServlet {
         model.put("translation", translation);
 
         resp.setContentType("text/html;charset=UTF-8");
+        LOG.info("The file was load corectly");
 
         try {
             template.process(model, resp.getWriter());
         } catch (TemplateException e) {
             e.printStackTrace();
+            LOG.error("Problems with template");
+
         }
     }
 }
