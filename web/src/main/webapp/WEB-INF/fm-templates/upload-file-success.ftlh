@@ -26,19 +26,19 @@
     </div>
 
     <div class="container">
-    <div class="row">
-        <div class="col-md-4">
-            <p><a class="btn btn-outline-danger btn-lg" href="/management?action=delete" role="button">Wyczyść bazę słów
-                &raquo;</a></p>
+        <div class="row">
+            <div class="col-md-4">
+                <p><a class="btn btn-outline-danger btn-lg" href="/management?action=delete" role="button">Wyczyść bazę słów
+                    &raquo;</a></p>
+            </div>
+            <div class="col-md-4">
+                <p><a class="btn btn-outline-primary btn-lg" href="/management?action=initialize" role="button">Przywróć bazę słów
+                    &raquo;</a></p>
+            </div>
+            <div class="col-md-4">
+                <p></p>
+            </div>
         </div>
-        <div class="col-md-4">
-            <p><a class="btn btn-outline-primary btn-lg" href="/management?action=initialize" role="button">Przywróć bazę słów
-                &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-            <p></p>
-        </div>
-    </div>
     </div>
     <div class="container"></div>
     <form enctype="multipart/form-data"
@@ -53,13 +53,7 @@
     </div>
     <div class="container">
         <br/><br/>
-        <#if action ??>
-            <#if action == "delete">
-                <h5>Wszystkie słowa zostały usunięte z bazy. Wczytaj swój plik lub przywróć naszą bazę aby korzystać z programu.</h5>
-            <#elseif action == "initialize">
-                <h5>Przywróciliśmy pierwotną listę słów. Możesz wczytać swój plik aby dodać kolejne słowa do naszej bazy. Przejdż do Home aby zacząć już teraz korzystać z programu.</h5>
-            </#if>
-        </#if>
+            <h5>Twoje słowa zostały wczytane do bazy danych. Przejdź do menu głównego aby zacząć korzystać z aplikacji</h5>
 
     </div>
 </main>

@@ -33,9 +33,16 @@ public class UploadFileServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        String action = req.getParameter("action");
+
+        if(action.equals("delete")){
+
+        }
+
         Template template = templateProvider.getTemplate(getServletContext(), "upload-file.ftlh");
 
         Map<String, Object> model = new HashMap<>();
+        model.put("action", action);
 
         resp.setContentType("text/html;charset=UTF-8");
         try {
@@ -57,7 +64,7 @@ public class UploadFileServlet extends HttpServlet {
             fileNotFound.printStackTrace();
         }
 
-        Template template = templateProvider.getTemplate(getServletContext(), "choose-mode.ftlh");
+        Template template = templateProvider.getTemplate(getServletContext(), "upload-file-success.ftlh");
 
         Map<String, Object> model = new HashMap<>();
 

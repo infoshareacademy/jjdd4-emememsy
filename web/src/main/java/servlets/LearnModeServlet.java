@@ -99,26 +99,6 @@ public class LearnModeServlet extends HttpServlet {
             return singleWord;
         }
     }
-
-
-
-/*        if (counter == null || counter.equalsIgnoreCase("bad")){
-            singleWord = actionsWeb.pickRandomLearnMode(listOfWords, category);
-            return singleWord;
-        } else if (counter.equalsIgnoreCase("good")) {
-            SingleWord wordToAssess = listOfWords.stream().filter(s_-> s_.getWord().equalsIgnoreCase(word)).findFirst().orElse(null);
-            wordToAssess.setCounter(wordToAssess.getCounter()+3);
-            singleWordDao.update(wordToAssess);
-            singleWord = actionsWeb.pickRandomLearnMode(listOfWords, category);
-            return singleWord;
-        } else if (counter.equalsIgnoreCase("soso")) {
-            SingleWord wordToAssess = listOfWords.stream().filter(s_-> s_.getWord().equalsIgnoreCase(word)).findFirst().orElse(null);
-            wordToAssess.setCounter(wordToAssess.getCounter()+1);
-            singleWordDao.update(wordToAssess);
-            singleWord = actionsWeb.pickRandomLearnMode(listOfWords, category);
-        }
-        return singleWord;*/
-
 }
 
 
