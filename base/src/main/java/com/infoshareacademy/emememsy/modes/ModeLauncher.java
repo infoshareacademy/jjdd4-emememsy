@@ -44,7 +44,7 @@ public class ModeLauncher {
 
 
     public static void launchMainMenu() {
-        System.out.print("Masz do wyboru:\n \n1: Przeglądanie\n2: Nauka\n3: Utrwalanie\n4: Zakończ\n \nWybierz tryb:");
+        System.out.print("Masz do wyboru:\n \n1: Przeglądanie\n2: Nauka\n3: Utrwalanie\n4: Zakończ\n \nWybierz tryb: ");
         String s = scanner.nextLine();
         if (NumberFormatValidator.isNumber(s)) {
             selectMode(Integer.valueOf(s));
