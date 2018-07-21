@@ -15,9 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @WebServlet("/repeat-mode")
 public class RepeatModeServlet extends HttpServlet {
@@ -59,22 +57,38 @@ public class RepeatModeServlet extends HttpServlet {
         }
     }
 
-    private SingleWord selectWord (HttpServletRequest req, HttpServletResponse resp){
+    private SingleWord selectWord (HttpServletRequest req, HttpServletResponse resp) {
         String category = req.getParameter("category");
         String counter = req.getParameter("counter");
         String word = req.getParameter("word");
-        SingleWord singleWord = new SingleWord();
-        List<SingleWord> listOfWords = singleWordDao.findAll();
 
-        if (counter == null || counter.equalsIgnoreCase("remain")){
-            singleWord = actionsWeb.pickRandomRepeatMode(listOfWords, category);
-        } else if (counter.equalsIgnoreCase("remove")) {
-            SingleWord wordToAssess = listOfWords.stream().filter(s_-> s_.getWord().equalsIgnoreCase(word)).findFirst().orElse(null);
-            wordToAssess.setCounter(wordToAssess.getCounter()+100);
-            singleWordDao.update(wordToAssess);
-            singleWord = actionsWeb.pickRandomRepeatMode(listOfWords, category);
+        SingleWord singleWord = new SingleWord();
+        Random randomGenerator = new Random();
+        List<SingleWord> listOfWords = new ArrayList<>();
+
+        if (req.getParameter("category").equalsIgnoreCase("wszystkie")) {
+            listOfWords = singleWordDao.findByAllCategoriesLearnMode();
+        } else {
+            listOfWords = singleWordDao.findByCategoryLearnMode(req.getParameter("category"));
         }
-        return singleWord;
+
+
+        if (listOfWords.isEmpty()) {
+            return null;
+        } else {
+            if (counter == null || counter.equalsIgnoreCase("remain")) {
+                int random = randomGenerator.nextInt(listOfWords.size());
+                singleWord = listOfWords.get(random);
+                return singleWord;
+            } else if (counter.equalsIgnoreCase("remove")) {
+                SingleWord wordToAssess = listOfWords.stream().filter(s_ -> s_.getWord().equalsIgnoreCase(word)).findFirst().orElse(null);
+                wordToAssess.setCounter(wordToAssess.getCounter() + 100);
+                singleWordDao.update(wordToAssess);
+                int random = randomGenerator.nextInt(listOfWords.size());
+                singleWord = listOfWords.get(random);
+            }
+            return singleWord;
+        }
     }
 }
 
