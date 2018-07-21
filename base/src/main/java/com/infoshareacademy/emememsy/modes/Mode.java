@@ -13,8 +13,15 @@ public abstract class Mode {
     protected Mode() {
     }
 
-    public void launchMode() {
+    public void headerMode() {
         System.out.println("Jestes w trybie: " + this.modeName);
         System.out.println("Opis: " + this.modeDescription);
+        System.out.println();
+    }
+
+    public void launchMode() {
+    }
+
+    public void launchAssessmentMenu() {
     }
 }
