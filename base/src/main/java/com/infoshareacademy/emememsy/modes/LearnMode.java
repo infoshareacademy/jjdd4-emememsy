@@ -36,7 +36,7 @@ public class LearnMode extends Mode {
                 break;
             default:
                 ModeLauncher.clearScreen();
-                System.out.println("Nie zrozumiałem. Podaj jeszcze raz pozycję z menu (1-2)");
+                System.out.println("Nie zrozumiałem. Podaj jeszcze raz pozycję z menu (1-2)" );
                 launchMode();
         }
     }
