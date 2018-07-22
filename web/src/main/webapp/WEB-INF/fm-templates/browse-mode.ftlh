@@ -24,15 +24,14 @@
     </div>
     <div class="container">
         <#if singleWord?? >
-            <div class="row">
-                <h2>
-                    <div class="col-md-4"><h2>${singleWord.word}</div>
-                </h2>
-                <div class="col-md-3"></div>
-                <h2>
-                    <div class="col-md-4">${singleWord.translation}</div>
-                </h2>
-                <div class="col-md-3"></div>
+             <div class="container">
+                <div class="row">
+                     <div class="col">
+                         <h2>${singleWord.word}</h2>
+                        </div>
+                    <div class="col">
+                        <h2>${singleWord.translation}</h2>
+                    </div>
             </div>
         <#else>
             <h2>Nie ma więcej słów dostępnych w kategorii ${category} trybie przeglądania. Zmień kategorię lub przejdź
