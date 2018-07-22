@@ -7,6 +7,8 @@ import data.DataProvider;
 import freemarker.TemplateProvider;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -19,7 +21,7 @@ import java.util.*;
 
 @WebServlet("/browse-mode")
 public class BrowseModeServlet extends HttpServlet {
-
+    private static final Logger LOG = LoggerFactory.getLogger(BrowseModeServlet.class);
     @Inject
     private TemplateProvider templateProvider;
     @Inject
@@ -35,6 +37,7 @@ public class BrowseModeServlet extends HttpServlet {
 
         if (category == null || category.isEmpty()) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            LOG.error("Problem with loading the correct module");
             return;
         }
 
@@ -48,11 +51,12 @@ public class BrowseModeServlet extends HttpServlet {
         model.put("mode", mode);
 
         resp.setContentType("text/html;charset=UTF-8");
-
+        LOG.info("The file was load corectly");
         try {
             template.process(model, resp.getWriter());
         } catch (TemplateException e) {
             e.printStackTrace();
+            LOG.error("Problems with template", e.getMessage());
         }
     }
 
