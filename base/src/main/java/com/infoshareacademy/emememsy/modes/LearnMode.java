@@ -111,7 +111,7 @@ public class LearnMode extends Mode {
         } else {
             ModeLauncher.clearScreen();
             headerMode();
-            System.out.println("\nNie zrozumiałem Cię. Podaj jeszcze raz pozycję z menu (1-4)");
+            System.out.println("Nie zrozumiałem Cię. Podaj jeszcze raz pozycję z menu (1-4)");
             launchAssessmentMenu();
         }
     }

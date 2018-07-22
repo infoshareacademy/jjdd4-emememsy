@@ -16,7 +16,7 @@ public class Actions {
             int random = randomGenerator.nextInt(listOfWords.size());
             SingleWord singleWord = listOfWords.get(random);
             if (singleWord.getCounter() == 0) {
-                System.out.println("Słowo: " + singleWord.getWord() + ", Tłumaczenie: " + singleWord.getTranslation());
+                System.out.println("Słowo: " + singleWord.getWord() + ", Tłumaczenie: " + singleWord.getTranslation() + "\n");
                 return singleWord;
             }
         }

@@ -25,7 +25,7 @@ public class BrowserMode extends Mode {
                     singleWord.increaseCounterByOne();
                     InputOutput.writeToCSV(myList);
                 } else {
-                    System.out.println("Nie ma więcej słów do nauki. Przejdź do trybu testu.");
+                    System.out.println("Nie ma więcej słów do nauki. Przejdź do trybu testu.\n");
                     ModeLauncher.launchMainMenu();
                     break;
                 }
@@ -53,7 +53,7 @@ public class BrowserMode extends Mode {
         } else {
             ModeLauncher.clearScreen();
             headerMode();
-            System.out.println("Nie zrozumiałem Cię. Podaj jeszcze raz pozycję z menu (1-2)");
+            System.out.println("Nie zrozumiałem Cię. Podaj jeszcze raz pozycję z menu (1-2)\n");
             launchMode();
         }
     }
