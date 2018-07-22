@@ -57,45 +57,24 @@ public class LearnModeServlet extends HttpServlet {
         }
     }
 
-    private SingleWord selectWord (HttpServletRequest req, HttpServletResponse resp){
-
-        String category = req.getParameter("category");
-        String counter = req.getParameter("counter");
-        String word = req.getParameter("word");
+    private SingleWord selectWord (HttpServletRequest req, HttpServletResponse resp) {
 
         SingleWord singleWord = new SingleWord();
         Random randomGenerator = new Random();
         List<SingleWord> listOfWords = new ArrayList<>();
 
         if (req.getParameter("category").equalsIgnoreCase("wszystkie")) {
-            listOfWords =  singleWordDao.findByAllCategoriesLearnMode();
+            listOfWords = singleWordDao.findByAllCategoriesLearnMode();
         } else {
             listOfWords = singleWordDao.findByCategoryLearnMode(req.getParameter("category"));
         }
 
 
-        if(listOfWords.isEmpty()){
+        if (listOfWords.isEmpty()) {
             return null;
         } else {
-            if (counter == null || counter.equalsIgnoreCase("bad")) {
-                int random = randomGenerator.nextInt(listOfWords.size());
-                singleWord = listOfWords.get(random);
-                return singleWord;
-            } else if (counter.equalsIgnoreCase("good")) {
-                SingleWord wordToAssess = listOfWords.stream().filter(s_ -> s_.getWord().equalsIgnoreCase(word)).findFirst().orElse(null);
-                wordToAssess.setCounter(wordToAssess.getCounter() + 3);
-                singleWordDao.update(wordToAssess);
-                int random = randomGenerator.nextInt(listOfWords.size());
-                singleWord = listOfWords.get(random);
-                return singleWord;
-            } else if (counter.equalsIgnoreCase("soso")) {
-                SingleWord wordToAssess = listOfWords.stream().filter(s_ -> s_.getWord().equalsIgnoreCase(word)).findFirst().orElse(null);
-                wordToAssess.setCounter(wordToAssess.getCounter() + 1);
-                singleWordDao.update(wordToAssess);
-                int random = randomGenerator.nextInt(listOfWords.size());
-                singleWord = listOfWords.get(random);
-                return singleWord;
-            }
+            int random = randomGenerator.nextInt(listOfWords.size());
+            singleWord = listOfWords.get(random);
             return singleWord;
         }
     }

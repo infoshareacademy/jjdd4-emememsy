@@ -46,7 +46,7 @@
         </div>
 
     <#else>
-        <h2>Nie ma więcej słów dostępnych w kategorii ${category} trybie przeglądania. Zmień kategorię lub
+        <h2>Nie ma więcej słów dostępnych w kategorii ${category} trybie nauki. Zmień kategorię lub
             przejdź do innego trybu.</h2>
         <br/><br/><br/>
         <div class="row">

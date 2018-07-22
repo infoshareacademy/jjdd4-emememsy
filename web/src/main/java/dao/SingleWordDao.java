@@ -7,6 +7,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Stateless
@@ -31,6 +32,13 @@ public class SingleWordDao {
 
     public void delete(Long id) {
         final SingleWord c = entityManager.find(SingleWord.class, id);
+        if (c != null) {
+            entityManager.remove(c);
+        }
+    }
+
+    @Transactional
+    public void deleteWord (SingleWord c) {
         if (c != null) {
             entityManager.remove(c);
         }

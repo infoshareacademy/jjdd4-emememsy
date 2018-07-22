@@ -1,5 +1,8 @@
 package servlets;
 
+import com.infoshareacademy.emememsy.SingleWord;
+import dao.SingleWordDao;
+import data.DataProvider;
 import data.FileNotFound;
 import data.FileUploadProcessor;
 import freemarker.TemplateProvider;
@@ -16,7 +19,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @WebServlet("/management")
@@ -29,14 +34,22 @@ public class UploadFileServlet extends HttpServlet {
     @Inject
     private FileUploadProcessor fileUploadProcessor;
 
+    @Inject
+    private SingleWordDao singleWordDao;
+
+    @Inject
+    private DataProvider dataProvider;
+
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String action = req.getParameter("action");
 
-        if(action.equals("delete")){
-
+        if("delete".equals(action)){
+            deleteWords(req, resp);
+        } else if ("initialize".equals(action)){
+            uploadWords(req, resp);
         }
 
         Template template = templateProvider.getTemplate(getServletContext(), "upload-file.ftlh");
@@ -74,8 +87,21 @@ public class UploadFileServlet extends HttpServlet {
         } catch (TemplateException e) {
             e.printStackTrace();
         }
+    }
 
+    private void deleteWords (HttpServletRequest req, HttpServletResponse resp) {
 
+        List<SingleWord> listOfWords = singleWordDao.findAll();
+        listOfWords.stream().forEach(o-> singleWordDao.deleteWord(o));
+    }
 
+    private void uploadWords (HttpServletRequest req, HttpServletResponse resp) {
+
+        try {
+            List<SingleWord> listOfWords = dataProvider.getListOfWords();
+            listOfWords.stream().forEach(o-> singleWordDao.save(o));
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
     }
 }

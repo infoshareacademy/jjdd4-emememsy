@@ -31,17 +31,17 @@
         <div class="row">
             <div class="col-md-4">
                 <p><a class="btn btn-outline-success btn-lg"
-                      href="/${mode}?category=${category}&mode=${mode}&word=${word}&counter=good" role="button">Dobrze!
+                      href="/counter?category=${category}&mode=${mode}&word=${word}&counter=good" role="button">Dobrze!
                     :-)</a></p>
             </div>
             <div class="col-md-4">
                 <p><a class="btn btn-outline-warning btn-lg"
-                      href="/${mode}?category=${category}&mode=${mode}&word=${word}&counter=soso" role="button">Średnio
+                      href="/counter?category=${category}&mode=${mode}&word=${word}&counter=soso" role="button">Średnio
                     :-|</a></p>
             </div>
             <div class="col-md-4">
                 <p><a class="btn btn-outline-danger btn-lg"
-                      href="/${mode}?category=${category}&mode=${mode}&word=${word}&counter=bad" role="button">Źle...
+                      href="/counter?category=${category}&mode=${mode}&word=${word}&counter=bad" role="button">Źle...
                     :-(</a></p>
             </div>
         </div>
