@@ -41,7 +41,7 @@ public class ChooseCategoryServlet extends HttpServlet {
         Template template = templateProvider.getTemplate(getServletContext(), "choose-category.ftlh");
 
 
-        List<SingleWord> tempList = dataProvider.getListofWords();
+        List<SingleWord> tempList = dataProvider.getListOfWords();
         //tempList = InputOutput.createListOfWordsOmmitProperties();
         List<String> categories = tempList.stream()
                 .map(o -> o.getCategory().toUpperCase())

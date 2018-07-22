@@ -42,25 +42,45 @@ public class DataProvider {
     @Inject
     private ServletContext servletContext;
 
-    public List<SingleWord> getListofWords() throws MalformedURLException {
-        String filePath = servletContext.getResource("/WEB-INF/input_words.csv").getPath();
 
-        List<SingleWord> listOfWords = new ArrayList<>();
-        boolean isUppercase = true;
+
+    public List<SingleWord> getListOfWords() throws MalformedURLException {
+        return getListOfWords(servletContext.getResource("/WEB-INF/input_words.csv").getPath());
+
+    }
+
+    public List<SingleWord> getListOfWords(String filePath) {
+        List<SingleWord> result = new ArrayList<>();
+
         try {
             CSVReader reader = new CSVReader(new FileReader(filePath));
             CsvToBean<SingleWord> csvToBean = new CsvToBean<>();
-            listOfWords.addAll(csvToBean.parse(strategy, reader));
-            if (isUppercase == true) {
-                listOfWords.stream().forEach(SingleWord::toUpperCase);
-            } else {
-                listOfWords.stream().forEach(SingleWord::toLowerCase);
-            }
+            result.addAll(csvToBean.parse(strategy, reader));
+            processListOfWords(result);
         } catch (IOException | NumberFormatException e) {
             System.out.println("Wystąpił problem z wczytaniem pliku CSV. Skontaktuj się z administratorem Emememsów. ");
         }
-        return listOfWords;
+        return result;
     }
+
+    private void processListOfWords(List<SingleWord> wordsList) {
+        boolean isUppercase = readUppercaseProperty();
+
+        if (isUppercase == true) {
+            wordsList.stream().forEach(SingleWord::toUpperCase);
+        } else {
+            wordsList.stream().forEach(SingleWord::toLowerCase);
+        }
+    }
+
+    private boolean readUppercaseProperty() {
+        // TODO: implement proper property reading
+        return true;
+    }
+
+
+
+
 
     public void writeToFile(List<SingleWord> listOfWords) throws MalformedURLException {
         String filePath = servletContext.getResource("/WEB-INF/input_words.csv").getPath();

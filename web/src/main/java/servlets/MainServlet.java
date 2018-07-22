@@ -37,7 +37,7 @@ public class MainServlet extends HttpServlet {
         super.init(config);
 
         try {
-            List<SingleWord> listOfWords = dataProvider.getListofWords();
+            List<SingleWord> listOfWords = dataProvider.getListOfWords();
             listOfWords.stream().forEach(o-> singleWordDao.save(o));
 
         } catch (MalformedURLException e) {

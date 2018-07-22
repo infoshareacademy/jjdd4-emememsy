@@ -22,31 +22,40 @@
 
     <div class="jumbotron">
         <!--   inject banner here  -->
-        <#include "macros/learn-banner.ftlh">
+        <#include "macros/file-upload-banner.ftlh">
     </div>
 
     <div class="container">
-        <h1>Poprawne tłumaczenie słowa ${word} to ${translation}.</h1>
-        <br/><br/><br/>
         <div class="row">
             <div class="col-md-4">
-                <p><a class="btn btn-outline-success btn-lg"
-                      href="/counter?category=${category}&mode=${mode}&word=${word}&counter=good" role="button">Dobrze!
-                    :-)</a></p>
+                <p><a class="btn btn-outline-danger btn-lg" href="/management?action=delete" role="button">Wyczyść bazę słów
+                    &raquo;</a></p>
             </div>
             <div class="col-md-4">
-                <p><a class="btn btn-outline-warning btn-lg"
-                      href="/counter?category=${category}&mode=${mode}&word=${word}&counter=soso" role="button">Średnio
-                    :-|</a></p>
+                <p><a class="btn btn-outline-primary btn-lg" href="/management?action=initialize" role="button">Przywróć bazę słów
+                    &raquo;</a></p>
             </div>
             <div class="col-md-4">
-                <p><a class="btn btn-outline-danger btn-lg"
-                      href="/counter?category=${category}&mode=${mode}&word=${word}&counter=bad" role="button">Źle...
-                    :-(</a></p>
+                <p></p>
             </div>
         </div>
     </div>
+    <div class="container"></div>
+    <form enctype="multipart/form-data"
+          action="management"
+          method="POST">
+        <div class="container">
+            <br/>
+            File: <input type="file" name="dataFile"/>
+            <input type="submit" name="save" value="save"/>
+        </div>
+    </form>
+    </div>
+    <div class="container">
+        <br/><br/>
+            <h5>Twoje słowa zostały wczytane do bazy danych. Przejdź do menu głównego aby zacząć korzystać z aplikacji</h5>
 
+    </div>
 </main>
 
 <footer class="container fixed-bottom">

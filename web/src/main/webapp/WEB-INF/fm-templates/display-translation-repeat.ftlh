@@ -31,12 +31,12 @@
         <div class="row">
             <div class="col-md-6">
                 <p><a class="btn btn-outline-success btn-lg"
-                      href="/${mode}?category=${category}&mode=${mode}&word=${word}&counter=remain" role="button">Pozostaw
+                      href="/counter?category=${category}&mode=${mode}&word=${word}&counter=remain" role="button">Pozostaw
                     słowo<br/>w trybie powtórek</a></p>
             </div>
             <div class="col-md-6">
                 <p><a class="btn btn-outline-warning btn-lg"
-                      href="/${mode}?category=${category}&mode=${mode}&word=${word}&counter=remove" role="button">Usuń
+                      href="/counter?category=${category}&mode=${mode}&word=${word}&counter=remove" role="button">Usuń
                     słowo <br/>z trybu powtórek</a></p>
             </div>
         </div>

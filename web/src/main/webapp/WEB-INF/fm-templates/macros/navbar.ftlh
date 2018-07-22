@@ -7,6 +7,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">Mój postęp</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/management">Ustawienia</a>
+            </li>
 
             <!-- Dropdown -->
             <li class="nav-item dropdown">

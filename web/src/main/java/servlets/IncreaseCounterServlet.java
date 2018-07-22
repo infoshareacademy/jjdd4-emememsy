@@ -1,0 +1,81 @@
+package servlets;
+
+import com.infoshareacademy.emememsy.ActionsWeb;
+import com.infoshareacademy.emememsy.SingleWord;
+import dao.SingleWordDao;
+import freemarker.TemplateProvider;
+import freemarker.template.Template;
+import freemarker.template.TemplateException;
+
+import javax.inject.Inject;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+@WebServlet("/counter")
+public class IncreaseCounterServlet extends HttpServlet {
+
+    @Inject
+    private TemplateProvider templateProvider;
+    @Inject
+    private SingleWordDao singleWordDao;
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        String category = req.getParameter("category");
+        String mode = req.getParameter("mode");
+        String counter = req.getParameter("counter");
+        String word = req.getParameter("word");
+
+
+        if ((category == null || category.isEmpty()) && (mode == null || mode.isEmpty())) {
+            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            return;
+        }
+
+        increaseCounter(req, resp);
+
+        Template template = templateProvider.getTemplate(getServletContext(), "learn-mode.ftlh");
+        if (counter.equals("good") || counter.equals("soso") || counter.equals("bad")) {
+
+            resp.sendRedirect("http://127.0.0.1:8080/learn-mode?category=" + category + "&mode=" + mode);
+
+        } else if (counter.equals("remove") || counter.equals("remain")) {
+
+            resp.sendRedirect("http://127.0.0.1:8080/repeat-mode?category=" + category + "&mode=" + mode);
+        }
+    }
+
+    private void increaseCounter (HttpServletRequest req, HttpServletResponse resp){
+
+        String counter = req.getParameter("counter");
+        String word = req.getParameter("word");
+
+        List<SingleWord> listOfWords = new ArrayList<>();
+        listOfWords = singleWordDao.findAll();
+
+        if(counter.equals("good")){
+            SingleWord wordToAssess = listOfWords.stream().filter(s_ -> s_.getWord().equalsIgnoreCase(word)).findFirst().orElse(null);
+            wordToAssess.setCounter(wordToAssess.getCounter()+3);
+            singleWordDao.update(wordToAssess);
+        } else if (counter.equals("soso")){
+            SingleWord wordToAssess = listOfWords.stream().filter(s_ -> s_.getWord().equalsIgnoreCase(word)).findFirst().orElse(null);
+            wordToAssess.setCounter(wordToAssess.getCounter()+1);
+            singleWordDao.update(wordToAssess);
+        } else if(counter.equals("remove")){
+            SingleWord wordToAssess = listOfWords.stream().filter(s_ -> s_.getWord().equalsIgnoreCase(word)).findFirst().orElse(null);
+            wordToAssess.setCounter(wordToAssess.getCounter()+100);
+            singleWordDao.update(wordToAssess);
+        }
+    }
+
+}
+
