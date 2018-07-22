@@ -38,22 +38,21 @@ public class BrowserMode extends Mode {
             default:
                 ModeLauncher.clearScreen();
                 headerMode();
-                System.out.println("Nie zrozumiałem Cię. Podaj jeszcze raz pozycję z menu (1-2)");
-                headerMode();
+                System.out.println("Nie zrozumiałem. Podaj jeszcze raz pozycję z menu (1-2)");
                 launchMode();
         }
     }
 
     @Override
     public void launchMode() {
-        System.out.print("Masz do wyboru:\n\n1: Wyswietl slowo-tłumaczenie\n2: Wyjście do Menu Głównego\n\nWybierz: ");
+        System.out.print("Masz do wyboru:\n\n1: Wyswietl słowo-tłumaczenie\n2: Wyjście do Menu Głównego\n\nWybierz: ");
         String s = scanner.nextLine();
         if (NumberFormatValidator.isNumber(s)) {
             selectMenu(Integer.valueOf(s));
         } else {
             ModeLauncher.clearScreen();
             headerMode();
-            System.out.println("Nie zrozumiałem Cię. Podaj jeszcze raz pozycję z menu (1-2)\n");
+            System.out.println("Nie zrozumiałem. Podaj jeszcze raz pozycję z menu (1-2)\n");
             launchMode();
         }
     }

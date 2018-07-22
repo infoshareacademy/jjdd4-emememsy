@@ -13,8 +13,8 @@ public abstract class Mode {
     protected Mode() {
     }
 
-    public void headerMode() {
-        System.out.println("Jestes w trybie: " + this.modeName);
+   public void headerMode() {
+        System.out.println("Jesteś w trybie: " + this.modeName);
         System.out.println("Opis: " + this.modeDescription);
         System.out.println();
     }

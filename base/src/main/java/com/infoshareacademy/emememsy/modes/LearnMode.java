@@ -36,7 +36,7 @@ public class LearnMode extends Mode {
             default:
                 ModeLauncher.clearScreen();
                 headerMode();
-                System.out.println("Nie zrozumiałem Cię. Podaj jeszcze raz pozycję z menu (1-2)");
+                System.out.println("Nie zrozumiałem. Podaj jeszcze raz pozycję z menu (1-2)");
                 launchMode();
         }
     }
@@ -78,7 +78,7 @@ public class LearnMode extends Mode {
                 ModeLauncher.clearScreen();
                 headerMode();
                 launchAssessmentMenu();
-                System.out.println("Nie zrozumiałem Cię. Podaj jeszcze raz pozycję z menu (1-4)");
+                System.out.println("Nie zrozumiałem. Podaj jeszcze raz pozycję z menu (1-4)");
                 launchAssessmentMenu();
         }
     }
@@ -92,7 +92,7 @@ public class LearnMode extends Mode {
         } else {
             ModeLauncher.clearScreen();
             headerMode();
-            System.out.println("Nie zrozumiałem Cię. Podaj jeszcze raz pozycję z menu (1-2)");
+            System.out.println("Nie zrozumiałem. Podaj jeszcze raz pozycję z menu (1-2)");
             launchMode();
         }
     }
@@ -111,7 +111,7 @@ public class LearnMode extends Mode {
         } else {
             ModeLauncher.clearScreen();
             headerMode();
-            System.out.println("Nie zrozumiałem Cię. Podaj jeszcze raz pozycję z menu (1-4)");
+            System.out.println("Nie zrozumiałem. Podaj jeszcze raz pozycję z menu (1-4)");
             launchAssessmentMenu();
         }
     }
