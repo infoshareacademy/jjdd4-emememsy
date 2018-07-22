@@ -15,9 +15,6 @@ public class App {
         ModeLauncher.clearScreen();
         System.out.println(" Witamy w aplikacji do nauki słówek - myWords. w");
         printLogo();
-        List<SingleWord> myList = new ArrayList<>();
-        myList = InputOutput.createListOfWords();
-        SingleWord singleWord = new SingleWord();
         ModeLauncher.pressEnterKeyToContinue();
         ModeLauncher.clearScreen();
         ModeLauncher.launchMainMenu();

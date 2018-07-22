@@ -16,7 +16,7 @@ public class Actions {
             int random = randomGenerator.nextInt(listOfWords.size());
             SingleWord singleWord = listOfWords.get(random);
             if (singleWord.getCounter() == 0) {
-                System.out.println("Słowo: " + singleWord.getWord() + ", Tłumaczenie: " + singleWord.getTranslation());
+                System.out.println("Słowo: " + singleWord.getWord() + ", Tłumaczenie: " + singleWord.getTranslation() + "\n");
                 return singleWord;
             }
         }
@@ -43,12 +43,12 @@ public class Actions {
 
     public SingleWord pickRandomLearnMode(List<SingleWord> listOfWords) {
         return pickWord(listOfWords, 0, 4,
-                "Nie ma dostępnych słów w tym trybie. Przejdź do trybu nauki aby poznać nowe słowa lub wróć za jakiś czas do trybu powrótek aby utrwalić materiał");
+                "Nie ma dostępnych słów w tym trybie. Przejdź do trybu nauki aby poznać nowe słowa lub wróć za jakiś czas do trybu powrótek aby utrwalić materiał\n");
     }
 
     public SingleWord pickRandomRepeatMode(List<SingleWord> listOfWords) {
         return pickWord(listOfWords, 3, 99,
-                "Nie ma dostępnych słów w tym trybie. Przejdź do trybu nauki aby poznać nowe słowa");
+                "Nie ma dostępnych słów w tym trybie. Przejdź do trybu nauki aby poznać nowe słowa\n");
     }
 
     public String showCorrectTranslation(SingleWord pickedWord) {

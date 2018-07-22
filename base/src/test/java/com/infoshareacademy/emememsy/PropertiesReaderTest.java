@@ -1,7 +1,6 @@
 package com.infoshareacademy.emememsy;
 
 import org.junit.Test;
-import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import static org.junit.Assert.*;
@@ -18,10 +17,8 @@ public class PropertiesReaderTest {
         expected.put("testKey1", "testValue1");
         expected.put("testKey2", "testValue2");
 
-        String filePath = new File("").getAbsolutePath() + "/src/test/config-test1.properties";
-
         //WHEN
-        Map<String, String> result = propertiesReader.read(filePath);
+        Map<String, String> result = propertiesReader.read("../base/src/test/config-test1.properties");
 
         //THEN
         assertTrue(expected.equals(result));
