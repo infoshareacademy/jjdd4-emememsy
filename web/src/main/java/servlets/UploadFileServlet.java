@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+import javax.transaction.Transactional;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -24,6 +25,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Transactional
 @WebServlet("/management")
 @MultipartConfig
 public class UploadFileServlet extends HttpServlet {
