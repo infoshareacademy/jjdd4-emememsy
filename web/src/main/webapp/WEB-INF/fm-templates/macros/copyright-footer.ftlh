@@ -1,0 +1,1 @@
+<div>Copyright &copy; Emememsy ${.now?string.yyyy}</div>
