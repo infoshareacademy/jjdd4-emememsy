@@ -85,4 +85,17 @@ public class SingleWordDao {
         query.setParameter("category", category);
         return query.getResultList();
     }
+
+    public List<SingleWord> findByAllCategoriesRepeatMode(){
+        final Query query = entityManager.createQuery(
+                "SELECT s FROM SingleWord s WHERE s.counter > 3 AND s.counter < 100" );
+        return query.getResultList();
+    }
+
+    public List<SingleWord> findByCategoryRepeatMode(String category){
+        final Query query = entityManager.createQuery(
+                "SELECT s FROM SingleWord s WHERE s.category = :category AND s.counter > 3 AND s.counter < 100");
+        query.setParameter("category", category);
+        return query.getResultList();
+    }
 }

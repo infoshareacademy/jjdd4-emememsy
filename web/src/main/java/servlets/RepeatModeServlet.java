@@ -64,9 +64,9 @@ public class RepeatModeServlet extends HttpServlet {
         List<SingleWord> listOfWords = new ArrayList<>();
 
         if (req.getParameter("category").equalsIgnoreCase("wszystkie")) {
-            listOfWords = singleWordDao.findByAllCategoriesLearnMode();
+            listOfWords = singleWordDao.findByAllCategoriesRepeatMode();
         } else {
-            listOfWords = singleWordDao.findByCategoryLearnMode(req.getParameter("category"));
+            listOfWords = singleWordDao.findByCategoryRepeatMode(req.getParameter("category"));
         }
 
 
