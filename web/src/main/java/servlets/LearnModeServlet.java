@@ -80,6 +80,8 @@ public class LearnModeServlet extends HttpServlet {
         } else {
             int random = randomGenerator.nextInt(listOfWords.size());
             singleWord = listOfWords.get(random);
+            singleWord.setDisplayed(singleWord.getDisplayed() + 1);
+            singleWordDao.update(singleWord);
             return singleWord;
         }
     }

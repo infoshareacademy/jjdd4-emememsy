@@ -13,13 +13,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <title>MyWords</title>
 
-
     <!--Load the AJAX API-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
 
         // Load the Visualization API and the corechart package.
-        google.charts.load('current', {'packages': ['corechart']});
+        google.charts.load('current', {'packages':['corechart']});
 
         // Set a callback to run when the Google Visualization API is loaded.
         google.charts.setOnLoadCallback(drawChart);
@@ -30,27 +29,18 @@
         function drawChart() {
 
             // Create the data table.
-            var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Topping');
-            data.addColumn('number', 'Slices');
-            data.addRows([
-                mojamapazjavy.tostrin
-                ['uzycie slowa', 3],
-                ['ilosc prob', 1],
-                ['dobre /zle ratio', 1],
-                ['Zucchini', 1],
-                ['Pepperoni', 2]
-            ]
-
-
-            );
+            var data = google.visualization.arrayToDataTable([
+                ['Element', 'Density', { role: 'style' }],
+                ['Copper', 8.94, '#b87333'],            // RGB value
+                ['Silver', 10.49, 'silver'],            // English color name
+                ['Gold', 19.30, 'gold'],
+                ['Platinum', 21.45, 'color: #e5e4e2' ], // CSS-style declaration
+            ]);
 
             // Set chart options
-            var options = {
-                'title': 'How Much Pizza I Ate Last Night',
-                'width': 400,
-                'height': 300
-            };
+            var options = {'title':'Liczba wyświetleń każdego słowa',
+                'width':400,
+                'height':300};
 
             // Instantiate and draw our chart, passing in some options.
             var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
@@ -58,15 +48,18 @@
         }
     </script>
 
-
 </head>
 <body>
-<div id="chart_div"></div>
+
 <!--   inject navbar here  -->
     <#include "macros/navbar.ftlh">
 
 <div class="jumbotron">
         <#include "macros/welcome-banner.ftlh">
+</div>
+
+<div class="container">
+    <div id="chart_div"></div>
 </div>
 
 

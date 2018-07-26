@@ -65,14 +65,25 @@ public class IncreaseCounterServlet extends HttpServlet {
         if(counter.equals("good")){
             SingleWord wordToAssess = listOfWords.stream().filter(s_ -> s_.getWord().equalsIgnoreCase(word)).findFirst().orElse(null);
             wordToAssess.setCounter(wordToAssess.getCounter()+3);
+            wordToAssess.setGood(wordToAssess.getGood()+1);
             singleWordDao.update(wordToAssess);
         } else if (counter.equals("soso")){
             SingleWord wordToAssess = listOfWords.stream().filter(s_ -> s_.getWord().equalsIgnoreCase(word)).findFirst().orElse(null);
             wordToAssess.setCounter(wordToAssess.getCounter()+1);
+            wordToAssess.setSoso(wordToAssess.getSoso()+1);
             singleWordDao.update(wordToAssess);
         } else if(counter.equals("remove")){
             SingleWord wordToAssess = listOfWords.stream().filter(s_ -> s_.getWord().equalsIgnoreCase(word)).findFirst().orElse(null);
             wordToAssess.setCounter(wordToAssess.getCounter()+100);
+            wordToAssess.setRemove(wordToAssess.getRemove()+1);
+            singleWordDao.update(wordToAssess);
+        } else if(counter.equals("remain")){
+            SingleWord wordToAssess = listOfWords.stream().filter(s_ -> s_.getWord().equalsIgnoreCase(word)).findFirst().orElse(null);
+            wordToAssess.setRemain(wordToAssess.getRemain()+1);
+            singleWordDao.update(wordToAssess);
+        } else if(counter.equals("bad")){
+            SingleWord wordToAssess = listOfWords.stream().filter(s_ -> s_.getWord().equalsIgnoreCase(word)).findFirst().orElse(null);
+            wordToAssess.setBad(wordToAssess.getBad()+1);
             singleWordDao.update(wordToAssess);
         }
     }
