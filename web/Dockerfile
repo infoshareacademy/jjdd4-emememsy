@@ -1,4 +1,4 @@
-FROM jboss/wildfly:13.1.0.Final
+FROM jboss/wildfly:13.0.0.Final
 
 ADD target/myWords-web-1.0-SNAPSHOT.war /opt/jboss/wildfly/standalone/deployments/
 
