@@ -77,6 +77,7 @@ public class BrowseModeServlet extends HttpServlet {
             int random = randomGenerator.nextInt(listOfWords.size());
             SingleWord singleWord = listOfWords.get(random);
             singleWord.setCounter(singleWord.getCounter() + 1);
+            singleWord.setDisplayed(singleWord.getDisplayed() + 1);
             singleWordDao.update(singleWord);
             return singleWord;
         }
