@@ -1,0 +1,9 @@
+FROM jboss/wildfly:13.0.0.Final
+
+ADD target/myWords-web-1.0-SNAPSHOT.war /opt/jboss/wildfly/standalone/deployments/
+
+RUN /opt/jboss/wildfly/bin/add-user.sh root pass123 --silent
+
+CMD ["/opt/jboss/wildfly/bin/standalone.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0"]
+
+
