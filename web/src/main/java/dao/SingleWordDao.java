@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Map;
 
 @Stateless
 public class SingleWordDao {
@@ -96,6 +97,12 @@ public class SingleWordDao {
         final Query query = entityManager.createQuery(
                 "SELECT s FROM SingleWord s WHERE s.category = :category AND s.counter > 3 AND s.counter < 100");
         query.setParameter("category", category);
+        return query.getResultList();
+    }
+
+    public List<SingleWord> allDisplayed(){
+        final Query query = entityManager.createQuery(
+                "SELECT s FROM SingleWord s WHERE s.displayed > 0" );
         return query.getResultList();
     }
 }
