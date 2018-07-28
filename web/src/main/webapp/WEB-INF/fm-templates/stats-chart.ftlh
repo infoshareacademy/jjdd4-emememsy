@@ -21,9 +21,17 @@
         google.charts.setOnLoadCallback(drawMultSeries);
 
         function drawMultSeries() {
-           // var data = google.visualization.arrayToDataTable();
             var data = google.visualization.arrayToDataTable([
-                ${output}
+                    <#if title??>
+                        <#assign h = title>
+                        <#assign keys = title?keys>
+                            <#list keys as key>['${key}', '${title[key]}',],</#list>
+                    </#if>
+                 <#if map??>
+                 <#assign h = map>
+                     <#assign keys = map?keys>
+                    <#list keys as key>['${key}', ${map[key]}]<#sep>,</#sep></#list>
+                </#if>
             ]);
 
             var options = {
@@ -48,10 +56,6 @@
 
 <div class="container">
     <div id="chart_div"></div>
-</div>
-
-<div class="container">
-<p>${output}</p>
 </div>
 
 

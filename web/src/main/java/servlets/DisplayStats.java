@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -25,29 +26,39 @@ public class DisplayStats extends HttpServlet {
     private TemplateProvider templateProvider;
 
     @Inject
-    private DataProvider dataProvider;
-
-    @Inject
     private SingleWordDao singleWordDao;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        Template template = templateProvider.getTemplate(getServletContext(), "stats-chart.ftlh");
-
         List<SingleWord> statsDisplayed = singleWordDao.allDisplayed();
 
-        String output = "[";
+        Map<Object, Object> title = new HashMap<>();
+        title.put("Słowo", "Liczba wyświetleń");
+        Map<Object, Object> map = new HashMap<>();
+        //map.put("Słowo", "Liczba wyświetleń");
+        for(SingleWord s: statsDisplayed){
+            map.put(s.getWord(), s.getDisplayed());
+        }
+
+
+        /*
+        String output = "['Słowo', 'Liczba wyświetleń',]";
         StringBuilder sb = new StringBuilder(output);
 
         for(SingleWord s: statsDisplayed){
-            sb.append("['" + s.getWord() + ", " + s.getDisplayed() + "],");
+            if (sb.length() > 1) sb.append( "," );
+            sb.append("['" + s.getWord() + "', " + s.getDisplayed() + "]");
         }
         output = sb.toString();
+        */
 
+
+        Template template = templateProvider.getTemplate(getServletContext(), "stats-chart.ftlh");
 
         Map<String, Object> model = new HashMap<>();
-        model.put("output", output);
+        model.put("title", title);
+        model.put("map", map);
 
 
         resp.setContentType("text/html;charset=UTF-8");
