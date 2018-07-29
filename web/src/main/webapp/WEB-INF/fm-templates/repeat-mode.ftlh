@@ -22,7 +22,7 @@
 
     <div class="jumbotron">
         <!--   inject banner here  -->
-                <#include "macros/learn-banner.ftlh">
+                <#include "macros/repeat-banner.ftlh">
     </div>
 
     <div class="container">
