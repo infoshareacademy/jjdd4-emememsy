@@ -76,11 +76,27 @@
 </div>
 
 <div class="container">
+    <strong>
+    Łączna liczba wyświetlonych słów: ${numberAllDisplayed}.<br/>
+    Liczba słów dostępnych w trybie przeglądania: ${numberBrowse}.<br/>
+    Liczba słów dostępnych w trybie nauki: ${numberLearn}.<br/>
+    Liczba słów dostępnych w trybie powtórek: ${numberRepeat}.<br/>
+    Liczba słów oznaczonych jako nauczone: ${numberExcluded}.<br/>
+    </strong>
+</div>
+<br/>
+<br/>
+<div class="container">
     <div id="chart_div"></div>
 </div>
+<br/>
+<br/>
 <div class="container">
     <div id="chart2_div"></div>
 </div>
+
+
+
 
 
 

@@ -111,4 +111,37 @@ public class SingleWordDao {
                 "SELECT s FROM SingleWord s WHERE s.bad > 0 ORDER BY s.bad desc " );
         return query.getResultList();
     }
+
+    public Long numberAllDisplayed(){
+        final Query query = entityManager.createQuery(
+                "SELECT COUNT(s.id) FROM SingleWord s WHERE s.displayed > 0" );
+        return (Long)query.getSingleResult();
+    }
+
+    public Long totalNumberOfWordsBrowseMode(){
+        final Query query = entityManager.createQuery(
+                "SELECT COUNT(s.id) FROM SingleWord s WHERE s.counter = 0" );
+        return (Long)query.getSingleResult();
+    }
+
+    public Long totalNumberOfWordsLearnMode(){
+        final Query query = entityManager.createQuery(
+                "SELECT COUNT(s.id) FROM SingleWord s WHERE s.counter > 0 and s.counter<4" );
+        return (Long)query.getSingleResult();
+    }
+
+    public Long totalNumberOfWordsRepeatMode(){
+        final Query query = entityManager.createQuery(
+                "SELECT COUNT(s.id) FROM SingleWord s WHERE s.counter > 3" );
+        return (Long)query.getSingleResult();
+    }
+
+    public Long totalNumberOfPassedWords(){
+        final Query query = entityManager.createQuery(
+                "SELECT COUNT(s.id) FROM SingleWord s WHERE s.counter > 100" );
+        return (Long)query.getSingleResult();
+    }
+
+
+
 }

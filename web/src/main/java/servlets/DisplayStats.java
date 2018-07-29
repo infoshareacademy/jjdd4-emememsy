@@ -41,13 +41,20 @@ public class DisplayStats extends HttpServlet {
             map.put(s.getWord(), s.getDisplayed());
         }
 
-        List<SingleWord> difficultWords = singleWordDao.mostDifficult();//.stream().limit(10).collect(Collectors.toList());
+        List<SingleWord> difficultWords = singleWordDao.mostDifficult().stream().limit(10).collect(Collectors.toList());
         Map<Object, Object> titleBad = new HashMap<>();
         titleBad.put("Słowo", "Liczba negatywnych ocen");
         Map<Object, Object> mapBad = new LinkedHashMap<>();
         for(SingleWord s: difficultWords){
             mapBad.put(s.getWord(), s.getBad());
         }
+
+        Long numberAllDisplayed = singleWordDao.numberAllDisplayed();
+
+        Long numberBrowse = singleWordDao.totalNumberOfWordsBrowseMode();
+        Long numberLearn = singleWordDao.totalNumberOfWordsLearnMode();
+        Long numberRepeat = singleWordDao.totalNumberOfWordsRepeatMode();
+        Long numberExcluded = singleWordDao.totalNumberOfPassedWords();
 
 
         Template template = templateProvider.getTemplate(getServletContext(), "stats-chart.ftlh");
@@ -57,6 +64,11 @@ public class DisplayStats extends HttpServlet {
         model.put("map", map);
         model.put("titleBad", titleBad);
         model.put("mapBad", mapBad);
+        model.put("numberAllDisplayed", numberAllDisplayed);
+        model.put("numberBrowse", numberBrowse);
+        model.put("numberLearn", numberLearn);
+        model.put("numberRepeat", numberRepeat);
+        model.put("numberExcluded", numberExcluded);
 
 
         resp.setContentType("text/html;charset=UTF-8");
