@@ -46,8 +46,8 @@
           method="POST">
         <div class="container">
             <br/>
-            File: <input type="file" name="dataFile"/>
-            <input type="submit" name="save" value="save"/>
+            Nowy plik: <input type="file" name="dataFile"/>
+            <input type="submit" name="save" value="Zastosuj"/>
         </div>
     </form>
     </div>
