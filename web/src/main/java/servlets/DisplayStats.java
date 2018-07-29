@@ -18,6 +18,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @WebServlet("/progress")
 public class DisplayStats extends HttpServlet {
@@ -35,23 +36,18 @@ public class DisplayStats extends HttpServlet {
 
         Map<Object, Object> title = new HashMap<>();
         title.put("Słowo", "Liczba wyświetleń");
-        Map<Object, Object> map = new HashMap<>();
-        //map.put("Słowo", "Liczba wyświetleń");
+        Map<Object, Object> map = new LinkedHashMap<>();
         for(SingleWord s: statsDisplayed){
             map.put(s.getWord(), s.getDisplayed());
         }
 
-
-        /*
-        String output = "['Słowo', 'Liczba wyświetleń',]";
-        StringBuilder sb = new StringBuilder(output);
-
-        for(SingleWord s: statsDisplayed){
-            if (sb.length() > 1) sb.append( "," );
-            sb.append("['" + s.getWord() + "', " + s.getDisplayed() + "]");
+        List<SingleWord> difficultWords = singleWordDao.mostDifficult();//.stream().limit(10).collect(Collectors.toList());
+        Map<Object, Object> titleBad = new HashMap<>();
+        titleBad.put("Słowo", "Liczba negatywnych ocen");
+        Map<Object, Object> mapBad = new LinkedHashMap<>();
+        for(SingleWord s: difficultWords){
+            mapBad.put(s.getWord(), s.getBad());
         }
-        output = sb.toString();
-        */
 
 
         Template template = templateProvider.getTemplate(getServletContext(), "stats-chart.ftlh");
@@ -59,6 +55,8 @@ public class DisplayStats extends HttpServlet {
         Map<String, Object> model = new HashMap<>();
         model.put("title", title);
         model.put("map", map);
+        model.put("titleBad", titleBad);
+        model.put("mapBad", mapBad);
 
 
         resp.setContentType("text/html;charset=UTF-8");

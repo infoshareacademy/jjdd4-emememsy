@@ -102,7 +102,13 @@ public class SingleWordDao {
 
     public List<SingleWord> allDisplayed(){
         final Query query = entityManager.createQuery(
-                "SELECT s FROM SingleWord s WHERE s.displayed > 0" );
+                "SELECT s FROM SingleWord s WHERE s.displayed > 0 ORDER BY s.displayed desc " );
+        return query.getResultList();
+    }
+
+    public List<SingleWord> mostDifficult(){
+        final Query query = entityManager.createQuery(
+                "SELECT s FROM SingleWord s WHERE s.bad > 0 ORDER BY s.bad desc " );
         return query.getResultList();
     }
 }
