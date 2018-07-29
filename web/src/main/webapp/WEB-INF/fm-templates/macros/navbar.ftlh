@@ -5,7 +5,7 @@
                 <a class="nav-link" href="/main">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Mój postęp</a>
+                <a class="nav-link" href="/progress">Mój postęp</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/management">Ustawienia</a>
