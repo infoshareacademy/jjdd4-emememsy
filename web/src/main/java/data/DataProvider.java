@@ -15,10 +15,7 @@ import org.slf4j.LoggerFactory;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.servlet.ServletContext;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
+import java.io.*;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -56,6 +53,7 @@ public class DataProvider {
 
         try {
             CSVReader reader = new CSVReader(new FileReader(filePath));
+            //CSVReader reader = csvReader.readFile(new InputStreamReader(new FileInputStream(filePath), "UTF-8"));
             CsvToBean<SingleWord> csvToBean = new CsvToBean<>();
             result.addAll(csvToBean.parse(strategy, reader));
             processListOfWords(result);
