@@ -48,7 +48,7 @@
                     kategorię</a></p>
             </div>
             <div class="col-md-4">
-                <p><a class="btn btn-outline-danger btn-lg" href="/main" role="button">Main menu</a></p>
+                <p><a class="btn btn-outline-danger btn-lg" href="/main" role="button">Menu główne</a></p>
             </div>
         </div>
     </div>

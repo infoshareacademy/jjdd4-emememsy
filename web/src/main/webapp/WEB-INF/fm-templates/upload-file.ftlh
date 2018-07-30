@@ -57,7 +57,7 @@
             <#if action == "delete">
                 <h5>Wszystkie słowa zostały usunięte z bazy. Wczytaj swój plik lub przywróć naszą bazę aby korzystać z programu.</h5>
             <#elseif action == "initialize">
-                <h5>Przywróciliśmy pierwotną listę słów. Możesz wczytać swój plik aby dodać kolejne słowa do naszej bazy. Przejdż do Home aby zacząć już teraz korzystać z programu.</h5>
+                <h5>Przywróciliśmy pierwotną listę słów. Możesz wczytać swój plik aby dodać kolejne słowa do naszej bazy. Przejdż do menu głównego aby zacząć już teraz korzystać z programu.</h5>
             </#if>
         </#if>
 
