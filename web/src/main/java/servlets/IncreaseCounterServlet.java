@@ -46,11 +46,11 @@ public class IncreaseCounterServlet extends HttpServlet {
         Template template = templateProvider.getTemplate(getServletContext(), "learn-mode.ftlh");
         if (counter.equals("good") || counter.equals("soso") || counter.equals("bad")) {
 
-            resp.sendRedirect("http://localhost:8080/learn-mode?category=" + category + "&mode=" + mode);
+            resp.sendRedirect("http://localhost:4220/learn-mode?category=" + category + "&mode=" + mode);
 
         } else if (counter.equals("remove") || counter.equals("remain")) {
 
-            resp.sendRedirect("http://localhost:8080/repeat-mode?category=" + category + "&mode=" + mode);
+            resp.sendRedirect("http://localhost:4220/repeat-mode?category=" + category + "&mode=" + mode);
         }
     }
 
