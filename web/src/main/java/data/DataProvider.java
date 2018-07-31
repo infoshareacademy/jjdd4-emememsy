@@ -53,7 +53,7 @@ public class DataProvider {
 
         try {
             CSVReader reader = new CSVReader(new FileReader(filePath));
-            //CSVReader reader = csvReader.readFile(new InputStreamReader(new FileInputStream(filePath), "UTF-8"));
+           // CSVReader reader = new CSVReader().readFile(new InputStreamReader(new FileInputStream(filePath), "UTF-8"));
             CsvToBean<SingleWord> csvToBean = new CsvToBean<>();
             result.addAll(csvToBean.parse(strategy, reader));
             processListOfWords(result);

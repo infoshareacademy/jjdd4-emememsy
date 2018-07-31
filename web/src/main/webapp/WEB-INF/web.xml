@@ -7,8 +7,7 @@
   <data-source>
     <name>java:ds/emememsyds</name>
     <class-name>com.mysql.cj.jdbc.MysqlDataSource</class-name>
-    <url>jdbc:mysql://db:3306/mywords?useLegacyDatetimeCode=false&amp;serverTimezone=Europe/Warsaw&amp;Unicode=yes&amp;characterEncoding=UTF-8
-
+    <url>jdbc:mysql://localhost:6603/mywords?useLegacyDatetimeCode=false&amp;serverTimezone=Europe/Warsaw&amp;Unicode=yes&amp;characterEncoding=UTF-8
     </url>
     <user>root</user>
     <password>pass123</password>
@@ -18,7 +17,7 @@
   </welcome-file-list>
   <error-page>
     <exception-type>java.lang.Throwable</exception-type>
-    <location>/ErrorHandler</location>
+    <location>/error</location>
   </error-page>
 
 </web-app>
