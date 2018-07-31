@@ -10,10 +10,10 @@
     <meta name="google-signin-client_id"
           content="908551710285-0p3j7v2j1okoor79871acul99t3u00gj.apps.googleusercontent.com">
 
-    <title>Servlet OAuth example</title>
+    <title>myWords</title>
 </head>
 <body>
-<h2>Servlet OAuth example</h2>
+<h2>myWords - logowanie</h2>
 <br>
 <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
