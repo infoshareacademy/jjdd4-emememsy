@@ -21,6 +21,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+
 @ApplicationScoped
 public class DataProvider {
     private static final  Logger LOG = LoggerFactory.getLogger(DataProvider.class);
@@ -52,10 +54,13 @@ public class DataProvider {
         List<SingleWord> result = new ArrayList<>();
 
         try {
-//            CSVReader reader = new CSVReader(new FileReader(filePath));
             CSVReader reader = new CSVReader(new InputStreamReader(new FileInputStream(filePath), "UTF-8"));
             CsvToBean<SingleWord> csvToBean = new CsvToBean<>();
-            result.addAll(csvToBean.parse(strategy, reader));
+            List<SingleWord> lines = csvToBean.parse(strategy, reader);
+            if (lines.stream().anyMatch(s -> !s.isValid())) {
+                throw new IllegalArgumentException("Bledny plik CSV");
+            }
+            result.addAll(lines);
             processListOfWords(result);
         } catch (IOException | NumberFormatException e) {
            LOG.error("The file has not been read correctly");
@@ -68,6 +73,7 @@ public class DataProvider {
     private void processListOfWords(List<SingleWord> wordsList) {
         boolean isUppercase = readUppercaseProperty();
 
+        // if dowolne pole null to blad
         if (isUppercase == true) {
             wordsList.stream().forEach(SingleWord::toUpperCase);
         } else {

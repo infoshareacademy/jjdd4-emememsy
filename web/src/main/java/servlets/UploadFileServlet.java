@@ -8,6 +8,7 @@ import data.FileUploadProcessor;
 import freemarker.TemplateProvider;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
+import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -24,11 +25,14 @@ import java.net.MalformedURLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 @Transactional
 @WebServlet("/management")
 @MultipartConfig
 public class UploadFileServlet extends HttpServlet {
+
+    private static final org.slf4j.Logger LOG = LoggerFactory.getLogger(UploadFileServlet.class);
 
     @Inject
     private TemplateProvider templateProvider;
@@ -69,6 +73,16 @@ public class UploadFileServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        try {
+            loadFile(req, resp);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            LOG.error("Blad ladowania", e);
+        }
+    }
+
+    private void loadFile(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         Part filePart = req.getPart("dataFile");
 
         try {
