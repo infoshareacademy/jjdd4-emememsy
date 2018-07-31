@@ -20,7 +20,7 @@ public class IdTokenVerifierAndParser {
         if (googleIdTokenVerifier.verify(token)) {
             GoogleIdToken.Payload payload = token.getPayload();
             if (!GOOGLE_CLIENT_ID.equals(payload.getAudience())) {
-                throw new IllegalArgumentException("Audience mismatch");
+                throw new IllegalArgumentException("Audience mismatch: {}", (Throwable) payload.getAudience());
             } else if (!GOOGLE_CLIENT_ID.equals(payload.getAuthorizedParty())) {
                 throw new IllegalArgumentException("Client ID mismatch");
             }
