@@ -57,7 +57,7 @@ public class MainServlet extends HttpServlet {
 
         HttpSession session = req.getSession(true);
         Boolean isAuthorised = (Boolean)session.getAttribute("userName");
-        if(isAuthorised == false || isAuthorised == null) {
+        if(isAuthorised == null|| isAuthorised == false) {
             resp.sendRedirect("/index.jsp");
         }
 
