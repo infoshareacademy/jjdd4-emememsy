@@ -43,9 +43,8 @@ public class FileUploadProcessor {
             throw new FileNotFound("No file has been uploaded");
         }
 
-        File file = new File(getUploadFilePath() + fileName);
+        File file = new File(getUploadFilePath() + "/" + fileName);
         Files.deleteIfExists(file.toPath());
-
         InputStream fileContent = filePart.getInputStream();
 
         Files.copy(fileContent, file.toPath());

@@ -210,4 +210,10 @@ public class SingleWord{
         this.word = this.word.toUpperCase();
         this.translation = this.translation.toUpperCase();
     }
+
+    public boolean isValid() {
+        return this.word != null
+         && this.translation != null
+         && this.category != null;
+    }
 }
