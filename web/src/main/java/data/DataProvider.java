@@ -73,7 +73,6 @@ public class DataProvider {
     private void processListOfWords(List<SingleWord> wordsList) {
         boolean isUppercase = readUppercaseProperty();
 
-        // if dowolne pole null to blad
         if (isUppercase == true) {
             wordsList.stream().forEach(SingleWord::toUpperCase);
         } else {

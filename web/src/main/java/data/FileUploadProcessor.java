@@ -2,9 +2,6 @@ package data;
 
 import com.infoshareacademy.emememsy.SingleWord;
 import dao.SingleWordDao;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import servlets.BrowseModeServlet;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -19,7 +16,6 @@ import java.util.List;
 
 @RequestScoped
 public class FileUploadProcessor {
-    private static final Logger LOG = LoggerFactory.getLogger(FileUploadProcessor.class);
 
     private static final String SETTINGS_FILE = "settings.properties";
 
@@ -50,7 +46,6 @@ public class FileUploadProcessor {
         File file = new File(getUploadFilePath() + "/" + fileName);
         Files.deleteIfExists(file.toPath());
         InputStream fileContent = filePart.getInputStream();
-        LOG.info("fileContent: {} fileToPath: {}", filePart.getName(), file.toPath());
 
         Files.copy(fileContent, file.toPath());
         List<SingleWord> newList = dataProvider.getListOfWords(file.toPath().toString());
