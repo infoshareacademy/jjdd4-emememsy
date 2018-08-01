@@ -11,6 +11,7 @@
                 <a class="nav-link" href="/management">Ustawienia</a>
             </li>
 
+
             <!-- Dropdown -->
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
@@ -21,6 +22,9 @@
                     <a class="dropdown-item" href="/choose-category?mode=learn-mode">Nauka</a>
                     <a class="dropdown-item" href="/choose-category?mode=repeat-mode">Powtórki</a>
                 </div>
+            </li>
+            <li>
+                <a class="nav-link" href="https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://localhost:8080/logout">Wyloguj</a>
             </li>
         </ul>
     </div>

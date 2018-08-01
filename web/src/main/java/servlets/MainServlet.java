@@ -16,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.HashMap;
@@ -33,6 +34,7 @@ public class MainServlet extends HttpServlet {
 
     @Inject
     private SingleWordDao singleWordDao;
+
 
     @Override
     public void init(ServletConfig config) throws ServletException {
@@ -52,6 +54,12 @@ public class MainServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         LOG.info("The application has been started");
+
+        HttpSession session = req.getSession(true);
+        Boolean isAuthorised = (Boolean)session.getAttribute("userName");
+        if(isAuthorised == null|| isAuthorised == false) {
+            resp.sendRedirect("/index.jsp");
+        }
 
         Template template = templateProvider.getTemplate(getServletContext(), "choose-mode.ftlh");
 
