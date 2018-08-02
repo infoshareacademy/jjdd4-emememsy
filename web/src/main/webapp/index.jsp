@@ -25,6 +25,12 @@
         form.google {
             display: none;
         }
+        .banner {
+            text-align: center;
+        }
+        body {
+            align-items: center;
+        }
     </style>
 </head>
 
@@ -62,15 +68,16 @@
 </nav>
 
 <div class="jumbotron">
-<div class="container">
+<div class="container banner">
     <h3 class="display-3">Witaj w myWords!</h3>
     <h5>Zaloguj się aby rozpocząć naukę. Miłej zabawy!</h5>
 </div>
 </div>
 
+<div class="banner">
+<div class="g-signin2" data-onsuccess="onSignIn"></div>
 <h2>myWords - logowanie</h2>
 <br>
-<div class="g-signin2" data-onsuccess="onSignIn"></div>
 
 <script>
     //google callback. This function will redirect to our login servlet
@@ -101,5 +108,8 @@
     }
 
 </script>
+</div>
+
+
 </body>
 </html>
