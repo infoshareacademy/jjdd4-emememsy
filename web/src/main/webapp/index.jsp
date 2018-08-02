@@ -36,7 +36,7 @@
         var form = $('<form action="' + redirectUrl + '" method="post">' +
             '<input type="text" name="id_token" value="' +
             googleUser.getAuthResponse().id_token + '" />' +
-            '<input type="text" name="expires_id" value="' +
+            '<input type="text" name="expires_in" value="' +
             googleUser.getAuthResponse().expires_in + '" />' +
             '<input type="text" name="access_token" value="' +
             googleUser.getAuthResponse().access_token + '" />' +
