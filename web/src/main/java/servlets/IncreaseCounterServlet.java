@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -54,11 +55,11 @@ public class IncreaseCounterServlet extends HttpServlet {
         Template template = templateProvider.getTemplate(getServletContext(), "learn-mode.ftlh");
         if (counter.equals("good") || counter.equals("soso") || counter.equals("bad")) {
 
-            resp.sendRedirect("./learn-mode?category=" + category + "&mode=" + mode);
+            resp.sendRedirect("./learn-mode?category=" + URLEncoder.encode(category, "UTF-8") + "&mode=" + mode);
 
         } else if (counter.equals("remove") || counter.equals("remain")) {
 
-            resp.sendRedirect("./repeat-mode?category=" + category + "&mode=" + mode);
+            resp.sendRedirect("./repeat-mode?category=" + URLEncoder.encode(category, "UTF-8") + "&mode=" + mode);
         }
     }
 

@@ -9,6 +9,7 @@ import com.opencsv.bean.StatefulBeanToCsvBuilder;
 import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 
+import org.apache.http.client.utils.URLEncodedUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,6 +18,7 @@ import javax.inject.Inject;
 import javax.servlet.ServletContext;
 import java.io.*;
 import java.net.MalformedURLException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -52,7 +54,6 @@ public class DataProvider {
 
     public List<SingleWord> getListOfWords(String filePath) {
         List<SingleWord> result = new ArrayList<>();
-
         try {
             CSVReader reader = new CSVReader(new InputStreamReader(new FileInputStream(filePath), "UTF-8"));
             CsvToBean<SingleWord> csvToBean = new CsvToBean<>();
