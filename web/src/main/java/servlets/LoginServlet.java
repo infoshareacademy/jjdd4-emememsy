@@ -25,11 +25,11 @@ public class LoginServlet extends HttpServlet {
 
         try {
             String idToken = req.getParameter("id_token");
-            LOG.info("id Token: " + idToken);
+            LOG.debug("id Token: " + idToken);
             String accessToken = req.getParameter("access_token");
-            LOG.info("Access Token: " + accessToken);
+            LOG.debug("Access Token: " + accessToken);
             String expiresIn = req.getParameter("expires_in");
-            LOG.info("Expires in: " + expiresIn);
+            LOG.debug("Expires in: " + expiresIn);
             GoogleIdToken.Payload payLoad = IdTokenVerifierAndParser.getPayload(idToken);
             String name = (String) payLoad.get("name");
             String email = payLoad.getEmail();

@@ -19,7 +19,7 @@ public class IdTokenVerifierAndParser {
                 new GoogleIdTokenVerifier(new NetHttpTransport(), jacksonFactory);
 
         GoogleIdToken token = GoogleIdToken.parse(jacksonFactory, tokenString);
-        LOG.info("Token to verify: " + token);
+        LOG.debug("Token to verify: " + token);
 
         if (googleIdTokenVerifier.verify(token)) {
             GoogleIdToken.Payload payload = token.getPayload();
