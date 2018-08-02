@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 
-    private static final Logger LOG = LoggerFactory.getLogger(LearnModeServlet.class);
+    private static final Logger LOG = LoggerFactory.getLogger(LoginServlet.class);
 
 
     @Override
@@ -25,8 +25,11 @@ public class LoginServlet extends HttpServlet {
 
         try {
             String idToken = req.getParameter("id_token");
-            LOG.info(req.getParameterMap().toString());
             LOG.info(idToken);
+            String accessToken = req.getParameter("access_token");
+            LOG.info(accessToken);
+            String expiresIn = req.getParameter("expires_in");
+            LOG.info(expiresIn);
             GoogleIdToken.Payload payLoad = IdTokenVerifierAndParser.getPayload(idToken);
             String name = (String) payLoad.get("name");
             String email = payLoad.getEmail();
