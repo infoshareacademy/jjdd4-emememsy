@@ -38,6 +38,8 @@ public class LoginServlet extends HttpServlet {
 
             HttpSession session = req.getSession(true);
             session.setAttribute("userName", true);
+            session.setAttribute("userNameString", name);
+            session.setAttribute("userEmail", email);
             resp.sendRedirect("/main");
 
              } catch (Exception e) {
