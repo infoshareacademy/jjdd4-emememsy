@@ -24,7 +24,7 @@
                 </div>
             </li>
             <li>
-                <a class="nav-link" href="https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://localhost:8080/logout">Wyloguj</a>
+                <a class="nav-link" href="https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://emememsy.jjdd4.is-academy.pl/logout">Wyloguj</a>
             </li>
         </ul>
     </div>
