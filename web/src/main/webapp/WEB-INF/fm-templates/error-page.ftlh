@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
 
     <meta charset="utf-8">
@@ -7,12 +7,12 @@
 </head>
 <body>
 <main>
-    <center></center><img src="jjdd4-emememsy/web/src/main/images/words01.jpg" width="400" height= "500" /></center>
+    <center></center><img src="/home/sebastianbieluga/projektaktualny01/jjdd4-emememsy/web/src/main/webapp/images" width="400" height= "500" /></center>
 
 
 
 
-    <center><div>ERROR PAGE</div></center>
+    <center><div><font size="24"> ups ... something went wrong</div></center></font>
 
 
 
