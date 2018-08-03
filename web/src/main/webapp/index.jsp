@@ -28,13 +28,15 @@
         .banner {
             text-align: center;
         }
-        body {
-            align-items: center;
+        .google {
+            width: 100px;
+            margin: 0 auto;
         }
     </style>
 </head>
 
 <body>
+
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav">
@@ -61,11 +63,12 @@
                 </div>
             </li>
             <li>
-                <a class="nav-link" href="https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://emememsy.jjdd4.is-academy.pl/logout">Wyloguj</a>
+                <a style="align-content: right" class="nav-link" href="https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://emememsy.jjdd4.is-academy.pl/logout">Wyloguj</a>
             </li>
         </ul>
     </div>
 </nav>
+
 
 <div class="jumbotron">
 <div class="container banner">
@@ -74,9 +77,9 @@
 </div>
 </div>
 
-<div class="banner">
-<div class="g-signin2" data-onsuccess="onSignIn"></div>
-<h2>myWords - logowanie</h2>
+<div class="google">
+    <br/>
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
 <br>
 
 <script>
