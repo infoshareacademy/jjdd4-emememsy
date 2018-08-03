@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.util.*;
 
 @WebServlet("/repeat-mode")
@@ -40,7 +41,7 @@ public class RepeatModeServlet extends HttpServlet {
         }
 
 
-        String category = req.getParameter("category");
+        String category = URLDecoder.decode(req.getParameter("category"), "UTF-8");
         String mode = req.getParameter("mode");
 
         if ((category == null || category.isEmpty()) && (mode == null || mode.isEmpty())) {
