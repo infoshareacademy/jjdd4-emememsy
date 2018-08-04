@@ -76,8 +76,10 @@ public class UploadFileServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Part filePart = req.getPart("dataFile");
 
+        String userName = (String)req.getSession().getAttribute("userNameStr");
+
         try {
-            File file = fileUploadProcessor.uploadFile(filePart);
+            File file = fileUploadProcessor.uploadFile(filePart, userName);
             file.getName();
 
         } catch (FileNotFound fileNotFound) {
