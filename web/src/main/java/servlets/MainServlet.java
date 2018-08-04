@@ -72,13 +72,10 @@ public class MainServlet extends HttpServlet {
 
             LOG.info("Getting list of words from file.");
             List<SingleWord> listOfWords = dataProvider.getListOfWords();
-            LOG.info("Iterating on the list of words - setting user name parameter");
             for (SingleWord s : listOfWords) {
                 s.setUserName(userName);
                 singleWordDao.save(s);
-                LOG.info("Row has been saved in the database");
             }
-            LOG.info("All rows of words with user name have been saved in the data base");
         }
 
 
