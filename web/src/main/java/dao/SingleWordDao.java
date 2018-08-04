@@ -72,7 +72,21 @@ public class SingleWordDao {
 
     public List<String> findAllUsers () {
         final Query query = entityManager.createQuery(
-                "SELECT s.userName FROM SingleWord s");
+                "SELECT DISTINCT s.userName FROM SingleWord s");
+        return query.getResultList();
+    }
+
+    public List<String> findAllWordsByUser (String userName) {
+        final Query query = entityManager.createQuery(
+                "SELECT s.word FROM SingleWord s WHERE s.userName = :userName");
+        query.setParameter("userName", userName);
+        return query.getResultList();
+    }
+
+    public List<String> findAllTranslationsByUser (String userName) {
+        final Query query = entityManager.createQuery(
+                "SELECT s.translation FROM SingleWord s WHERE s.userName = :userName");
+        query.setParameter("userName", userName);
         return query.getResultList();
     }
 

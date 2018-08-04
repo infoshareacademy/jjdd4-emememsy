@@ -3,6 +3,7 @@ package servlets;
 import com.infoshareacademy.emememsy.Actions;
 import com.infoshareacademy.emememsy.PropertiesReader;
 import com.infoshareacademy.emememsy.SingleWord;
+import dao.SingleWordDao;
 import data.DataProvider;
 import freemarker.TemplateProvider;
 import freemarker.template.Template;
@@ -19,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @WebServlet("/translation")
@@ -28,7 +30,7 @@ public class DisplayTranslation extends HttpServlet {
     private TemplateProvider templateProvider;
 
     @Inject
-    private DataProvider dataProvider;
+    private SingleWordDao singleWordDao;
 
     private Actions actions;
     private PropertiesReader propertiesReader;
@@ -44,17 +46,27 @@ public class DisplayTranslation extends HttpServlet {
             resp.sendRedirect("/index.jsp");
         }
 
-
+        String userName = (String)session.getAttribute("userNameStr");
         String mode = req.getParameter("mode");
         String category = req.getParameter("category");
         String word = req.getParameter("word");
         String translation = req.getParameter("translation");
+
+        List<String> words =  singleWordDao.findAllWordsByUser(userName);
+        List<String> translations = singleWordDao.findAllTranslationsByUser(userName);
+
 
         if (mode == null || mode.isEmpty()) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             LOG.error("Problem with loading the correct module");
             return;
         }
+
+        if ((!words.contains(word)) || (!translations.contains(translation))){
+            resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            return;
+        }
+
         Template template = templateProvider.getTemplate(getServletContext(), "display-translation.ftlh");
 
         Map<String, Object> model = new HashMap<>();
