@@ -22,6 +22,7 @@ import java.net.MalformedURLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 @WebServlet("/main")
 public class MainServlet extends HttpServlet {
@@ -36,7 +37,7 @@ public class MainServlet extends HttpServlet {
     private SingleWordDao singleWordDao;
 
 
-    @Override
+  /*  @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
 
@@ -48,25 +49,41 @@ public class MainServlet extends HttpServlet {
             e.printStackTrace();
 
         }
-    }
+    }*/
 
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        LOG.info("The application has been started");
+        LOG.info("Entered MAIN servlet.");
+
+        LOG.info("Verification if the user has been logged");
 
         HttpSession session = req.getSession(true);
         Boolean isAuthorised = (Boolean)session.getAttribute("userName");
         if(isAuthorised == null|| isAuthorised == false) {
             resp.sendRedirect("/index.jsp");
+            LOG.error("User was not validated in Main servlet. User will be redirected to login page");
         }
+
+        String userName = (String)session.getAttribute("userNameStr");
+
+        List<String> users = singleWordDao.findAllUsers();
+        if (!users.contains(userName)) {
+
+            LOG.info("Getting list of words from file.");
+            List<SingleWord> listOfWords = dataProvider.getListOfWords();
+            for (SingleWord s : listOfWords) {
+                s.setUserName(userName);
+                singleWordDao.save(s);
+            }
+        }
+
 
         Template template = templateProvider.getTemplate(getServletContext(), "choose-mode.ftlh");
 
         Map<String, Object> model = new HashMap<>();
 
         resp.setContentType("text/html;charset=UTF-8");
-        LOG.info("The file was load corectly");
 
         try {
             template.process(model, resp.getWriter());
@@ -74,6 +91,9 @@ public class MainServlet extends HttpServlet {
             e.printStackTrace();
             LOG.error("Problems with template");        }
 
+            LOG.info("EXITING MAIN SERVLET");
     }
+
+
     }
 

@@ -39,6 +39,7 @@ public class BrowseModeServlet extends HttpServlet {
             resp.sendRedirect("/index.jsp");
         }
 
+        String userName = (String)session.getAttribute("userNameStr");
 
         String category = req.getParameter("category");
         String mode = req.getParameter("mode");
@@ -51,7 +52,7 @@ public class BrowseModeServlet extends HttpServlet {
 
         Template template = templateProvider.getTemplate(getServletContext(), "browse-mode.ftlh");
 
-        SingleWord singleWord = selectWord(req, resp);
+        SingleWord singleWord = selectWord(req, resp, userName);
 
         Map<String, Object> model = new HashMap<>();
         model.put("category", category);
@@ -68,14 +69,14 @@ public class BrowseModeServlet extends HttpServlet {
         }
     }
 
-    private SingleWord selectWord (HttpServletRequest req, HttpServletResponse resp){
+    private SingleWord selectWord (HttpServletRequest req, HttpServletResponse resp, String userName){
 
         List<SingleWord> listOfWords = new ArrayList<>();
 
         if (req.getParameter("category").equalsIgnoreCase("wszystkie")) {
-            listOfWords =  singleWordDao.findByAllCategoriesBrowseMode();
+            listOfWords =  singleWordDao.findByAllCategoriesBrowseModeByUser(userName);
         } else {
-            listOfWords = singleWordDao.findByCategoryBrowseMode(req.getParameter("category"));
+            listOfWords = singleWordDao.findByCategoryBrowseModeByUser(req.getParameter("category"), userName);
         }
 
         if(listOfWords.isEmpty()){

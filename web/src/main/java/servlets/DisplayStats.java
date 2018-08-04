@@ -39,8 +39,9 @@ public class DisplayStats extends HttpServlet {
             resp.sendRedirect("/index.jsp");
         }
 
+        String userName = (String)session.getAttribute("userNameStr");
 
-        List<SingleWord> statsDisplayed = singleWordDao.allDisplayed();
+        List<SingleWord> statsDisplayed = singleWordDao.allDisplayed(userName);
 
         Map<Object, Object> title = new HashMap<>();
         title.put("Słowo", "Liczba wyświetleń");
@@ -49,7 +50,7 @@ public class DisplayStats extends HttpServlet {
             map.put(s.getWord(), s.getDisplayed());
         }
 
-        List<SingleWord> difficultWords = singleWordDao.mostDifficult().stream().limit(10).collect(Collectors.toList());
+        List<SingleWord> difficultWords = singleWordDao.mostDifficult(userName).stream().limit(10).collect(Collectors.toList());
         Map<Object, Object> titleBad = new HashMap<>();
         titleBad.put("Słowo", "Liczba negatywnych ocen");
         Map<Object, Object> mapBad = new LinkedHashMap<>();
@@ -57,12 +58,12 @@ public class DisplayStats extends HttpServlet {
             mapBad.put(s.getWord(), s.getBad());
         }
 
-        Long numberAllDisplayed = singleWordDao.numberAllDisplayed();
+        Long numberAllDisplayed = singleWordDao.numberAllDisplayed(userName);
 
-        Long numberBrowse = singleWordDao.totalNumberOfWordsBrowseMode();
-        Long numberLearn = singleWordDao.totalNumberOfWordsLearnMode();
-        Long numberRepeat = singleWordDao.totalNumberOfWordsRepeatMode();
-        Long numberExcluded = singleWordDao.totalNumberOfPassedWords();
+        Long numberBrowse = singleWordDao.totalNumberOfWordsBrowseMode(userName);
+        Long numberLearn = singleWordDao.totalNumberOfWordsLearnMode(userName);
+        Long numberRepeat = singleWordDao.totalNumberOfWordsRepeatMode(userName);
+        Long numberExcluded = singleWordDao.totalNumberOfPassedWords(userName);
 
 
         Template template = templateProvider.getTemplate(getServletContext(), "stats-chart.ftlh");
