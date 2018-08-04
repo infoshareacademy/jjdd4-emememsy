@@ -32,11 +32,6 @@ public class DisplayTranslation extends HttpServlet {
     @Inject
     private SingleWordDao singleWordDao;
 
-    private Actions actions;
-    private PropertiesReader propertiesReader;
-    private SingleWord singleWord;
-
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -55,7 +50,6 @@ public class DisplayTranslation extends HttpServlet {
         List<String> words =  singleWordDao.findAllWordsByUser(userName);
         List<String> translations = singleWordDao.findAllTranslationsByUser(userName);
 
-
         if (mode == null || mode.isEmpty()) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             LOG.error("Problem with loading the correct module");
@@ -63,8 +57,7 @@ public class DisplayTranslation extends HttpServlet {
         }
 
         if ((!words.contains(word)) || (!translations.contains(translation))){
-            resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
-            return;
+            resp.sendRedirect("/error");
         }
 
         Template template = templateProvider.getTemplate(getServletContext(), "display-translation.ftlh");
