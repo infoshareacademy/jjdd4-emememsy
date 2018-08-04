@@ -40,6 +40,7 @@ public class LearnModeServlet extends HttpServlet {
             resp.sendRedirect("/index.jsp");
         }
 
+        String userName = (String)session.getAttribute("userNameStr");
 
         String category = URLDecoder.decode(req.getParameter("category"), "UTF-8");
         String mode = req.getParameter("mode");
@@ -50,7 +51,7 @@ public class LearnModeServlet extends HttpServlet {
             return;
         }
 
-        SingleWord singleWord = selectWord(req, resp);
+        SingleWord singleWord = selectWord(req, resp, userName);
 
         Template template = templateProvider.getTemplate(getServletContext(), "learn-mode.ftlh");
         LOG.info("The template was load corectly");
@@ -60,7 +61,6 @@ public class LearnModeServlet extends HttpServlet {
         model.put("mode", mode);
 
         resp.setContentType("text/html;charset=UTF-8");
-        LOG.info("The file was load corectly");
 
         try {
             template.process(model, resp.getWriter());
@@ -71,16 +71,16 @@ public class LearnModeServlet extends HttpServlet {
         }
     }
 
-    private SingleWord selectWord (HttpServletRequest req, HttpServletResponse resp) {
+    private SingleWord selectWord (HttpServletRequest req, HttpServletResponse resp, String userName) {
 
         SingleWord singleWord = new SingleWord();
         Random randomGenerator = new Random();
         List<SingleWord> listOfWords = new ArrayList<>();
 
         if (req.getParameter("category").equalsIgnoreCase("wszystkie")) {
-            listOfWords = singleWordDao.findByAllCategoriesLearnMode();
+            listOfWords = singleWordDao.findByAllCategoriesLearnModeByUser(userName);
         } else {
-            listOfWords = singleWordDao.findByCategoryLearnMode(req.getParameter("category"));
+            listOfWords = singleWordDao.findByCategoryLearnModeByUser(req.getParameter("category"), userName);
         }
 
 

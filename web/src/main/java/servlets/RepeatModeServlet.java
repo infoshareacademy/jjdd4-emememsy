@@ -40,6 +40,7 @@ public class RepeatModeServlet extends HttpServlet {
             resp.sendRedirect("/index.jsp");
         }
 
+        String userName = (String)session.getAttribute("userNameStr");
 
         String category = URLDecoder.decode(req.getParameter("category"), "UTF-8");
         String mode = req.getParameter("mode");
@@ -51,7 +52,7 @@ public class RepeatModeServlet extends HttpServlet {
             return;
         }
 
-        SingleWord singleWord = selectWord(req, resp);
+        SingleWord singleWord = selectWord(req, resp, userName);
 
         Template template = templateProvider.getTemplate(getServletContext(), "repeat-mode.ftlh");
 
@@ -61,7 +62,6 @@ public class RepeatModeServlet extends HttpServlet {
         model.put("mode", mode);
 
         resp.setContentType("text/html;charset=UTF-8");
-        LOG.info("The correct template was load");
 
         try {
             template.process(model, resp.getWriter());
@@ -72,16 +72,16 @@ public class RepeatModeServlet extends HttpServlet {
         }
     }
 
-    private SingleWord selectWord (HttpServletRequest req, HttpServletResponse resp) {
+    private SingleWord selectWord (HttpServletRequest req, HttpServletResponse resp, String userName) {
 
         SingleWord singleWord = new SingleWord();
         Random randomGenerator = new Random();
         List<SingleWord> listOfWords = new ArrayList<>();
 
         if (req.getParameter("category").equalsIgnoreCase("wszystkie")) {
-            listOfWords = singleWordDao.findByAllCategoriesRepeatMode();
+            listOfWords = singleWordDao.findByAllCategoriesRepeatModeByUser(userName);
         } else {
-            listOfWords = singleWordDao.findByCategoryRepeatMode(req.getParameter("category"));
+            listOfWords = singleWordDao.findByCategoryRepeatModeByUser(req.getParameter("category"), userName);
         }
 
 

@@ -91,29 +91,33 @@ public class SingleWordDao {
         return query.getResultList();
     }
 
-    public List<SingleWord> findByAllCategoriesLearnMode(){
+    public List<SingleWord> findByAllCategoriesLearnModeByUser(String userName){
         final Query query = entityManager.createQuery(
-                "SELECT s FROM SingleWord s WHERE s.counter > 0 AND s.counter < 4" );
+                "SELECT s FROM SingleWord s WHERE s.counter > 0 AND s.counter < 4 AND s.userName = :userName" );
+        query.setParameter("userName", userName);
         return query.getResultList();
     }
 
-    public List<SingleWord> findByCategoryLearnMode(String category){
+    public List<SingleWord> findByCategoryLearnModeByUser(String category, String userName){
         final Query query = entityManager.createQuery(
-                "SELECT s FROM SingleWord s WHERE s.category = :category AND s.counter > 0 AND s.counter < 4");
+                "SELECT s FROM SingleWord s WHERE s.category = :category AND s.userName = :userName AND s.counter > 0 AND s.counter < 4");
         query.setParameter("category", category);
+        query.setParameter("userName", userName);
         return query.getResultList();
     }
 
-    public List<SingleWord> findByAllCategoriesRepeatMode(){
+    public List<SingleWord> findByAllCategoriesRepeatModeByUser(String userName){
         final Query query = entityManager.createQuery(
-                "SELECT s FROM SingleWord s WHERE s.counter > 3 AND s.counter < 100" );
+                "SELECT s FROM SingleWord s WHERE s.counter > 3 AND s.counter < 100 AND s.userName = :userName" );
+        query.setParameter("userName", userName);
         return query.getResultList();
     }
 
-    public List<SingleWord> findByCategoryRepeatMode(String category){
+    public List<SingleWord> findByCategoryRepeatModeByUser(String category, String userName){
         final Query query = entityManager.createQuery(
-                "SELECT s FROM SingleWord s WHERE s.category = :category AND s.counter > 3 AND s.counter < 100");
+                "SELECT s FROM SingleWord s WHERE s.category = :category AND s.userName = :userName AND s.counter > 3 AND s.counter < 100");
         query.setParameter("category", category);
+        query.setParameter("userName", userName);
         return query.getResultList();
     }
 
