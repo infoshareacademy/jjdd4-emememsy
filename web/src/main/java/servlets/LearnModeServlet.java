@@ -51,6 +51,15 @@ public class LearnModeServlet extends HttpServlet {
             return;
         }
 
+        List<String> categories = singleWordDao.findAllCategoriesByUser(userName);
+        if ((!categories.contains(category)) && (!category.equalsIgnoreCase("WSZYSTKIE"))){
+            resp.sendRedirect("/error");
+        }
+
+        if (!mode.equals("learn-mode")){
+            resp.sendRedirect("/error");
+        }
+
         SingleWord singleWord = selectWord(req, resp, userName);
 
         Template template = templateProvider.getTemplate(getServletContext(), "learn-mode.ftlh");

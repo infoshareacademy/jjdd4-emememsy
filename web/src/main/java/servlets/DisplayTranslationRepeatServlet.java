@@ -59,8 +59,13 @@ public class DisplayTranslationRepeatServlet extends HttpServlet {
 
         List<String> words =  singleWordDao.findAllWordsByUser(userName);
         List<String> translations = singleWordDao.findAllTranslationsByUser(userName);
+        List<String> categories = singleWordDao.findAllCategoriesByUser(userName);
 
-        if ((!words.contains(word)) || (!translations.contains(translation))){
+        if ((!words.contains(word)) || (!translations.contains(translation)) || (!categories.contains(category)) && (!category.equalsIgnoreCase("WSZYSTKIE"))){
+            resp.sendRedirect("/error");
+        }
+
+        if (!mode.equals("repeat-mode")){
             resp.sendRedirect("/error");
         }
 

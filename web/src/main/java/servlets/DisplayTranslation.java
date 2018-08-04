@@ -49,6 +49,7 @@ public class DisplayTranslation extends HttpServlet {
 
         List<String> words =  singleWordDao.findAllWordsByUser(userName);
         List<String> translations = singleWordDao.findAllTranslationsByUser(userName);
+        List<String> categories = singleWordDao.findAllCategoriesByUser(userName);
 
         if (mode == null || mode.isEmpty()) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
@@ -56,7 +57,11 @@ public class DisplayTranslation extends HttpServlet {
             return;
         }
 
-        if ((!words.contains(word)) || (!translations.contains(translation))){
+        if ((!words.contains(word)) || (!translations.contains(translation)) || (!categories.contains(category)) && (!category.equalsIgnoreCase("WSZYSTKIE"))){
+            resp.sendRedirect("/error");
+        }
+
+        if (!mode.equals("learn-mode")){
             resp.sendRedirect("/error");
         }
 
