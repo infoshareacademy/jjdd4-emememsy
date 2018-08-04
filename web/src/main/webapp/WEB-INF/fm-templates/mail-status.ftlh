@@ -16,24 +16,19 @@
 </head>
 <body>
 
-<!--   inject navbar here  -->
-    <#include "macros/navbar.ftlh">
 
 <main role="main">
 
     <div class="jumbotron">
-        <#include "macros/welcome-banner.ftlh">
+        <#include "macros/mail-banner.ftlh">
     </div>
 
-    <div style="margin: 50px; padding: 10px">
-        <span style="margin: 20px; padding: 10px">
-            <h1>Status wysłania email</h1>
-            <b>Mail został wysłany</b>
-        </span>
-        <span style="margin: 20px; padding: 10px">
-            <p><a class="btn btn-outline-danger btn-lg" href="/main" role="button">Menu główne</a></p>
-        </span>
-    </div>
+    <span style="margin: 50px; padding: 10px">
+        <b>Mail został wysłany poprawnie.</b>
+    </span>
+    <span style="margin: 50px">
+        <a class="btn btn-outline-danger btn-lg" href="/main" role="button">Menu główne</a>
+    </span>
 
 
 </main>
