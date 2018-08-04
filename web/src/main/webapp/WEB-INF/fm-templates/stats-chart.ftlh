@@ -75,6 +75,26 @@
         <#include "macros/welcome-banner.ftlh">
 </div>
 
+<div style="margin: 50px; padding: 10px">
+<h1>Wyslij raport na email</h1>
+<form method="POST" action="/mail-dispatcher">
+    <table>
+        <tr>
+            <td align="right"><b>To: </b></td>
+            <td>
+                <input type="text" name="email" size="75">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="Wyślij">
+            </td>
+        </tr>
+    </table>
+</form>
+</div>
+
 <div class="container">
     <strong>
     Łączna liczba wyświetlonych słów: ${numberAllDisplayed}.<br/>
@@ -85,6 +105,9 @@
     </strong>
 </div>
 <br/>
+
+
+
 <br/>
 <div class="container">
     <div id="chart_div"></div>
