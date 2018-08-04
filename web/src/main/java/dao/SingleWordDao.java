@@ -23,13 +23,11 @@ public class SingleWordDao {
         entityManager.createNativeQuery("SET NAMES utf8").executeUpdate();
     }
 
-    @Transactional
     public Long save(SingleWord c) {
         entityManager.persist(c);
         return c.getId();
     }
 
-    @Transactional
     public SingleWord update(SingleWord c) {
         return entityManager.merge(c);
     }
@@ -72,7 +70,28 @@ public class SingleWordDao {
 
     public List<String> findAllUsers () {
         final Query query = entityManager.createQuery(
-                "SELECT s.userName FROM SingleWord s");
+                "SELECT DISTINCT s.userName FROM SingleWord s");
+        return query.getResultList();
+    }
+
+    public List<String> findAllWordsByUser (String userName) {
+        final Query query = entityManager.createQuery(
+                "SELECT s.word FROM SingleWord s WHERE s.userName = :userName");
+        query.setParameter("userName", userName);
+        return query.getResultList();
+    }
+
+    public List<String> findAllTranslationsByUser (String userName) {
+        final Query query = entityManager.createQuery(
+                "SELECT s.translation FROM SingleWord s WHERE s.userName = :userName");
+        query.setParameter("userName", userName);
+        return query.getResultList();
+    }
+
+    public List<String> findAllCategoriesByUser (String userName) {
+        final Query query = entityManager.createQuery(
+                "SELECT s.category FROM SingleWord s WHERE s.userName = :userName");
+        query.setParameter("userName", userName);
         return query.getResultList();
     }
 

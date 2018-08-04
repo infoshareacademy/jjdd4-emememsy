@@ -50,6 +50,15 @@ public class BrowseModeServlet extends HttpServlet {
             return;
         }
 
+        List<String> categories = singleWordDao.findAllCategoriesByUser(userName);
+        if ((!categories.contains(category)) && (!category.equalsIgnoreCase("WSZYSTKIE"))){
+            resp.sendRedirect("/error");
+        }
+
+        if (!mode.equals("browse-mode")){
+            resp.sendRedirect("/error");
+        }
+
         Template template = templateProvider.getTemplate(getServletContext(), "browse-mode.ftlh");
 
         SingleWord singleWord = selectWord(req, resp, userName);

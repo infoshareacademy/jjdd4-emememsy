@@ -48,8 +48,16 @@ public class RepeatModeServlet extends HttpServlet {
         if ((category == null || category.isEmpty()) && (mode == null || mode.isEmpty())) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             LOG.error("The mode was upload uncorectly");
-
             return;
+        }
+
+        List<String> categories = singleWordDao.findAllCategoriesByUser(userName);
+        if ((!categories.contains(category)) && (!category.equalsIgnoreCase("WSZYSTKIE"))){
+            resp.sendRedirect("/error");
+        }
+
+        if (!mode.equals("repeat-mode")){
+            resp.sendRedirect("/error");
         }
 
         SingleWord singleWord = selectWord(req, resp, userName);

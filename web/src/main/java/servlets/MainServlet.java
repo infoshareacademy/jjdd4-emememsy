@@ -36,22 +36,6 @@ public class MainServlet extends HttpServlet {
     @Inject
     private SingleWordDao singleWordDao;
 
-
-  /*  @Override
-    public void init(ServletConfig config) throws ServletException {
-        super.init(config);
-
-        try {
-            List<SingleWord> listOfWords = dataProvider.getListOfWords();
-            listOfWords.stream().forEach(o-> singleWordDao.save(o));
-
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-
-        }
-    }*/
-
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         LOG.info("Entered MAIN servlet.");
@@ -59,13 +43,13 @@ public class MainServlet extends HttpServlet {
         LOG.info("Verification if the user has been logged");
 
         HttpSession session = req.getSession(true);
-        Boolean isAuthorised = (Boolean)session.getAttribute("userName");
-        if(isAuthorised == null|| isAuthorised == false) {
+        Boolean isAuthorised = (Boolean) session.getAttribute("userName");
+        if (isAuthorised == null || isAuthorised == false) {
             resp.sendRedirect("/index.jsp");
             LOG.error("User was not validated in Main servlet. User will be redirected to login page");
         }
 
-        String userName = (String)session.getAttribute("userNameStr");
+        String userName = (String) session.getAttribute("userNameStr");
 
         List<String> users = singleWordDao.findAllUsers();
         if (!users.contains(userName)) {
@@ -89,11 +73,8 @@ public class MainServlet extends HttpServlet {
             template.process(model, resp.getWriter());
         } catch (TemplateException e) {
             e.printStackTrace();
-            LOG.error("Problems with template");        }
-
-            LOG.info("EXITING MAIN SERVLET");
+            LOG.error("Problems with template");
+        }
     }
-
-
-    }
+}
 
