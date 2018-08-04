@@ -10,6 +10,7 @@ import javax.persistence.Query;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 @Stateless
 public class SingleWordDao {
@@ -22,11 +23,13 @@ public class SingleWordDao {
         entityManager.createNativeQuery("SET NAMES utf8").executeUpdate();
     }
 
+    @Transactional
     public Long save(SingleWord c) {
         entityManager.persist(c);
         return c.getId();
     }
 
+    @Transactional
     public SingleWord update(SingleWord c) {
         return entityManager.merge(c);
     }
@@ -54,6 +57,12 @@ public class SingleWordDao {
         return query.getResultList();
     }
 
+    public List<SingleWord> findAllByUser(String userName) {
+        final Query query = entityManager.createQuery("SELECT s FROM SingleWord s WHERE s.userName = :userName");
+        query.setParameter("userName", userName);
+        return query.getResultList();
+    }
+
     public SingleWord findByCategory2(String category) {
         final Query query = entityManager.createNativeQuery(
                // "SELECT s FROM SingleWord s WHERE s.category = :category"
@@ -61,16 +70,24 @@ public class SingleWordDao {
         return (SingleWord) query.getResultList();
     }
 
-    public List<SingleWord> findByAllCategoriesBrowseMode(){
+    public List<String> findAllUsers () {
         final Query query = entityManager.createQuery(
-                "SELECT s FROM SingleWord s WHERE s.counter = 0" );
+                "SELECT s.userName FROM SingleWord s");
         return query.getResultList();
     }
 
-    public List<SingleWord> findByCategoryBrowseMode(String category){
+    public List<SingleWord> findByAllCategoriesBrowseModeByUser(String userName){
         final Query query = entityManager.createQuery(
-                "SELECT s FROM SingleWord s WHERE s.category = :category AND s.counter = 0");
+                "SELECT s FROM SingleWord s WHERE s.counter = 0 AND s.userName = :userName" );
+        query.setParameter("userName", userName);
+        return query.getResultList();
+    }
+
+    public List<SingleWord> findByCategoryBrowseModeByUser(String category, String userName){
+        final Query query = entityManager.createQuery(
+                "SELECT s FROM SingleWord s WHERE s.category = :category AND s.userName = :userName AND s.counter = 0");
         query.setParameter("category", category);
+        query.setParameter("userName", userName);
         return query.getResultList();
     }
 

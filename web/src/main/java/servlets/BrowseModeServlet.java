@@ -39,6 +39,7 @@ public class BrowseModeServlet extends HttpServlet {
             resp.sendRedirect("/index.jsp");
         }
 
+        String userName = (String)session.getAttribute("userNameStr");
 
         String category = req.getParameter("category");
         String mode = req.getParameter("mode");
