@@ -1,5 +1,8 @@
 package servlets;
 
+import data.MailSenderBean;
+
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -7,8 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "/mail-dispatcher")
+@WebServlet("/mail-dispatcher")
 public class MailDispatcherServlet extends HttpServlet {
+
+
+    @EJB
+    private MailSenderBean mailSender;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -23,6 +30,8 @@ public class MailDispatcherServlet extends HttpServlet {
             String password = "summer2018";
 
             //call to mail sender bean here
+
+            mailSender.sendEmail(fromEmail, username, password, toEmail, );
 
 
             //---------------------
