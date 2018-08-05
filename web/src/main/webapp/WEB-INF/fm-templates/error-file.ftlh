@@ -27,43 +27,43 @@
 
     <div class="jumbotron banner">
         <!--   inject banner here  -->
-        <#include "macros/learn-banner.ftlh">
-
+                <#include "macros/error-file-banner.ftlh">
     </div>
 
     <div class="container">
-    <#if singleWord?? >
-        <h1>Czy znasz tłumaczenie słowa: ${singleWord.word} ?</h1>
-        <br/><br/><br/>
         <div class="row">
             <div class="col-md-4">
-                <p><a class="btn btn-outline-primary btn-lg"
-                      href="/translation?mode=${mode}&category=${category}&word=${singleWord.word}&translation=${singleWord.translation}"
-                      role="button">Sprawdź odpowiedź<br/>i oceń się!</a></p>
+                <h2>Przeglądanie</h2>
+                <p>To pierwszy tryb nauki nowych słów. W tym trybie wyświetlimy Ci parę słowo - tłumaczenie. Nie spiesz
+                    się i postaraj się zapamiętać dane słowo. W tym trybie będzie ono dostępne tylko raz!</p>
             </div>
             <div class="col-md-4">
-                <p><a class="btn btn-outline-success btn-lg" href="/choose-category?mode=${mode}"
-                      role="button">Zmień kategorię</a></p>
+                <h2>Nauka</h2>
+                <p>To drugi tryb nauki. W tym trybie wyświetlimy słowa, które poznałeś w trybie przeglądania. Dokonuj
+                    uczciwie oceny :) </p>
             </div>
             <div class="col-md-4">
-                <p><a class="btn btn-outline-danger btn-lg" href="/main" role="button">Menu główne</a></p>
+                <h2>Powtórka</h2>
+                <p>To trzeci i ostatni tryb nauki. Tutaj pojawią się słowa, które już znasz. Możesz zadecydować, czy
+                    chcesz je pozostawić aby móc do nich wrócić w przyszłości, czy chcesz je trwale usunąć z
+                    programu.</p>
             </div>
         </div>
 
-    <#else>
-        <h2>Nie ma więcej słów dostępnych w kategorii ${category} trybie nauki. Zmień kategorię lub
-            przejdź do innego trybu.</h2>
-        <br/><br/><br/>
         <div class="row">
             <div class="col-md-4">
-                <p><a class="btn btn-outline-success btn-lg" href="/choose-category?mode=${mode}"
-                      role="button">Zmień kategorię</a></p>
+                <p><a class="btn btn-outline-primary btn-lg" href="/choose-category?mode=browse-mode" role="button">Start
+                    &raquo;</a></p>
             </div>
             <div class="col-md-4">
-                <p><a class="btn btn-outline-danger btn-lg" href="/main" role="button">Menu główne</a></p>
+                <p><a class="btn btn-outline-primary btn-lg" href="/choose-category?mode=learn-mode" role="button">Start
+                    &raquo;</a></p>
+            </div>
+            <div class="col-md-4">
+                <p><a class="btn btn-outline-primary btn-lg" href="/choose-category?mode=repeat-mode" role="button">Start
+                    &raquo;</a></p>
             </div>
         </div>
-    </#if>
     </div>
 </main>
 
