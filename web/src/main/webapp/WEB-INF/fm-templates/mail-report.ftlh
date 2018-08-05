@@ -53,7 +53,7 @@
                 <label for="exampleTextarea">Wiadomość:</label>
                 <textarea name="message" readonly class="form-control" id="exampleTextarea" rows="6" cols="75">
 Laczna liczba wyswietlonych slow: ${numberAllDisplayed},
-Liczba słow dostepnych w trybie przegladania: ${numberBrowse},
+Liczba slow dostepnych w trybie przegladania: ${numberBrowse},
 Liczba o dostepnych w trybie nauki: ${numberLearn},
 Liczba o dostepnych w trybie powtorek: ${numberRepeat},
 Liczba o oznaczonych jako nauczone: ${numberExcluded}
