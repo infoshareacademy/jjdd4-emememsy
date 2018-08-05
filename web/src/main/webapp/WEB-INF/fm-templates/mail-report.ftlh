@@ -42,11 +42,11 @@
                 <td>
                 <label for="exampleTextarea">Wiadomość</label>
                 <textarea name="message" readonly class="form-control" id="exampleTextarea" rows="6" cols="75">
-Łączna liczba wyświetlonych słów: ${numberAllDisplayed}.
-Liczba słów dostępnych w trybie przeglądania: ${numberBrowse}.
-Liczba słów dostępnych w trybie nauki: ${numberLearn}.
-Liczba słów dostępnych w trybie powtórek: ${numberRepeat}.
-Liczba słów oznaczonych jako nauczone: ${numberExcluded}.
+Laczna liczba wyswietlonych słow: ${numberAllDisplayed},
+Liczba słow dostepnych w trybie przegladania: ${numberBrowse},
+Liczba o dostepnych w trybie nauki: ${numberLearn},
+Liczba o dostepnych w trybie powtorek: ${numberRepeat},
+Liczba o oznaczonych jako nauczone: ${numberExcluded}
                 </textarea>
                 </td>
             </tr>

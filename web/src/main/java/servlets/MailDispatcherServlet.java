@@ -1,5 +1,7 @@
 package servlets;
 
+import com.infoshareacademy.emememsy.InputOutput;
+import com.infoshareacademy.emememsy.PropertiesReader;
 import data.MailSenderBean;
 import freemarker.TemplateProvider;
 import freemarker.template.Template;
@@ -13,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Map;
 
 @WebServlet("/mail-dispatcher")
 public class MailDispatcherServlet extends HttpServlet {
@@ -22,6 +25,9 @@ public class MailDispatcherServlet extends HttpServlet {
 
     @EJB
     private MailSenderBean mailSender;
+
+//    @Inject
+//    private InputOutput inputOutput;
 
 
 
@@ -42,14 +48,14 @@ public class MailDispatcherServlet extends HttpServlet {
             resp.setContentType("text/html; charset=UTF-8");
 
             String toEmail = req.getParameter("email");
-            String subject = "Raport z aplikacji myWords";
             String message = req.getParameter("message");
 
+            Map<String, String> properties = PropertiesReader.read("config.properties");
 
-            //data for connection - intentional hardcoding solution just for testing
-            String fromEmail = "emememsy2018@gmail.com";
-            String username = "emememsy2018";
-            String password = "summer2018";
+            String subject = properties.get(PropertiesReader.SUBJECT_KEY);
+            String fromEmail = properties.get(PropertiesReader.FROMEMAIL_KEY);
+            String username = properties.get(PropertiesReader.USERNAME_KEY);
+            String password = properties.get(PropertiesReader.PASSWORD_KEY);
 
             //call to mail sender bean inside this block-----
 

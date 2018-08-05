@@ -30,7 +30,7 @@
     <b><h2>Mail został wysłany na podany adres</h2></b>
 </span>
             <span class="col-md-3 d-flex align-items-center">
-    <a class="btn btn-outline-primary btn-lg" href="/mail-report" role="button">OK</a>
+    <a class="btn btn-outline-primary btn-lg" href="/main" role="button">OK</a>
 </span>
         </div>
     </div>
