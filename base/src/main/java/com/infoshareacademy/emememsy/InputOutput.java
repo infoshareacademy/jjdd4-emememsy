@@ -21,7 +21,7 @@ import java.util.Map;
 @RequestScoped
 public class InputOutput {
 
-    public static Map<String, String> properties = PropertiesReader.read("config.properties");
+    public static Map<String, String> properties = PropertiesReader.read("/tmp/config.properties");
 
     private static HeaderColumnNameTranslateMappingStrategy<SingleWord> strategy;
     private static Map<String, String> columnMapping = new HashMap<>();
@@ -38,7 +38,7 @@ public class InputOutput {
     }
 
     public static void checkReader() throws IOException {
-        CSVReader reader = new CSVReader(new FileReader(PropertiesReader.read("config.properties").get(PropertiesReader.PATH_KEY)));
+        CSVReader reader = new CSVReader(new FileReader(PropertiesReader.read("/tmp/config.properties").get(PropertiesReader.PATH_KEY)));
         String[] nextLine;
         while ((nextLine = reader.readNext()) != null) {
             System.out.println(nextLine[0] + " " + nextLine[1] + " " + nextLine[2] + " " + nextLine[3]);
@@ -52,7 +52,7 @@ public class InputOutput {
     public static List<SingleWord> createListOfWordsOmmitProperties(){
         List<SingleWord> listOfWords = new ArrayList<>();
         try {
-            CSVReader reader = new CSVReader(new FileReader("input_words.csv"));
+            CSVReader reader = new CSVReader(new FileReader("/tmp/input_words.csv"));
             CsvToBean<SingleWord> csvToBean = new CsvToBean<>();
             listOfWords.addAll(csvToBean.parse(strategy, reader));
 
@@ -83,7 +83,7 @@ public class InputOutput {
 
     public static void writeToCSV(List<SingleWord> listOfWords) {
         try {
-            Writer writer = new FileWriter(PropertiesReader.read("config.properties").get(PropertiesReader.PATH_KEY));
+            Writer writer = new FileWriter(PropertiesReader.read("/tmp/config.properties").get(PropertiesReader.PATH_KEY));
             StatefulBeanToCsv beanToCsv = new StatefulBeanToCsvBuilder(writer).build();
             beanToCsv.write(listOfWords);
             writer.close();

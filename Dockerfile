@@ -1,8 +1,10 @@
 FROM jboss/wildfly:13.0.0.Final
 
-ADD target/myWords-web-1.0-SNAPSHOT.war /opt/jboss/wildfly/standalone/deployments/
+ADD web/target/myWords-web-1.0-SNAPSHOT.war /opt/jboss/wildfly/standalone/deployments/
 
 ENV HOME="/tmp"
+ADD config.properties /tmp/
+ADD input_words.csv /tmp/
 
 RUN /opt/jboss/wildfly/bin/add-user.sh root pass123 --silent
 

@@ -16,6 +16,9 @@
         .banner {
             text-align: center;
         }
+        .footer{
+            background: white;
+        }
     </style>
 </head>
 <body>
@@ -54,7 +57,7 @@
 
 </main>
 
-<footer class="container fixed-bottom">
+<footer class="container fixed-bottom footer">
     <hr>
     <#include "macros/copyright-footer.ftlh">
 </footer>
