@@ -59,6 +59,9 @@ public class SingleWord{
     @NotNull
     private int remain;
 
+    @Column(name="user_name")
+    private String userName;
+
 
     public SingleWord() {
     }
@@ -68,6 +71,14 @@ public class SingleWord{
         this.translation = translation;
         this.counter = counter;
         this.category = category;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public void good() {

@@ -49,13 +49,14 @@ public class UploadFileServlet extends HttpServlet {
             resp.sendRedirect("/index.jsp");
         }
 
+        String userName = (String)session.getAttribute("userNameStr");
 
         String action = req.getParameter("action");
 
         if("delete".equals(action)){
-            deleteWords(req, resp);
+            deleteWords(req, resp, userName);
         } else if ("initialize".equals(action)){
-            uploadWords(req, resp);
+            uploadWords(req, resp, userName);
         }
 
         Template template = templateProvider.getTemplate(getServletContext(), "upload-file.ftlh");
@@ -75,8 +76,10 @@ public class UploadFileServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Part filePart = req.getPart("dataFile");
 
+        String userName = (String)req.getSession().getAttribute("userNameStr");
+
         try {
-            File file = fileUploadProcessor.uploadFile(filePart);
+            File file = fileUploadProcessor.uploadFile(filePart, userName);
             file.getName();
 
         } catch (FileNotFound fileNotFound) {
@@ -95,17 +98,20 @@ public class UploadFileServlet extends HttpServlet {
         }
     }
 
-    private void deleteWords (HttpServletRequest req, HttpServletResponse resp) {
+    private void deleteWords (HttpServletRequest req, HttpServletResponse resp, String userName) {
 
-        List<SingleWord> listOfWords = singleWordDao.findAll();
+        List<SingleWord> listOfWords = singleWordDao.findAllByUser(userName);
         listOfWords.stream().forEach(o-> singleWordDao.deleteWord(o));
     }
 
-    private void uploadWords (HttpServletRequest req, HttpServletResponse resp) {
+    private void uploadWords (HttpServletRequest req, HttpServletResponse resp, String userName) {
 
         try {
             List<SingleWord> listOfWords = dataProvider.getListOfWords();
-            listOfWords.stream().forEach(o-> singleWordDao.save(o));
+            for (SingleWord s : listOfWords) {
+                s.setUserName(userName);
+                singleWordDao.save(s);
+            }
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }

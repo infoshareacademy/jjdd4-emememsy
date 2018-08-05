@@ -27,28 +27,11 @@ public class LoginServlet extends HttpServlet {
     @Inject
     private TemplateProvider templateProvider;
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-        Template template = templateProvider.getTemplate(getServletContext(), "index2.ftlh");
-
-        Map<String, Object> model = new HashMap<>();
-
-        resp.setContentType("text/html;charset=UTF-8");
-        LOG.info("The file was load corectly");
-
-        try {
-            template.process(model, resp.getWriter());
-        } catch (TemplateException e) {
-            e.printStackTrace();
-            LOG.error("Problems with template");
-        }
-    }
-
 
         @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
+            LOG.info("Entered doPost method in Login Servlet");
         try {
             String idToken = req.getParameter("id_token");
             LOG.debug("id Token: " + idToken);
@@ -64,11 +47,19 @@ public class LoginServlet extends HttpServlet {
 
             HttpSession session = req.getSession(true);
             session.setAttribute("userName", true);
+            session.setAttribute("userNameStr", name);
+            session.setAttribute("userEmail", email);
+            LOG.info("Received and validated token from Google. Now redirect to main should happen.");
+
             resp.sendRedirect("/main");
+
+            LOG.info("redirected to main from Login servlet");
 
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+
+        LOG.info("This logger checks what happenes after the whole token validation block is executed. ");
 
     }
 }

@@ -54,6 +54,11 @@ public class ChooseCategoryServlet extends HttpServlet {
 
             return;
         }
+
+        if ((!mode.equals("browse-mode")) && (!mode.equals("learn-mode")) && (!mode.equals("repeat-mode"))){
+            resp.sendRedirect("/error");
+        }
+
         Template template = templateProvider.getTemplate(getServletContext(), "choose-category.ftlh");
         LOG.info("The correct template was load");
 
