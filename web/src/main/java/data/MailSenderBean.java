@@ -1,6 +1,10 @@
 package data;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import servlets.ChooseCategoryServlet;
+
 import javax.ejb.Stateless;
 import javax.faces.bean.SessionScoped;
 import javax.mail.Message;
@@ -14,6 +18,8 @@ import java.util.Properties;
 @SessionScoped
 @Stateless
 public class MailSenderBean {
+
+    private static final Logger LOG = LoggerFactory.getLogger(ChooseCategoryServlet.class);
 
     public void sendEmail(String fromEmail, String username, String password, String toEmail, String subject, String message) {
 
@@ -43,6 +49,7 @@ public class MailSenderBean {
 
         } catch (Exception e) {
             e.printStackTrace();
+            LOG.error("Could not connect to SMTP server");
         }
 
     }

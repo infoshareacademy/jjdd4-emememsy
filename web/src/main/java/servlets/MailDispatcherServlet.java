@@ -2,6 +2,8 @@ package servlets;
 
 import com.infoshareacademy.emememsy.PropertiesReader;
 import data.MailSenderBean;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -16,6 +18,7 @@ import java.util.Map;
 
 @WebServlet("/mail-dispatcher")
 public class MailDispatcherServlet extends HttpServlet {
+    private static final Logger LOG = LoggerFactory.getLogger(DisplayTranslation.class);
 
     @EJB
     private MailSenderBean mailSender;
@@ -47,6 +50,7 @@ public class MailDispatcherServlet extends HttpServlet {
             //call to mail sender bean inside this block-----
 
             mailSender.sendEmail(fromEmail, username, password, toEmail, subject, message);
+            LOG.info("send mail thread successfull");
 
             //-----------------------------------------------
 
