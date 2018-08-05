@@ -1,13 +1,9 @@
 package servlets;
 
-import com.infoshareacademy.emememsy.InputOutput;
 import com.infoshareacademy.emememsy.PropertiesReader;
 import data.MailSenderBean;
-import freemarker.TemplateProvider;
-import freemarker.template.Template;
 
 import javax.ejb.EJB;
-import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,19 +13,13 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Map;
 
+
+
 @WebServlet("/mail-dispatcher")
 public class MailDispatcherServlet extends HttpServlet {
 
-
-
-
     @EJB
     private MailSenderBean mailSender;
-
-//    @Inject
-//    private InputOutput inputOutput;
-
-
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -39,7 +29,6 @@ public class MailDispatcherServlet extends HttpServlet {
             resp.sendRedirect("/index.jsp");
         }
     }
-
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -52,10 +41,19 @@ public class MailDispatcherServlet extends HttpServlet {
 
             Map<String, String> properties = PropertiesReader.read("config.properties");
 
-            String subject = properties.get(PropertiesReader.SUBJECT_KEY);
-            String fromEmail = properties.get(PropertiesReader.FROMEMAIL_KEY);
-            String username = properties.get(PropertiesReader.USERNAME_KEY);
-            String password = properties.get(PropertiesReader.PASSWORD_KEY);
+//            to do
+
+//            String subject = properties.get(PropertiesReader.SUBJECT_KEY);
+//            String fromEmail = properties.get(PropertiesReader.FROMEMAIL_KEY);
+//            String username = properties.get(PropertiesReader.USERNAME_KEY);
+//            String password = properties.get(PropertiesReader.PASSWORD_KEY);
+
+
+//            this works
+            String subject = "Raport z aplikacji myWords";
+            String fromEmail = "emememsy2018@gmail.com";
+            String username = "emememsy2018";
+            String password = "summer2018";
 
             //call to mail sender bean inside this block-----
 
@@ -71,9 +69,6 @@ public class MailDispatcherServlet extends HttpServlet {
             throw new RuntimeException(e);
         }
 
-
     }
-
-
 
 }
