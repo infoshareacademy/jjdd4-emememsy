@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -37,6 +38,7 @@ public class IncreaseCounterServlet extends HttpServlet {
             resp.sendRedirect("/index.jsp");
         }
 
+        String userName = (String)session.getAttribute("userNameStr");
 
         String category = req.getParameter("category");
         String mode = req.getParameter("mode");
@@ -49,26 +51,26 @@ public class IncreaseCounterServlet extends HttpServlet {
             return;
         }
 
-        increaseCounter(req, resp);
+        increaseCounter(req, resp, userName);
 
         Template template = templateProvider.getTemplate(getServletContext(), "learn-mode.ftlh");
         if (counter.equals("good") || counter.equals("soso") || counter.equals("bad")) {
 
-            resp.sendRedirect("./learn-mode?category=" + category + "&mode=" + mode);
+            resp.sendRedirect("./learn-mode?category=" + URLEncoder.encode(category, "UTF-8") + "&mode=" + mode);
 
         } else if (counter.equals("remove") || counter.equals("remain")) {
 
-            resp.sendRedirect("./repeat-mode?category=" + category + "&mode=" + mode);
+            resp.sendRedirect("./repeat-mode?category=" + URLEncoder.encode(category, "UTF-8") + "&mode=" + mode);
         }
     }
 
-    private void increaseCounter (HttpServletRequest req, HttpServletResponse resp){
+    private void increaseCounter (HttpServletRequest req, HttpServletResponse resp, String userName){
 
         String counter = req.getParameter("counter");
         String word = req.getParameter("word");
 
         List<SingleWord> listOfWords = new ArrayList<>();
-        listOfWords = singleWordDao.findAll();
+        listOfWords = singleWordDao.findAllByUser(userName);
 
         if(counter.equals("good")){
             SingleWord wordToAssess = listOfWords.stream().filter(s_ -> s_.getWord().equalsIgnoreCase(word)).findFirst().orElse(null);

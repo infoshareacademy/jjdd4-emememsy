@@ -36,7 +36,7 @@ public class FileUploadProcessor {
         return System.getProperty("user.dir");
     }
 
-    public File uploadFile(Part filePart) throws FileNotFound, IOException {
+    public File uploadFile(Part filePart, String userName) throws FileNotFound, IOException {
         String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
 
         if (fileName == null || fileName.isEmpty()) {
@@ -49,7 +49,10 @@ public class FileUploadProcessor {
 
         Files.copy(fileContent, file.toPath());
         List<SingleWord> newList = dataProvider.getListOfWords(file.toPath().toString());
-        newList.stream().forEach(o -> singleWordDao.save(o));
+        for (SingleWord s : newList) {
+            s.setUserName(userName);
+            singleWordDao.save(s);
+        }
 
         fileContent.close();
 

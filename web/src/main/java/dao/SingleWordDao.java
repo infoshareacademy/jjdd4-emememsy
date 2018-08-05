@@ -10,6 +10,7 @@ import javax.persistence.Query;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 @Stateless
 public class SingleWordDao {
@@ -54,6 +55,12 @@ public class SingleWordDao {
         return query.getResultList();
     }
 
+    public List<SingleWord> findAllByUser(String userName) {
+        final Query query = entityManager.createQuery("SELECT s FROM SingleWord s WHERE s.userName = :userName");
+        query.setParameter("userName", userName);
+        return query.getResultList();
+    }
+
     public SingleWord findByCategory2(String category) {
         final Query query = entityManager.createNativeQuery(
                // "SELECT s FROM SingleWord s WHERE s.category = :category"
@@ -61,84 +68,124 @@ public class SingleWordDao {
         return (SingleWord) query.getResultList();
     }
 
-    public List<SingleWord> findByAllCategoriesBrowseMode(){
+    public List<String> findAllUsers () {
         final Query query = entityManager.createQuery(
-                "SELECT s FROM SingleWord s WHERE s.counter = 0" );
+                "SELECT DISTINCT s.userName FROM SingleWord s");
         return query.getResultList();
     }
 
-    public List<SingleWord> findByCategoryBrowseMode(String category){
+    public List<String> findAllWordsByUser (String userName) {
         final Query query = entityManager.createQuery(
-                "SELECT s FROM SingleWord s WHERE s.category = :category AND s.counter = 0");
+                "SELECT s.word FROM SingleWord s WHERE s.userName = :userName");
+        query.setParameter("userName", userName);
+        return query.getResultList();
+    }
+
+    public List<String> findAllTranslationsByUser (String userName) {
+        final Query query = entityManager.createQuery(
+                "SELECT s.translation FROM SingleWord s WHERE s.userName = :userName");
+        query.setParameter("userName", userName);
+        return query.getResultList();
+    }
+
+    public List<String> findAllCategoriesByUser (String userName) {
+        final Query query = entityManager.createQuery(
+                "SELECT s.category FROM SingleWord s WHERE s.userName = :userName");
+        query.setParameter("userName", userName);
+        return query.getResultList();
+    }
+
+    public List<SingleWord> findByAllCategoriesBrowseModeByUser(String userName){
+        final Query query = entityManager.createQuery(
+                "SELECT s FROM SingleWord s WHERE s.counter = 0 AND s.userName = :userName" );
+        query.setParameter("userName", userName);
+        return query.getResultList();
+    }
+
+    public List<SingleWord> findByCategoryBrowseModeByUser(String category, String userName){
+        final Query query = entityManager.createQuery(
+                "SELECT s FROM SingleWord s WHERE s.category = :category AND s.userName = :userName AND s.counter = 0");
         query.setParameter("category", category);
+        query.setParameter("userName", userName);
         return query.getResultList();
     }
 
-    public List<SingleWord> findByAllCategoriesLearnMode(){
+    public List<SingleWord> findByAllCategoriesLearnModeByUser(String userName){
         final Query query = entityManager.createQuery(
-                "SELECT s FROM SingleWord s WHERE s.counter > 0 AND s.counter < 4" );
+                "SELECT s FROM SingleWord s WHERE s.counter > 0 AND s.counter < 4 AND s.userName = :userName" );
+        query.setParameter("userName", userName);
         return query.getResultList();
     }
 
-    public List<SingleWord> findByCategoryLearnMode(String category){
+    public List<SingleWord> findByCategoryLearnModeByUser(String category, String userName){
         final Query query = entityManager.createQuery(
-                "SELECT s FROM SingleWord s WHERE s.category = :category AND s.counter > 0 AND s.counter < 4");
+                "SELECT s FROM SingleWord s WHERE s.category = :category AND s.userName = :userName AND s.counter > 0 AND s.counter < 4");
         query.setParameter("category", category);
+        query.setParameter("userName", userName);
         return query.getResultList();
     }
 
-    public List<SingleWord> findByAllCategoriesRepeatMode(){
+    public List<SingleWord> findByAllCategoriesRepeatModeByUser(String userName){
         final Query query = entityManager.createQuery(
-                "SELECT s FROM SingleWord s WHERE s.counter > 3 AND s.counter < 100" );
+                "SELECT s FROM SingleWord s WHERE s.counter > 3 AND s.counter < 100 AND s.userName = :userName" );
+        query.setParameter("userName", userName);
         return query.getResultList();
     }
 
-    public List<SingleWord> findByCategoryRepeatMode(String category){
+    public List<SingleWord> findByCategoryRepeatModeByUser(String category, String userName){
         final Query query = entityManager.createQuery(
-                "SELECT s FROM SingleWord s WHERE s.category = :category AND s.counter > 3 AND s.counter < 100");
+                "SELECT s FROM SingleWord s WHERE s.category = :category AND s.userName = :userName AND s.counter > 3 AND s.counter < 100");
         query.setParameter("category", category);
+        query.setParameter("userName", userName);
         return query.getResultList();
     }
 
-    public List<SingleWord> allDisplayed(){
+    public List<SingleWord> allDisplayed(String userName){
         final Query query = entityManager.createQuery(
-                "SELECT s FROM SingleWord s WHERE s.displayed > 0 ORDER BY s.displayed desc " );
+                "SELECT s FROM SingleWord s WHERE s.displayed > 0 AND s.userName = :userName ORDER BY s.displayed desc " );
+        query.setParameter("userName", userName);
         return query.getResultList();
     }
 
-    public List<SingleWord> mostDifficult(){
+    public List<SingleWord> mostDifficult(String userName){
         final Query query = entityManager.createQuery(
-                "SELECT s FROM SingleWord s WHERE s.bad > 0 ORDER BY s.bad desc " );
+                "SELECT s FROM SingleWord s WHERE s.bad > 0 AND s.userName = :userName ORDER BY s.bad desc " );
+        query.setParameter("userName", userName);
         return query.getResultList();
     }
 
-    public Long numberAllDisplayed(){
+    public Long numberAllDisplayed(String userName){
         final Query query = entityManager.createQuery(
-                "SELECT COUNT(s.id) FROM SingleWord s WHERE s.displayed > 0" );
+                "SELECT COUNT(s.id) FROM SingleWord s WHERE s.displayed > 0 AND s.userName = :userName" );
+        query.setParameter("userName", userName);
         return (Long)query.getSingleResult();
     }
 
-    public Long totalNumberOfWordsBrowseMode(){
+    public Long totalNumberOfWordsBrowseMode(String userName){
         final Query query = entityManager.createQuery(
-                "SELECT COUNT(s.id) FROM SingleWord s WHERE s.counter = 0" );
+                "SELECT COUNT(s.id) FROM SingleWord s WHERE s.counter = 0 AND s.userName = :userName" );
+        query.setParameter("userName", userName);
         return (Long)query.getSingleResult();
     }
 
-    public Long totalNumberOfWordsLearnMode(){
+    public Long totalNumberOfWordsLearnMode(String userName){
         final Query query = entityManager.createQuery(
-                "SELECT COUNT(s.id) FROM SingleWord s WHERE s.counter > 0 and s.counter<4" );
+                "SELECT COUNT(s.id) FROM SingleWord s WHERE s.counter > 0 and s.counter<4 AND s.userName = :userName" );
+        query.setParameter("userName", userName);
         return (Long)query.getSingleResult();
     }
 
-    public Long totalNumberOfWordsRepeatMode(){
+    public Long totalNumberOfWordsRepeatMode(String userName){
         final Query query = entityManager.createQuery(
-                "SELECT COUNT(s.id) FROM SingleWord s WHERE s.counter > 3" );
+                "SELECT COUNT(s.id) FROM SingleWord s WHERE s.counter > 3 AND s.userName = :userName" );
+        query.setParameter("userName", userName);
         return (Long)query.getSingleResult();
     }
 
-    public Long totalNumberOfPassedWords(){
+    public Long totalNumberOfPassedWords(String userName){
         final Query query = entityManager.createQuery(
-                "SELECT COUNT(s.id) FROM SingleWord s WHERE s.counter > 100" );
+                "SELECT COUNT(s.id) FROM SingleWord s WHERE s.counter > 100 AND s.userName = :userName" );
+        query.setParameter("userName", userName);
         return (Long)query.getSingleResult();
     }
 
