@@ -4,9 +4,23 @@
             <li class="nav-item">
                 <a class="nav-link" href="/main">Menu główne<span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/progress">Mój postęp</a>
+            <#--------------Replased by dropdown menu with email item-------->
+            <#--<li class="nav-item">-->
+                <#--<a class="nav-link" href="/progress">Mój postęp</a>-->
+            <#--</li>-->
+            <#--------------------------------------------------------------->
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                    Statystyki
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/progress">Przeglądanie</a>
+                    <a class="dropdown-item" href="/mail-report">Wyslij email</a>
+                </div>
             </li>
+
+
             <li class="nav-item">
                 <a class="nav-link" href="/management">Ustawienia</a>
             </li>

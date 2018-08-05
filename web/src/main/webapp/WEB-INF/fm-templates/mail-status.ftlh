@@ -23,12 +23,17 @@
         <#include "macros/mail-banner.ftlh">
     </div>
 
-    <span style="margin: 50px; padding: 10px">
-        <b>Mail został wysłany poprawnie.</b>
-    </span>
-    <span style="margin: 50px">
-        <a class="btn btn-outline-danger btn-lg" href="/main" role="button">Menu główne</a>
-    </span>
+
+    <div style="width: 80%; height: 100px; margin: auto">
+        <div class="row justify-content-center">
+<span class="col-md-3 d-flex align-items-center">
+    <b><h2>Mail został wysłany na podany adres</h2></b>
+</span>
+            <span class="col-md-3 d-flex align-items-center">
+    <a class="btn btn-outline-primary btn-lg" href="/mail-report" role="button">OK</a>
+</span>
+        </div>
+    </div>
 
 
 </main>

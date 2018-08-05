@@ -75,25 +75,21 @@
         <#include "macros/welcome-banner.ftlh">
 </div>
 
-<div style="margin: 50px; padding: 10px">
-<h1>Wyslij raport na email</h1>
-<form method="POST" action="/mail-dispatcher">
-    <table>
-        <tr>
-            <td align="right"><b>To: </b></td>
-            <td>
-                <input type="text" name="email" size="75">
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <input type="submit" value="Wyślij">
-            </td>
-        </tr>
-    </table>
-</form>
+<#--Mail Report button---------------------------->
+<div style="width: 80%; height: 100px; margin: auto">
+<div class="row justify-content-center">
+<span class="col-md-3 d-flex align-items-center">
+    <b><h2>Raport na email!</h2></b>
+</span>
+<span class="col-md-3 d-flex align-items-center">
+    <a class="btn btn-outline-primary btn-lg" href="/mail-report" role="button">Wyślij</a>
+</span>
 </div>
+</div>
+<br/>
+<br/>
+<#------------------------------------------------>
+
 
 <div class="container">
     <strong>

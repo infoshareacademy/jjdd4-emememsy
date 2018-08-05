@@ -43,7 +43,7 @@ public class MailDispatcherServlet extends HttpServlet {
 
             String toEmail = req.getParameter("email");
             String subject = "Raport z aplikacji myWords";
-            String message = "To jest raport wygenerowany z aplikacji myWord...";
+            String message = req.getParameter("message");
 
 
             //data for connection - intentional hardcoding solution just for testing
