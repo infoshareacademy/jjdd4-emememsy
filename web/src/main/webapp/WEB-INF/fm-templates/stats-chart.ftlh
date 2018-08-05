@@ -16,6 +16,9 @@
         .banner {
             text-align: center;
         }
+        .footer{
+            background: white;
+        }
     </style>
 
     <!--Load the AJAX API-->
@@ -85,7 +88,7 @@
 <div style="width: 80%; height: 100px; margin: auto">
 <div class="row justify-content-center">
 <span class="col-md-3 d-flex align-items-center">
-    <b><h2>Raport na email!</h2></b>
+    <b><h2>Wyślij raport: </h2></b>
 </span>
 <span class="col-md-3 d-flex align-items-center">
     <a class="btn btn-outline-primary btn-lg" href="/mail-report" role="button">Wyślij</a>
@@ -125,7 +128,7 @@
 
 
 
-<footer class="container fixed-bottom">
+<footer class="container fixed-bottom footer">
     <hr>
     <#include "macros/copyright-footer.ftlh">
 </footer>

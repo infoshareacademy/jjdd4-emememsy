@@ -15,6 +15,15 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <title>MyWords</title>
 
+    <style type="text/css">
+        .banner {
+            text-align: center;
+        }
+        .footer{
+            background: white;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -22,7 +31,7 @@
 <!--   inject navbar here  -->
     <#include "macros/navbar.ftlh">
 
-<div class="jumbotron">
+<div class="jumbotron banner">
         <#include "macros/mail-banner.ftlh">
 </div>
 
@@ -40,7 +49,8 @@
 
             <tr>
                 <td>
-                <label for="exampleTextarea">Wiadomość</label>
+                    <br/>
+                <label for="exampleTextarea">Wiadomość:</label>
                 <textarea name="message" readonly class="form-control" id="exampleTextarea" rows="6" cols="75">
 Laczna liczba wyswietlonych slow: ${numberAllDisplayed},
 Liczba słow dostepnych w trybie przegladania: ${numberBrowse},
@@ -53,6 +63,7 @@ Liczba o oznaczonych jako nauczone: ${numberExcluded}
 
             <tr>
                 <td>
+                    <br/>
                 <button type="submit" class="btn btn-primary">Wyślij</button>
                 </td>
             </tr>
@@ -61,7 +72,7 @@ Liczba o oznaczonych jako nauczone: ${numberExcluded}
 </div>
 
 
-<footer class="container fixed-bottom">
+<footer class="container fixed-bottom footer">
     <hr>
     <#include "macros/copyright-footer.ftlh">
 </footer>

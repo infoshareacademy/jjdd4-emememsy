@@ -15,8 +15,8 @@
                     Statystyki
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="/progress">Przeglądanie</a>
-                    <a class="dropdown-item" href="/mail-report">Wyslij email</a>
+                    <a class="dropdown-item" href="/progress">Postęp</a>
+                    <a class="dropdown-item" href="/mail-report">Wyslij raport</a>
                 </div>
             </li>
 
