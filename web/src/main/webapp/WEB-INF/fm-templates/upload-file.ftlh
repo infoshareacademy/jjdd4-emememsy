@@ -12,6 +12,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <title>MyWords</title>
+    <style type="text/css">
+        .banner {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
 
@@ -20,7 +25,7 @@
 
 <main role="main">
 
-    <div class="jumbotron">
+    <div class="jumbotron banner">
         <!--   inject banner here  -->
         <#include "macros/file-upload-banner.ftlh">
     </div>

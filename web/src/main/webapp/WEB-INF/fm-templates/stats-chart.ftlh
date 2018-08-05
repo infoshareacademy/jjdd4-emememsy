@@ -12,6 +12,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <title>MyWords</title>
+    <style type="text/css">
+        .banner {
+            text-align: center;
+        }
+    </style>
 
     <!--Load the AJAX API-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -29,6 +34,7 @@
                          <#list map?keys as key>['${key}', ${map[key]}]<#sep>,</#sep></#list>
                 </#if>
             ]);
+
 
             var options = {
                 title: 'Ile razy zostało wyświetlone każde słowo',
@@ -71,7 +77,7 @@
 <!--   inject navbar here  -->
     <#include "macros/navbar.ftlh">
 
-<div class="jumbotron">
+<div class="jumbotron banner">
         <#include "macros/welcome-banner.ftlh">
 </div>
 

@@ -1,5 +1,5 @@
 <div class="container">
-    <h3 class="display-3">Welcome to myWords!</h3>
+    <h3 class="display-3">Witaj w myWords!</h3>
     <h5>Jesteś w trybie powtórek.
         Poniżej wyświetlamy Ci słowa, które powinieneś już znać.
         Kliknij w niebieski przycisk aby sprawdzić poprawne tłumaczenie słowa i ocenić,
