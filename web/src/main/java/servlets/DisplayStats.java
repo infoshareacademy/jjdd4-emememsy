@@ -6,6 +6,8 @@ import data.DataProvider;
 import freemarker.TemplateProvider;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -23,6 +25,8 @@ import java.util.stream.Collectors;
 
 @WebServlet("/progress")
 public class DisplayStats extends HttpServlet {
+
+    private static final Logger LOG = LoggerFactory.getLogger(DisplayTranslation.class);
 
     @Inject
     private TemplateProvider templateProvider;
@@ -84,9 +88,11 @@ public class DisplayStats extends HttpServlet {
 
         try {
             template.process(model, resp.getWriter());
+            LOG.info("fthl template was loaded sussessfully");
         } catch (TemplateException e) {
             e.printStackTrace();
-       }
+            LOG.error("ftlh template could not be loaded");
+        }
 
     }
 

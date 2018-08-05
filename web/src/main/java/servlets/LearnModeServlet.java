@@ -73,10 +73,10 @@ public class LearnModeServlet extends HttpServlet {
 
         try {
             template.process(model, resp.getWriter());
+            LOG.info("fthl template was loaded sussessfully");
         } catch (TemplateException e) {
             e.printStackTrace();
-            LOG.error("Problems with template", e.getMessage());
-
+            LOG.error("ftlh template could not be loaded");
         }
     }
 

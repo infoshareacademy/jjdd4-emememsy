@@ -8,6 +8,8 @@ import data.FileUploadProcessor;
 import freemarker.TemplateProvider;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -26,6 +28,8 @@ import java.util.Map;
 @WebServlet("/management")
 @MultipartConfig
 public class UploadFileServlet extends HttpServlet {
+
+    private static final Logger LOG = LoggerFactory.getLogger(RepeatModeServlet.class);
 
     @Inject
     private TemplateProvider templateProvider;
@@ -67,8 +71,10 @@ public class UploadFileServlet extends HttpServlet {
         resp.setContentType("text/html;charset=UTF-8");
         try {
             template.process(model, resp.getWriter());
+            LOG.info("fthl template was loaded sussessfully");
         } catch (TemplateException e) {
             e.printStackTrace();
+            LOG.error("ftlh template could not be loaded");
         }
     }
 
@@ -93,8 +99,10 @@ public class UploadFileServlet extends HttpServlet {
         resp.setContentType("text/html;charset=UTF-8");
         try {
             template.process(model, resp.getWriter());
+            LOG.info("fthl template was loaded sussessfully");
         } catch (TemplateException e) {
             e.printStackTrace();
+            LOG.error("ftlh template could not be loaded");
         }
     }
 
