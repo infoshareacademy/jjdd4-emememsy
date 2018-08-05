@@ -18,10 +18,8 @@ import java.util.Map;
 @WebServlet("/mail-status")
 public class MailStatusServlet extends HttpServlet {
 
-
     @Inject
     private TemplateProvider templateProvider;
-
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

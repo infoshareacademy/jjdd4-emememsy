@@ -14,7 +14,6 @@ import java.io.IOException;
 import java.util.Map;
 
 
-
 @WebServlet("/mail-dispatcher")
 public class MailDispatcherServlet extends HttpServlet {
 
@@ -32,28 +31,18 @@ public class MailDispatcherServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-
         try {
             resp.setContentType("text/html; charset=UTF-8");
 
             String toEmail = req.getParameter("email");
             String message = req.getParameter("message");
 
-            Map<String, String> properties = PropertiesReader.read("config.properties");
+            Map<String, String> properties = PropertiesReader.read("/tmp/config.properties");
 
-//            to do
-
-//            String subject = properties.get(PropertiesReader.SUBJECT_KEY);
-//            String fromEmail = properties.get(PropertiesReader.FROMEMAIL_KEY);
-//            String username = properties.get(PropertiesReader.USERNAME_KEY);
-//            String password = properties.get(PropertiesReader.PASSWORD_KEY);
-
-
-//            this works
-            String subject = "Raport z aplikacji myWords";
-            String fromEmail = "emememsy2018@gmail.com";
-            String username = "emememsy2018";
-            String password = "summer2018";
+            String subject = properties.get(PropertiesReader.SUBJECT_KEY);
+            String fromEmail = properties.get(PropertiesReader.FROMEMAIL_KEY);
+            String username = properties.get(PropertiesReader.USERNAME_KEY);
+            String password = properties.get(PropertiesReader.PASSWORD_KEY);
 
             //call to mail sender bean inside this block-----
 
@@ -62,8 +51,6 @@ public class MailDispatcherServlet extends HttpServlet {
             //-----------------------------------------------
 
             resp.sendRedirect("/mail-status");
-
-
 
         } catch (Exception e) {
             throw new RuntimeException(e);
