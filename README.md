@@ -1,4 +1,4 @@
 # myWords
 
-Project iSA-JJDD4 made by emememsy 
+Project iSA-JJDD4 made by emememsy
 
