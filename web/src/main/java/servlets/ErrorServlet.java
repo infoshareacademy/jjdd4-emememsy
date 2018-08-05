@@ -38,4 +38,5 @@ public class ErrorServlet extends HttpServlet {
             response.sendRedirect("/error");
         }
     }
+
 }
