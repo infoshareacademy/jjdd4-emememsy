@@ -36,13 +36,15 @@ public class MailReportServlet extends HttpServlet {
         if(isAuthorised == null|| isAuthorised == false) {
             resp.sendRedirect("/index.jsp");
         }
-        String userEmail = (String) session.getAttribute("userEmail");
 
-        Long numberAllDisplayed = singleWordDao.numberAllDisplayed();
-        Long numberBrowse = singleWordDao.totalNumberOfWordsBrowseMode();
-        Long numberLearn = singleWordDao.totalNumberOfWordsLearnMode();
-        Long numberRepeat = singleWordDao.totalNumberOfWordsRepeatMode();
-        Long numberExcluded = singleWordDao.totalNumberOfPassedWords();
+        String userName = (String)session.getAttribute("userNameStr");
+        String userEmail = (String)session.getAttribute("userEmail");
+
+        Long numberAllDisplayed = singleWordDao.numberAllDisplayed(userName);
+        Long numberBrowse = singleWordDao.totalNumberOfWordsBrowseMode(userName);
+        Long numberLearn = singleWordDao.totalNumberOfWordsLearnMode(userName);
+        Long numberRepeat = singleWordDao.totalNumberOfWordsRepeatMode(userName);
+        Long numberExcluded = singleWordDao.totalNumberOfPassedWords(userName);
 
         Template template = templateProvider.getTemplate(getServletContext(), "mail-report.ftlh");
 

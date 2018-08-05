@@ -34,7 +34,7 @@
             <tr>
                 <td>
                     <label for="emailAddress">Do:</label>
-                    <input type="text" name="email" id="emailAddress" class="form-control" size="75">
+                    <input type="text" name="email" value=${userEmail} id="emailAddress" class="form-control" size="75">
                 </td>
             </tr>
 
