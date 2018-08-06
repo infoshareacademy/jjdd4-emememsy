@@ -54,9 +54,9 @@
                 <textarea name="message" readonly class="form-control" id="exampleTextarea" rows="6" cols="75">
 Łączna liczba wyświetlonych słów: ${numberAllDisplayed},
 Liczba słów dostępnych w trybie przeglądania: ${numberBrowse},
-Liczba o dostępnych w trybie nauki: ${numberLearn},
-Liczba o dostępnych w trybie powtórek: ${numberRepeat},
-Liczba o oznaczonych jako nauczone: ${numberExcluded}
+Liczba dostępnych w trybie nauki: ${numberLearn},
+Liczba dostępnych w trybie powtórek: ${numberRepeat},
+Liczba oznaczonych jako nauczone: ${numberExcluded}
                 </textarea>
                 </td>
             </tr>
