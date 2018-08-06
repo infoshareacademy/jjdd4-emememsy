@@ -52,10 +52,10 @@
                     <br/>
                 <label for="exampleTextarea">Wiadomość:</label>
                 <textarea name="message" readonly class="form-control" id="exampleTextarea" rows="6" cols="75">
-Laczna liczba wyswietlonych slow: ${numberAllDisplayed},
-Liczba slow dostepnych w trybie przegladania: ${numberBrowse},
-Liczba o dostepnych w trybie nauki: ${numberLearn},
-Liczba o dostepnych w trybie powtorek: ${numberRepeat},
+Łączna liczba wyświetlonych słów: ${numberAllDisplayed},
+Liczba słów dostępnych w trybie przeglądania: ${numberBrowse},
+Liczba o dostępnych w trybie nauki: ${numberLearn},
+Liczba o dostępnych w trybie powtórek: ${numberRepeat},
 Liczba o oznaczonych jako nauczone: ${numberExcluded}
                 </textarea>
                 </td>
