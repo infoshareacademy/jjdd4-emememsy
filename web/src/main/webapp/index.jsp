@@ -43,11 +43,6 @@
             <li class="nav-item">
                 <a class="nav-link" href="/main">Menu główne<span class="sr-only">(current)</span></a>
             </li>
-            <#--------------Replased by dropdown menu with email item-------->
-            <#--<li class="nav-item">-->
-            <#--<a class="nav-link" href="/progress">Mój postęp</a>-->
-            <#--</li>-->
-            <#--------------------------------------------------------------->
 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
