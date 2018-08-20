@@ -24,7 +24,11 @@ public class AppExceptionHandler extends HttpServlet {
     private void processError(HttpServletRequest request,
                               HttpServletResponse response) throws IOException {
 
-        response.sendRedirect("/error");
+        if(response.getStatus() == 404) {
+            response.sendRedirect("/error");
+        } else if (response.getStatus() == 500) {
+            response.sendRedirect("/error-file");
+        }
 
     }
 }

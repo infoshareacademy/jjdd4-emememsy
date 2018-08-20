@@ -77,14 +77,13 @@ public class ChooseCategoryServlet extends HttpServlet {
         model.put("size", size);
 
         resp.setContentType("text/html;charset=UTF-8");
-        LOG.info("The file was load corectly");
 
         try {
             template.process(model, resp.getWriter());
+            LOG.info("fthl template was loaded sussessfully");
         } catch (TemplateException e) {
             e.printStackTrace();
-            LOG.error("Problems with template");
-
+            LOG.error("ftlh template could not be loaded");
         }
     }
 }

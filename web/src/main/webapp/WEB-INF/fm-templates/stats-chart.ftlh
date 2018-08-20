@@ -12,6 +12,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <title>MyWords</title>
+    <style type="text/css">
+        .banner {
+            text-align: center;
+        }
+        .footer{
+            background: white;
+        }
+    </style>
 
     <!--Load the AJAX API-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -29,6 +37,7 @@
                          <#list map?keys as key>['${key}', ${map[key]}]<#sep>,</#sep></#list>
                 </#if>
             ]);
+
 
             var options = {
                 title: 'Ile razy zostało wyświetlone każde słowo',
@@ -71,9 +80,25 @@
 <!--   inject navbar here  -->
     <#include "macros/navbar.ftlh">
 
-<div class="jumbotron">
+<div class="jumbotron banner">
         <#include "macros/welcome-banner.ftlh">
 </div>
+
+<#--Mail Report button---------------------------->
+<div style="width: 80%; height: 100px; margin: auto">
+<div class="row justify-content-center">
+<span class="col-md-3 d-flex align-items-center">
+    <b><h2>Wyślij raport: </h2></b>
+</span>
+<span class="col-md-3 d-flex align-items-center">
+    <a class="btn btn-outline-primary btn-lg" href="/mail-report" role="button">Wyślij</a>
+</span>
+</div>
+</div>
+<br/>
+<br/>
+<#------------------------------------------------>
+
 
 <div class="container">
     <strong>
@@ -85,6 +110,9 @@
     </strong>
 </div>
 <br/>
+
+
+
 <br/>
 <div class="container">
     <div id="chart_div"></div>
@@ -100,7 +128,7 @@
 
 
 
-<footer class="container fixed-bottom">
+<footer class="container fixed-bottom footer">
     <hr>
     <#include "macros/copyright-footer.ftlh">
 </footer>

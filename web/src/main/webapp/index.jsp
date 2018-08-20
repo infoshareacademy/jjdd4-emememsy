@@ -43,9 +43,18 @@
             <li class="nav-item">
                 <a class="nav-link" href="/main">Menu główne<span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/progress">Mój postęp</a>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                    Statystyki
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/progress">Postęp</a>
+                    <a class="dropdown-item" href="/mail-report">Wyslij raport</a>
+                </div>
             </li>
+
+
             <li class="nav-item">
                 <a class="nav-link" href="/management">Ustawienia</a>
             </li>
@@ -63,7 +72,7 @@
                 </div>
             </li>
             <li>
-                <a style="align-content: right" class="nav-link" href="https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://emememsy.jjdd4.is-academy.pl/logout">Wyloguj</a>
+                <a class="nav-link" href="https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://emememsy.jjdd4.is-academy.pl/logout">Wyloguj</a>
             </li>
         </ul>
     </div>

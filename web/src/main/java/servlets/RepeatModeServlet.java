@@ -73,10 +73,10 @@ public class RepeatModeServlet extends HttpServlet {
 
         try {
             template.process(model, resp.getWriter());
+            LOG.info("fthl template was loaded sussessfully");
         } catch (TemplateException e) {
             e.printStackTrace();
-            LOG.error("Problems with template");
-
+            LOG.error("ftlh template could not be loaded");
         }
     }
 

@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
           integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
@@ -12,6 +13,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <title>MyWords</title>
+
     <style type="text/css">
         .banner {
             text-align: center;
@@ -23,32 +25,25 @@
 </head>
 <body>
 
-<!--   inject navbar here  -->
-    <#include "macros/navbar.ftlh">
 
 <main role="main">
 
     <div class="jumbotron banner">
-        <!--   inject banner here  -->
-          <#include "macros/learn-banner.ftlh">
+        <#include "macros/mail-banner.ftlh">
     </div>
 
-    <div class="container">
-        <h1>Poprawne tłumaczenie słowa ${word} to ${translation}.</h1>
-        <br/><br/><br/>
-        <div class="row">
-            <div class="col-md-6">
-                <p><a class="btn btn-outline-success btn-lg"
-                      href="/counter?category=${category}&mode=${mode}&word=${word}&counter=remain" role="button">Pozostaw
-                    słowo<br/>w trybie powtórek</a></p>
-            </div>
-            <div class="col-md-6">
-                <p><a class="btn btn-outline-warning btn-lg"
-                      href="/counter?category=${category}&mode=${mode}&word=${word}&counter=remove" role="button">Usuń
-                    słowo <br/>z trybu powtórek</a></p>
-            </div>
+
+    <div style="width: 80%; height: 100px; margin: auto">
+        <div class="row justify-content-center">
+<span class="col-md-3 d-flex align-items-center">
+    <b><h2>Mail został wysłany na podany adres</h2></b>
+</span>
+            <span class="col-md-3 d-flex align-items-center">
+    <a class="btn btn-outline-primary btn-lg" href="/main" role="button">OK</a>
+</span>
         </div>
     </div>
+
 
 </main>
 

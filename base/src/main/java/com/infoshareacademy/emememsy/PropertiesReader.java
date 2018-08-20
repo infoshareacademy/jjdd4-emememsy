@@ -10,6 +10,10 @@ public class PropertiesReader {
 
     public static final String PATH_KEY = "path";
     public static final String FORMATTING_KEY = "formatting";
+    public static final String FROMEMAIL_KEY = "fromEmail";
+    public static final String USERNAME_KEY = "username";
+    public static final String PASSWORD_KEY = "password";
+    public static final String SUBJECT_KEY = "subject";
 
     public static Map<String, String> read(String fileName) {
         Map<String, String> properties = new HashMap<>();

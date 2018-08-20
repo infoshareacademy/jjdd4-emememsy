@@ -54,7 +54,7 @@ public class MainServlet extends HttpServlet {
         List<String> users = singleWordDao.findAllUsers();
         if (!users.contains(userName)) {
 
-            LOG.info("Getting list of words from file.");
+            LOG.info("New user - creating list of words from file.");
             List<SingleWord> listOfWords = dataProvider.getListOfWords();
             for (SingleWord s : listOfWords) {
                 s.setUserName(userName);
@@ -62,6 +62,7 @@ public class MainServlet extends HttpServlet {
             }
         }
 
+        LOG.info("User already exists in the data base. Using existing words to keep progress");
 
         Template template = templateProvider.getTemplate(getServletContext(), "choose-mode.ftlh");
 
@@ -71,9 +72,10 @@ public class MainServlet extends HttpServlet {
 
         try {
             template.process(model, resp.getWriter());
+            LOG.info("fthl template was loaded sussessfully");
         } catch (TemplateException e) {
             e.printStackTrace();
-            LOG.error("Problems with template");
+            LOG.error("ftlh template could not be loaded");
         }
     }
 }

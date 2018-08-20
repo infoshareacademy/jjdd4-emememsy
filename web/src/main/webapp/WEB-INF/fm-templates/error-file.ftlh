@@ -30,39 +30,43 @@
 
     <div class="jumbotron banner">
         <!--   inject banner here  -->
-        <#include "macros/file-upload-banner.ftlh">
+                <#include "macros/error-file-banner.ftlh">
     </div>
 
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <p><a class="btn btn-outline-danger btn-lg" href="/management?action=delete" role="button">Wyczyść bazę słów
-                    &raquo;</a></p>
+                <h2>Przeglądanie</h2>
+                <p>To pierwszy tryb nauki nowych słów. W tym trybie wyświetlimy Ci parę słowo - tłumaczenie. Nie spiesz
+                    się i postaraj się zapamiętać dane słowo. W tym trybie będzie ono dostępne tylko raz!</p>
             </div>
             <div class="col-md-4">
-                <p><a class="btn btn-outline-primary btn-lg" href="/management?action=initialize" role="button">Przywróć bazę słów
-                    &raquo;</a></p>
+                <h2>Nauka</h2>
+                <p>To drugi tryb nauki. W tym trybie wyświetlimy słowa, które poznałeś w trybie przeglądania. Dokonuj
+                    uczciwie oceny :) </p>
             </div>
             <div class="col-md-4">
-                <p></p>
+                <h2>Powtórka</h2>
+                <p>To trzeci i ostatni tryb nauki. Tutaj pojawią się słowa, które już znasz. Możesz zadecydować, czy
+                    chcesz je pozostawić aby móc do nich wrócić w przyszłości, czy chcesz je trwale usunąć z
+                    programu.</p>
             </div>
         </div>
-    </div>
-    <div class="container"></div>
-    <form enctype="multipart/form-data"
-          action="management"
-          method="POST">
-        <div class="container">
-            <br/>
-            Nowy plik: <input type="file" name="dataFile"/>
-            <input type="submit" name="save" value="Zastosuj"/>
-        </div>
-    </form>
-    </div>
-    <div class="container">
-        <br/><br/>
-            <h5>Twoje słowa zostały wczytane do bazy danych. Przejdź do menu głównego aby zacząć korzystać z aplikacji</h5>
 
+        <div class="row">
+            <div class="col-md-4">
+                <p><a class="btn btn-outline-primary btn-lg" href="/choose-category?mode=browse-mode" role="button">Start
+                    &raquo;</a></p>
+            </div>
+            <div class="col-md-4">
+                <p><a class="btn btn-outline-primary btn-lg" href="/choose-category?mode=learn-mode" role="button">Start
+                    &raquo;</a></p>
+            </div>
+            <div class="col-md-4">
+                <p><a class="btn btn-outline-primary btn-lg" href="/choose-category?mode=repeat-mode" role="button">Start
+                    &raquo;</a></p>
+            </div>
+        </div>
     </div>
 </main>
 

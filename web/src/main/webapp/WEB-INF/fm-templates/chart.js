@@ -27,7 +27,7 @@ function drawBasic() {
         ['Philadelphia, PA',2]
     ]
 
-    var max = Math.max.apply(null, entries.slice(1).map(item => item[1]))
+    var max = Math.max.apply(null, entries.slice(1).map(item => item[1]);
 
     var data = google.visualization.arrayToDataTable(
         entries
